@@ -3,5 +3,5 @@
   "description" : "Resilio Sync是基于P2P技术的快速，可靠和简单的文件同步和共享解决方案。",
   "icon" : "ResilioSync.png",
   "httpAccess" : 1,
-  "httpPort" : 9090
+  "httpPort" : 9001
 }

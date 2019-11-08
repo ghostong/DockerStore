@@ -22,6 +22,10 @@ class Controller extends Lit\LitMs\LitMsController {
             return "";
         });
 
+        $this->post('/api/getAllContainer',function ($request,&$response){
+            return Model("Api")->allContainerList();
+        });
+
     }
 
 }

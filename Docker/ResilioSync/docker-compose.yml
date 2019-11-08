@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  resiliosync:
+    restart: always
+    image:
+      resiliosync:latest
+    build:
+      ./
+    volumes:
+      - /volume/ResilioSync:/volume
+    ports:
+      - "9001:9001"
