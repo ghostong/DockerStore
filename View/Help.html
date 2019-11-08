@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+    <title>Docker Box - 帮助</title>
+    <script src="/jquery/2.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
+    <style>
+        body{
+            padding:20px;
+        }
+        .margin-top{
+            margin: 80px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            //主机列表
+            // $.ajax({
+            //     type:'post', url:"/api/getRuningContainer", cache: false, dataType:'json',
+            //     success:function(sjson){
+            //         if(sjson.success == 1){
+            //         }
+            //     }
+            // });
+        });
+
+
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Docker Box</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">正在运行</a></li>
+                <li><a href="/allContainer">所有容器</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="panel panel-default margin-top">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4>1 安装 Docker</h4>
+        </div>
+        <div class="panel-footer">
+            <p>
+                1) CentOS 查看 Docker <a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank">官方帮助文档</a> 安装.
+            </p>
+            <p>
+                2) Ubuntu 查看 Docker <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank">官方帮助文档</a> 安装.
+            </p>
+            <p>
+                3) 使用 <mark>docker -v</mark> 确认 Docker 是否安装成功.
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4>2 安装 Docker Compose</h4>
+        </div>
+        <div class="panel-footer">
+            <p>
+                1) 查看 Docker Compose <a href="https://docs.docker.com/compose/install/" target="_blank">官方帮助文档</a> 安装.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
