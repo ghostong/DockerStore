@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-EXPOSE 8080
+EXPOSE 9001
 WORKDIR /workdir
 ADD dependence/resilio-sync.deb .
 RUN mkdir -p /volume/config && mkdir /volume/sync && apt-get install ./resilio-sync.deb

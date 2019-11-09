@@ -1,0 +1,7 @@
+{
+  "appName" : "phpMyAdmin",
+  "appDescription" : "phpMyAdmin是一个用PHP编写的免费工具，用于在Web上管理MySQL。",
+  "appIcon" : "phpMyAdmin.png",
+  "httpPort" : 9002,
+  "servicePort": []
+}

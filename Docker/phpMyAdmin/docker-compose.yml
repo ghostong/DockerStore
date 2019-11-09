@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  resiliosync:
+    restart: always
+    image:
+      phpmyadmin:latest
+    build:
+      ./
+    volumes:
+      - /volume/phpMyAdmin:/volume
+    ports:
+      - "9002:80"
+    environment:
+      PMA_ARBITRARY: 1
