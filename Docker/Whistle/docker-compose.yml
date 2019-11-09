@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  whistle:
+    restart: always
+    container_name: Whistle
+    image:
+      whistle:latest
+    build:
+      ./
+    volumes:
+      - /volume/Whistle:/volume
+    ports:
+      - "9003:9003"

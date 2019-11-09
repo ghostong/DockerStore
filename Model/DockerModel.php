@@ -17,7 +17,6 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
     function startContainer($dir){
         $cmd = "cd $dir && docker-compose build && docker-compose up -d";
         go(function () use ($cmd) {
-            echo $cmd."\n";
             co::exec($cmd);
         });
         return true;
@@ -26,14 +25,21 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
     function removeContainer($dir){
         $cmd = "cd $dir && docker-compose stop && docker-compose rm -f";
         go(function () use ($cmd) {
-            echo $cmd."\n";
             co::exec($cmd);
         });
         return true;
     }
 
-    function buildImageOnStart($dir){
-        $cmd = "cd $dir && docker-compose build";
+    function getDockerBaseImage($file){
+        $cmd = 'cat '.$file.'  |grep -i from |awk \'{print $NF}\'';
+        exec($cmd,$execRes);
+        $imageName = current($execRes);
+        return $imageName;
+    }
+
+    function pullImage($imageName) {
+        $cmd = 'docker pull '. $imageName;
+        echo $cmd,"\n";
         passthru($cmd);
     }
 }
