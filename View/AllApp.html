@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
-    <title>Docker Box - 正在运行</title>
+    <title>Docker Box - 所有容器</title>
     <script src="/jquery/2.2.1/jquery.js"></script>
     <link rel="stylesheet" href="/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <script src="/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
@@ -20,7 +20,7 @@
 
         }
         .one-app p{
-            height: 20px;
+            height: 60px;
             overflow: hidden;
             text-overflow: ellipsis;
             -webkit-line-clamp:3;
@@ -39,23 +39,25 @@
     </style>
     <script>
         $(document).ready(function(){
-            //主机列表
+            //app列表
             $.ajax({
-                type:'post', url:"/api/getRuningApp", cache: false, dataType:'json',
+                type:'post', url:"/api/getAllApp", cache: false, dataType:'json',
                 success:function(json){
-                    if(json.success == 1){
-                        for ( let i = 0; i < json.response.length; i++) {
-                            let config = json.response[i];
-                            let str = '<div class="col-xs-12 col-sm-6 col-md-3"><div class="one-app">';
+                    if(json.success == 1) {
+                        for ( i = 0; i < json.response.length; i++) {
+                            config = json.response[i];
+                            str = '<div class="col-xs-12 col-sm-6 col-md-3"><div class="one-app">';
                             str +='<div class="appIcon"><img src="/icon/'+ config.appIcon +'" /></div>';
                             str +='<h4>'+config.appName+'</h4>';
-                            if(config.webUi){
-                                str +='<p>WebUi: <a href="'+config.webUi+'" target="_blank">'+config.webUi+'</a></p>';
+                            str +='<p>'+config.appDescription+'</p><div>';
+                            if(config.isRunning) {
+                                disabled = "disabled";
+                                clickName = "已启动";
+                            }else{
+                                disabled = "";
+                                clickName = "安装";
                             }
-                            if(config.ports){
-                                str +='<p>开放端口: '+config.ports+'</p>';
-                            }
-                            str +='<button type="button" class="btn btn-danger btn-sm removeApp" appId="'+config.appId+'" >移除</button>';
+                            str +='<button type="button" class="btn btn-primary btn-sm installApp" appId="'+config.appId+'" '+disabled+'>'+clickName+'</button>';
                             str +='</div></div></div>';
                             $("#appContainer").append(str);
                         }
@@ -65,13 +67,13 @@
             });
 
             function onList() {
-                $(".removeApp").click(function(){
+                $(".installApp").click(function(){
                     $(this).attr("disabled","disabled");
                     appId = $(this).attr("appId");
                     $.ajax({
-                        type: 'post', url: "/api/removeApp", cache: false, dataType: 'json', data: "appId="+appId,
+                        type: 'post', url: "/api/startApp", cache: false, dataType: 'json', data: "appId="+appId,
                         success: function (json) {
-                            console.log(json)
+
                         }
                     })
                 });
@@ -90,7 +92,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/allApp">所有容器</a></li>
+                <li><a href="/">正在运行</a></li>
                 <li><a href="/help">帮助</a></li>
             </ul>
         </div>
