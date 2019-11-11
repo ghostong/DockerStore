@@ -1,0 +1,15 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+EXPOSE 9000
+RUN apt-get -y install php7.2 php7.2-dev docker.io
+WORKDIR /tmp
+ADD ./Docker/DockerStore/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+ADD ./Docker/DockerStore/swoole-4.4.8.tgz .
+RUN chmod 755 /usr/local/bin/docker-compose && \
+    cd swoole-4.4.8 && \
+    phpize && \
+    ./configure && \
+    make && make install && \
+    echo "extension=swoole.so" > /etc/php/7.2/cli/conf.d/swoole.ini
+WORKDIR /workdir
+ADD . .
+CMD ["php","Server.php"]

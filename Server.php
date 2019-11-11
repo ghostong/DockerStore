@@ -3,8 +3,6 @@
 //autoload
 require(__DIR__.'/vendor/autoload.php');
 
-
-
 $server = new \Lit\LitMs\LitMsServer();
 
 $server
@@ -16,7 +14,8 @@ $server
     ->setOpenBaseDir(__DIR__)    //设置读取安全目录
     ->setDocumentRoot(__DIR__.DIRECTORY_SEPARATOR."Static")    //设置静态目录
     ->setAuthenticate(['ghost'=>'b.b.xixihaha.']) ;   //开启简单身份认证,设置用户名密码
-if ($argv[1] == "install") {
+
+if (isset($argv[1]) && $argv[1] == "install") {
     $server->setOnStart(__DIR__.DIRECTORY_SEPARATOR."OnStart.php");    //设置启动时先执行的一个文件
 }
 
