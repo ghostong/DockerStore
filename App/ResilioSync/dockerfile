@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
 EXPOSE 9001
 WORKDIR /workdir
 ADD dependence/resilio-sync.deb .

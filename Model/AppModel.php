@@ -5,7 +5,7 @@ class AppModel extends \Lit\LitMs\LitMsModel{
 
 
     function getAppRoot () {
-        return LITMS_WORK_DIR.DIRECTORY_SEPARATOR."Docker".DIRECTORY_SEPARATOR;
+        return LITMS_WORK_DIR.DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR;
     }
 
     function getAppDir( $appId){

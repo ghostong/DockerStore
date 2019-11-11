@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  ubuntu:
+    image:
+      registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+    build:
+      ./
