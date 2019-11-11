@@ -1,2 +1,8 @@
-FROM phpmyadmin/phpmyadmin
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
 EXPOSE 80
+WORKDIR /workdir
+ADD dependence/phpMyAdmin-4.9.1-all-languages.tar.xz /workdir
+RUN mv phpMyAdmin-4.9.1-all-languages phpMyAdmin && apt-get install php php-mysql -y
+WORKDIR /workdir/phpMyAdmin
+COPY dependence/config.inc.php ./config.inc.php
+CMD ["php","-S","0.0.0.0:9002"]

@@ -1,2 +1,3 @@
 FROM ubuntu:18.04
-RUN apt-get update && apt-get install -y tzdata && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ADD sources.list /etc/apt/sources.list
+RUN apt-get update && apt-get install -y zip tzdata && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

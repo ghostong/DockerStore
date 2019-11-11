@@ -1,15 +1,12 @@
 <?php
 
-function pullAllAppImage(){
+function buildAppAppImage(){
     $appModel = Model("App");
     $appList = $appModel->listApp();
     foreach($appList as $val) {
-        $dir = $appModel->getAppDir($val)."dockerfile";
-        $imageName = Model("Docker")->getDockerBaseImage($dir);
-        if($imageName){
-            Model("Docker")->pullImage($imageName);
-        }
+        $dir = $appModel->getAppDir($val);
+        Model("Docker")->buildImage($dir);
     }
 }
 
-pullAllAppImage();
+buildAppAppImage();

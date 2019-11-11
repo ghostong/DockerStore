@@ -15,7 +15,7 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
     }
 
     function startContainer($dir){
-        $cmd = "cd $dir && docker-compose build && docker-compose up -d";
+        $cmd = "cd $dir && docker-compose up -d";
         go(function () use ($cmd) {
             co::exec($cmd);
         });
@@ -39,6 +39,12 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
 
     function pullImage($imageName) {
         $cmd = 'docker pull '. $imageName;
+        echo $cmd,"\n";
+        passthru($cmd);
+    }
+
+    function buildImage($dir){
+        $cmd = "cd $dir && docker-compose build";
         echo $cmd,"\n";
         passthru($cmd);
     }
