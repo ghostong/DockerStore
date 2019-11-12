@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  memcached:
+    restart: always
+    container_name: Memcached
+    image:
+      memcached:latest
+    build:
+      ./
+    volumes:
+      - /volume/Memcached/log:/volume/log
+      - /volume/Memcached/run:/volume/run/
+    ports:
+      - "11211:11211"

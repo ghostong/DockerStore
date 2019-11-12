@@ -47,7 +47,7 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
             }else{
                 $config['ports'] = "未开放";
             }
-            if(isset($config['auth']) && !$config['auth']) {
+            if(!isset($config['auth']) || !$config['auth']) {
                 $config['auth'] = "无";
             }
             $outPut[] = $config;

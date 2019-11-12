@@ -7,5 +7,5 @@
     6379
   ],
   "documentUrl" : "https://redis.io/download",
-  "auth": "123@456@"
+  "auth": "[默认密码: 123@456@]"
 }
