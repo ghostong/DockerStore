@@ -40,12 +40,15 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
             if($config['httpPort']){
                 $config['webUi'] = "http://".$host.":".$config['httpPort'];
             }else{
-                $config['webUi'] = "未开放";
+                $config['webUi'] = "";
             }
             if($config['appPorts']){
                 $config['ports'] = implode(" ",$config['appPorts']);
             }else{
                 $config['ports'] = "未开放";
+            }
+            if(isset($config['auth']) && !$config['auth']) {
+                $config['auth'] = "无";
             }
             $outPut[] = $config;
         }

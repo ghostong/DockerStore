@@ -24,7 +24,8 @@
             border-bottom:2px solid #eeeeee;
         }
         .one-app p{
-            height: 20px;
+            height: 13px;
+            font-size: 10px;
             overflow: hidden;
             text-overflow: ellipsis;
             -webkit-line-clamp:3;
@@ -53,8 +54,13 @@
                             let str = '<div class="col-xs-12 col-sm-6 col-md-3"><div class="one-app">';
                             str +='<div class="appIcon"><img src="/icon/'+ config.appIcon +'" /></div>';
                             str +='<h4>'+config.appName+'</h4>';
-                            str +='<p>WebUi: <a href="'+config.webUi+'" target="_blank">'+config.webUi+'</a></p>';
+                            if(config.webUi) {
+                                str +='<p>WebUi: <a href="'+config.webUi+'" target="_blank">'+config.webUi+'</a></p>';
+                            }else{
+                                str +='<p>WebUi: 未开放</p>';
+                            }
                             str +='<p>服务端口: '+config.ports+'</p>';
+                            str +='<p>默认密码: '+config.auth+'</p>';
                             str +='<button type="button" class="btn btn-danger btn-sm removeApp" appId="'+config.appId+'" >移除</button>';
                             str +='</div></div></div>';
                             $("#appContainer").append(str);
