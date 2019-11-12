@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
 WORKDIR /workdir
 EXPOSE 9003
 ADD ./dependence/node-v12.13.0-linux-x64.tar.xz .

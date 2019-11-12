@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
 EXPOSE 80
 WORKDIR /workdir
 ADD dependence/verysync-linux.tar.gz  /workdir

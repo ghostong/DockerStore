@@ -1,0 +1,6 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+RUN apt-get install php7.2 php7.2-fpm php7.2-dev php7.2-mysql php7.2-XML php7.2-mbstring nginx -y
+WORKDIR /workdir
+ADD ./default /etc/nginx/sites-available/default
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]

@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
 EXPOSE 9000
 RUN apt-get -y install php7.2 php7.2-dev docker.io
 WORKDIR /tmp

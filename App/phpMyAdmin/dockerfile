@@ -1,8 +1,6 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
 EXPOSE 80
 WORKDIR /workdir
-ADD dependence/phpMyAdmin-4.9.1-all-languages.tar.xz /workdir
-RUN mv phpMyAdmin-4.9.1-all-languages phpMyAdmin && apt-get install php7.2 php7.2-mysql -y
-WORKDIR /workdir/phpMyAdmin
+ADD dependence/phpMyAdmin-4.9.1-all-languages.tar.xz /tmp
+RUN mv /tmp/phpMyAdmin-4.9.1-all-languages/* /workdir
 COPY dependence/config.inc.php ./config.inc.php
-CMD ["php","-S","0.0.0.0:9002"]

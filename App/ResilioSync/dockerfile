@@ -1,6 +1,6 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
 EXPOSE 9001
 WORKDIR /workdir
 ADD dependence/resilio-sync.deb .
-RUN mkdir -p /volume/config && mkdir /volume/sync  && apt-get install ./resilio-sync.deb
+RUN mkdir -p /volume/config && apt-get install ./resilio-sync.deb
 CMD ["rslsync","--webui.listen","0.0.0.0:9001","--storage","/volume/config","--log","/dev/null","--nodaemon"]
