@@ -6,16 +6,20 @@
 class Controller extends Lit\LitMs\LitMsController {
 
     function __construct(){
-        $this->all('/',function (){
+        $this->get('/',function (){
             return View("Index.html");
         });
 
-        $this->all('/allApp',function (){
+        $this->get('/allApp',function (){
             return View("AllApp.html");
         });
 
-        $this->all('/help',function (){
+        $this->get('/help',function (){
             return View("Help.html");
+        });
+
+        $this->get('/tool',function (){
+            return View("Tool.html");
         });
 
         $this->post('/api/getRuningApp',function ($request){
@@ -32,6 +36,14 @@ class Controller extends Lit\LitMs\LitMsController {
 
         $this->post('/api/removeApp',function ($request){
             return Model("Api")->removeApp($request);
+        });
+
+        $this->post('/api/cleanImage',function ($request){
+            return Model("Api")->cleanImage($request);
+        });
+
+        $this->post('/api/cleanContainer',function ($request){
+            return Model("Api")->cleanContainer($request);
         });
 
     }

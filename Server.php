@@ -12,11 +12,16 @@ $server
     ->setWorkDir(__DIR__)    //设置项目目录
     ->setDaemonize(false)    //设置是否守护进程
     ->setOpenBaseDir(__DIR__)    //设置读取安全目录
-    ->setDocumentRoot(__DIR__.DIRECTORY_SEPARATOR."Static")    //设置静态目录
-    ->setAuthenticate(['ghost'=>'b.b.xixihaha.']) ;   //开启简单身份认证,设置用户名密码
+    ->setDocumentRoot(__DIR__.DIRECTORY_SEPARATOR."Static");    //设置静态目录
+
+if(getenv("USERNAME") && getenv("PASSWORD") ) {
+    $server->setAuthenticate([getenv("USERNAME")=>getenv("PASSWORD")]) ;   //开启简单身份认证,设置用户名密码
+}else{
+    $server->setAuthenticate(['dockerstore'=>'dockerstore']) ;   //开启简单身份认证,设置用户名密码
+}
 
 if (isset($argv[1]) && $argv[1] == "install") {
     $server->setOnStart(__DIR__.DIRECTORY_SEPARATOR."OnStart.php");    //设置启动时先执行的一个文件
 }
 
-$server->run();
+$server->run(); //开启进程

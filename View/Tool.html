@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+    <title>Docker Store - 所有应用</title>
+    <script src="/jquery/2.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
+    <style>
+        body{
+            padding:20px;
+        }
+        .margin-top{
+            margin: 80px;
+        }
+        .tool-list button{
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#clean-container").click(function(){
+                $(this).attr("disabled","disabled");
+                tmp = $(this);
+                $.ajax({
+                    type: 'post', url: "/api/cleanContainer", cache: false, dataType: 'json',
+                    success: function (json) {
+                        alert(json.responseMessage)
+                        tmp.removeAttr("disabled");
+                    }
+                })
+            });
+
+            $("#clean-image").click(function(){
+                $(this).attr("disabled","disabled");
+                tmp = $(this);
+                $.ajax({
+                    type: 'post', url: "/api/cleanImage", cache: false, dataType: 'json',
+                    success: function (json) {
+                        alert(json.responseMessage)
+                        tmp.removeAttr("disabled");
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Docker Store</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">正在运行</a></li>
+                <li><a href="/allApp">所有应用</a></li>
+                <li><a href="/help">帮助</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="panel panel-default margin-top">
+    <div class="tool-list">
+        <p>
+            <button type="button" class="btn btn-primary" id="clean-container">清理退出容器</button>
+
+            <button type="button" class="btn btn-primary" id="clean-image">清理无用镜像</button>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

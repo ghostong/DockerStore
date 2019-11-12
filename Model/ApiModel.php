@@ -61,4 +61,22 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
             return Error();
         }
     }
+
+    //清理无用镜像
+    function cleanImage(){
+        if ( Model("Docker")->cleanImage() ) {
+            return Success();
+        }else{
+            return Error();
+        }
+    }
+
+    //清理退出容器
+    function cleanContainer(){
+        if ( Model("Docker")->cleanContainer() ) {
+            return Success();
+        }else{
+            return Error();
+        }
+    }
 }
