@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  verysync:
+    restart: always
+    container_name: VerySync
+    image:
+      verysync:latest
+    build:
+      ./
+    volumes:
+      - /volume/VerySync:/volume
+    ports:
+      - "9004:9004"

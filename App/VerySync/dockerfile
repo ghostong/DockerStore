@@ -1,0 +1,7 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-docker-store:latest
+EXPOSE 80
+WORKDIR /workdir
+ADD dependence/verysync-linux.tar.gz  /workdir
+RUN mv verysync-* verysync
+WORKDIR /workdir/verysync
+CMD ["./verysync", "-gui-address", "http://0.0.0.0:9004", "-home", "/volume/config"]
