@@ -5,4 +5,4 @@ docker run -itd \
     --env USERNAME="ghost" \
     --env PASSWORD="123456" \
     --name DockerStore \
-    registry.cn-hangzhou.aliyuncs.com/litosrc/decker-store:docker-store:latest
+    registry.cn-hangzhou.aliyuncs.com/litosrc/decker-store:latest
