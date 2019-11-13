@@ -1,0 +1,7 @@
+{
+  "appName" : "SSLBuild",
+  "appDescription" : "快速生成一个ssl证书",
+  "appIcon" : "SSLBuild.png",
+  "httpPort" : 9007,
+  "appPorts": []
+}

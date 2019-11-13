@@ -1,0 +1,8 @@
+{
+  "appName" : "NextCloud",
+  "appDescription" : "部署最广泛的本地文件共享和协作平台",
+  "appIcon" : "NextCloud.png",
+  "httpPort" : 9006,
+  "appPorts": [
+  ]
+}

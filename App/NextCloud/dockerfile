@@ -1,0 +1,9 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+EXPOSE 80
+WORKDIR /workdir
+ADD dependence/nextcloud-17.0.1.zip /tmp
+RUN unzip /tmp/nextcloud-17.0.1.zip -d /tmp && mv /tmp/nextcloud/* /workdir
+ADD ./dependence/default /etc/nginx/sites-available/default
+ADD ./dependence/ssl /etc/nginx/ssl
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]

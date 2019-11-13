@@ -1,0 +1,4 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+EXPOSE 80
+WORKDIR /workdir
+RUN mkdir ssl && yes li | openssl req -new -x509 -days 3650 -nodes -out ./ssl/cert.crt -keyout ./ssl/cert.key && zip ssl.zip ssl/ -rm && echo "<a href='/ssl.zip'> ssl.zip </a>" > index.html
