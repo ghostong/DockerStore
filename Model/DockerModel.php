@@ -55,14 +55,14 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
 
     function cleanImage(){
         $cmd = 'docker images |grep \'<none>\' |awk \'{print $3}\' |xargs -i docker rmi {}';
-        echo $cmd;
+        echo $cmd,"\n";
         exec($cmd,$execRes);
         return $execRes;
     }
 
     function cleanContainer(){
         $cmd = 'docker ps -a |grep -i \'exited\' |awk \'{print $1}\' |xargs -i docker rm {}';
-        echo $cmd;
+        echo $cmd,"\n";
         exec($cmd,$execRes);
         return $execRes;
     }

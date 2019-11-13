@@ -9,6 +9,6 @@ services:
       ./
     volumes:
       - /volume/Memcached/log:/volume/log
-      - /volume/Memcached/run:/volume/run/
+      - /volume/Memcached/run:/volume/run
     ports:
       - "11211:11211"

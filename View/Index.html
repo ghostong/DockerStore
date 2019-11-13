@@ -59,8 +59,7 @@
                             }else{
                                 str +='<p>WebUi: 未开放</p>';
                             }
-                            str +='<p>服务端口: '+config.ports+'</p>';
-                            str +='<p>认证: '+config.auth+'</p>';
+                            str +='<p>服务端口: '+config.ports+'&nbsp;&nbsp;&nbsp;<a href="/help#'+config.appId+'">帮助文档</a> </p>';
                             str +='<button type="button" class="btn btn-danger btn-sm removeApp" appId="'+config.appId+'" >移除</button>';
                             str +='</div></div></div>';
                             $("#appContainer").append(str);

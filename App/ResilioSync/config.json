@@ -1,10 +1,9 @@
 {
   "appName" : "Resilio Sync",
-  "appDescription" : "Resilio Sync是基于P2P技术的快速，可靠和简单的文件同步和共享解决方案。",
+  "appDescription" : "基于P2P技术的快速，可靠和简单的文件同步和共享解决方案。",
   "appIcon" : "ResilioSync.png",
   "httpPort" : 9001,
   "appPorts": [
     55555
-  ],
-  "documentUrl" : "https://help.resilio.com/hc/en-us"
+  ]
 }

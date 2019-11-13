@@ -35,29 +35,73 @@
 <div class="panel panel-default margin-top">
 
     <div class="panel panel-default">
+        <div class="panel-heading" id="Redis"> Redis </div>
         <div class="panel-body">
-            <h4>1 安装 Docker</h4>
-        </div>
-        <div class="panel-footer">
             <p>
-                1) CentOS 查看 Docker <a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank">官方帮助文档</a> 安装.
+                1. 配置文件所在位置 <mark>App/Redis/dependence/redis.conf</mark> .
             </p>
             <p>
-                2) Ubuntu 查看 Docker <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank">官方帮助文档</a> 安装.
-            </p>
-            <p>
-                3) 使用 <mark>docker -v</mark> 确认 Docker 是否安装成功.
+                2. 初始密码为 <mark>123@456@</mark> 如需修改,请修改配置项目 <mark>requirepass 123@456@</mark> .
             </p>
         </div>
     </div>
 
     <div class="panel panel-default">
+        <div class="panel-heading" id="phpMyAdmin"> phpMyAdmin </div>
         <div class="panel-body">
-            <h4>2 安装 Docker Compose</h4>
-        </div>
-        <div class="panel-footer">
             <p>
-                1) 查看 Docker Compose <a href="https://docs.docker.com/compose/install/" target="_blank">官方帮助文档</a> 安装.
+                1. 配置文件所在位置 <mark>App/phpMyAdmin/dependence/config.inc.php</mark> .
+            </p>
+            <p>
+                2. 参考文档 https://docs.phpmyadmin.net/zh_CN/latest/
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="Whistle"> Whistle </div>
+        <div class="panel-body">
+            <p>
+                暂无
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="Memcached"> Memcached </div>
+        <div class="panel-body">
+            <p>
+                1. memcached 的身份认证是通过 sasl 配置, 初始密码为 <mark>123@456@</mark> ,可通过修改 <mark>App/Memcached/docker-entrypoint.sh</mark> 中的命令修改默认密码 .
+            </p>
+            <p>
+                2. 同时也可以通过 <mark>App/Memcached/docker-entrypoint.sh</mark> 中的命令来修改启动参数 .
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="ResilioSync"> ResilioSync </div>
+        <div class="panel-body">
+            <p>
+                1. 创建新的同步项时, 请把同步目录选择到 <mark>/volume</mark> 的子目录下, 以便数据持久化 .
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="VerySync"> VerySync </div>
+        <div class="panel-body">
+            <p>
+                1. 创建新的同步项时, 请把同步目录选择到 <mark>/volume</mark> 的子目录下, 以便数据持久化 .
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="MySQL57"> MySQL 5.7 </div>
+        <div class="panel-body">
+            <p>
+                1. 数据库安装成功后, 请务必第一时间通过Web管理工具创建管理用户密码 .
             </p>
         </div>
     </div>

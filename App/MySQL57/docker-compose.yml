@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  mysql57:
+    restart: always
+    container_name: MySQL57
+    image:
+      mysql57:latest
+    build:
+      ./
+    volumes:
+      - /volume/MySQL57/mysql:/var/lib/mysql
+      - /volume/MySQL57/log:/var/log/mysql
+    ports:
+      - "3306:3306"
+      - "9005:80"

@@ -1,11 +1,9 @@
 {
   "appName" : "Redis",
-  "appDescription" : "Redis（全称：Remote Dictionary Server 远程字典服务）是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。",
+  "appDescription" : "开源的日志型、Key-Value数据库，并提供多种语言的API。",
   "appIcon" : "Redis.png",
   "httpPort" : 0,
   "appPorts": [
     6379
-  ],
-  "documentUrl" : "https://redis.io/download",
-  "auth": "[默认密码: 123@456@]"
+  ]
 }
