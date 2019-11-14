@@ -5,7 +5,7 @@
 
 ### 安装项目
 ````bash
-docker run -it --rm registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php install
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php install
 ````
 
 ### 启动项目

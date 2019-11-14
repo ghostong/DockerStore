@@ -10,3 +10,4 @@ function buildAppAppImage(){
 }
 
 buildAppAppImage();
+exit();
