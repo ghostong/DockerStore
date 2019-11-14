@@ -5,7 +5,7 @@
 
 ### 安装项目
 ````bash
-docker run -it --rm registry.cn-hangzhou.aliyuncs.com/litosrc/decker-store:latest php Server.php install
+docker run -it --rm registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php install
 ````
 
 ### 启动项目
@@ -16,5 +16,5 @@ docker run -itd \
     --env USERNAME="username" \
     --env PASSWORD="password" \
     --name DockerStore \
-    registry.cn-hangzhou.aliyuncs.com/litosrc/decker-store:latest
+    registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest
 ````
