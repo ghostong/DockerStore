@@ -11,4 +11,4 @@ services:
       - /volume/NextCloud/data:/workdir/data
       - /volume/NextCloud/config:/workdir/config
     ports:
-      - "9006:80"
+      - "9006:443"

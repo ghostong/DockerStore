@@ -38,7 +38,11 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
         foreach ($runingApp as $appName) {
             $config = Model("App")->getAppConfig($appName);
             if($config['httpPort']){
-                $config['webUi'] = "http://".$host.":".$config['httpPort'];
+                if($config['httpsOnly']) {
+                    $config['webUi'] = "https://".$host.":".$config['httpPort'];
+                }else{
+                    $config['webUi'] = "http://".$host.":".$config['httpPort'];
+                }
             }else{
                 $config['webUi'] = "";
             }
