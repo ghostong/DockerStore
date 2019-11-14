@@ -22,6 +22,7 @@ if(getenv("USERNAME") && getenv("PASSWORD") ) {
 
 if (isset($argv[1]) && $argv[1] == "install") {
     $server->setOnStart(__DIR__.DIRECTORY_SEPARATOR."OnStart.php");    //设置启动时先执行的一个文件
+    exit();
 }
 
 $server->run(); //开启进程
