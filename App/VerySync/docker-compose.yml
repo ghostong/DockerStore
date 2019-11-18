@@ -10,4 +10,4 @@ services:
     volumes:
       - /volume/VerySync:/volume
     ports:
-      - "9004:9004"
+      - "9104:9104"

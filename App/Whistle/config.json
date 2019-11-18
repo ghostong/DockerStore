@@ -2,6 +2,6 @@
   "appName" : "Whistle",
   "appDescription" : "基于Node实现的跨平台web调试代理工具。",
   "appIcon" : "whistle.png",
-  "httpPort" : 9003,
-  "appPorts": [9003]
+  "httpPort" : 9103,
+  "appPorts": [9103]
 }

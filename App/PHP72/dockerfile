@@ -1,0 +1,4 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+EXPOSE 80
+EXPOSE 9000
+WORKDIR /workdir

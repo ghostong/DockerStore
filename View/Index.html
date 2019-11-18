@@ -34,11 +34,11 @@
             -webkit-box-orient:vertical;
         }
         .appIcon{
-            height:120px;
+            height:90px;
             display: flex;
         }
         .appIcon img {
-            width:120px;
+            width:90px;
             margin: auto;
         }
     </style>
@@ -51,7 +51,7 @@
                     if(json.success == 1){
                         for ( let i = 0; i < json.response.length; i++) {
                             let config = json.response[i];
-                            let str = '<div class="col-xs-12 col-sm-6 col-md-3"><div class="one-app">';
+                            let str = '<div class="col-xs-6 col-sm-4 col-md-2"><div class="one-app">';
                             str +='<div class="appIcon"><img src="/icon/'+ config.appIcon +'" /></div>';
                             str +='<h4>'+config.appName+'</h4>';
                             if(config.webUi) {

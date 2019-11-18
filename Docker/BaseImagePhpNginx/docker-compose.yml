@@ -5,3 +5,6 @@ services:
       registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
     build:
       ./
+    volumes:
+      - /volume/BasePHPNginx/config/sites-available/:/etc/nginx/sites-available/
+      - /volume/BasePHPNginx/config/php-fpm/:/etc/php/7.2/fpm/

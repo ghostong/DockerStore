@@ -8,6 +8,6 @@ services:
     build:
       ./
     ports:
-      - "9002:80"
+      - "9102:80"
     environment:
       PMA_ARBITRARY: 1

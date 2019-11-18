@@ -7,7 +7,7 @@ $server = new \Lit\LitMs\LitMsServer();
 
 $server
     ->setHttpHost("0.0.0.0")    //设置监听host ip
-    ->setHttpPort(9000)    //设置 监听端口
+    ->setHttpPort(9100)    //设置 监听端口
     ->setWorkerNum(10)    //设置 进程数量
     ->setWorkDir(__DIR__)    //设置项目目录
     ->setDaemonize(false)    //设置是否守护进程

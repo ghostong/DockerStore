@@ -10,5 +10,5 @@ services:
     volumes:
       - /volume/ResilioSync:/volume
     ports:
-      - "9001:9001"
+      - "9101:9001"
       - "55555:55555"

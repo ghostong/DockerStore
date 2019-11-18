@@ -1,5 +1,5 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
-EXPOSE 9001
+EXPOSE 9101
 WORKDIR /workdir
 ADD dependence/resilio-sync.deb .
 RUN mkdir -p /volume/config && apt-get install ./resilio-sync.deb

@@ -17,7 +17,7 @@
             padding: 10px;
             margin-top: 10px;
             text-align:center;
-
+            border-bottom:2px solid #eeeeee;
         }
         .one-app p{
             height: 60px;
@@ -29,11 +29,11 @@
             -webkit-box-orient:vertical;
         }
         .appIcon{
-            height:120px;
+            height:90px;
             display: flex;
         }
         .appIcon img {
-            width:120px;
+            width:90px;
             margin: auto;
         }
     </style>
@@ -46,7 +46,7 @@
                     if(json.success == 1) {
                         for ( i = 0; i < json.response.length; i++) {
                             config = json.response[i];
-                            str = '<div class="col-xs-12 col-sm-6 col-md-3"><div class="one-app">';
+                            str = '<div class="col-xs-6 col-sm-4 col-md-2"><div class="one-app">';
                             str +='<div class="appIcon"><img src="/icon/'+ config.appIcon +'" /></div>';
                             str +='<h4>'+config.appName+'</h4>';
                             str +='<p>'+config.appDescription+'</p><div>';
