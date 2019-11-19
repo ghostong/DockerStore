@@ -1,0 +1,8 @@
+{
+  "appName" : "Net2Ftp",
+  "appDescription" : "一个基于Web的FTP客户端。",
+  "appIcon" : "Net2Ftp.png",
+  "httpPort" : 9108,
+  "appPorts": [
+  ]
+}

@@ -33,6 +33,20 @@
 </nav>
 
 <div class="panel panel-default margin-top">
+    <div class="panel panel-default">
+        <div class="panel-heading" id="QianYan"> 前言 </div>
+        <div class="panel-body">
+            <p>
+                1. 所有 APP 产生的数据都保存在宿主机 /volume/AppName 中 .
+            </p>
+            <p>
+                2. 部分 APP 需要单独配置, 配置文件保存在  /volume/AppName/config 目录中 .
+            </p>
+            <p>
+                3. APP 产生的所有数据都不会被自动删除, 以便下次使用, 如果需要删除, 请登录宿主机手动删除 .
+            </p>
+        </div>
+    </div>
 
     <div class="panel panel-default">
         <div class="panel-heading" id="Redis"> Redis </div>
@@ -128,7 +142,22 @@
                 1. 安装成功后,通过 <mark>/volume/PHP72/config</mark> 来修改 PHP, Nginx 配置文件 .
             </p>
             <p>
-                2. 通过 <mark>/volume/PHP72/workdir/</mark> 目录来部署 PHP 代码 .
+                2. 通过 <mark>/volume/PHP72/workdir</mark> 目录来部署 PHP 代码 .
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="Net2Ftp"> Net2Ftp </div>
+        <div class="panel-body">
+            <p>
+                1. 安装成功后,通过 <mark>/volume/Net2Ftp/config</mark> 来修改 PHP, Nginx 配置文件 .
+            </p>
+            <p>
+                2. 通过 <mark>/volume/Net2Ftp/workdir</mark> 目录来修改 settings.inc.php 等 Net2Ftp 配置文件 .
+            </p>
+            <p>
+                3. 关于 Net2Ftp 的上传, 下载限制, 日志等配置请参考<a href="http://www.net2ftp.com/index.php?state=homepage&state2=4b" target="_blank">官方文档</a>
             </p>
         </div>
     </div>

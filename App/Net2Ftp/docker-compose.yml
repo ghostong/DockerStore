@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  net2ftp:
+    restart: always
+    container_name: Net2Ftp
+    image:
+      net2ftp:latest
+    build:
+      ./
+    volumes:
+      - /volume/Net2Ftp/config/sites-available/:/etc/nginx/sites-available/
+      - /volume/Net2Ftp/config/php-fpm/:/etc/php/7.2/fpm/
+      - /volume/Net2Ftp/workdir/:/workdir/
+    ports:
+      - "9108:80"
