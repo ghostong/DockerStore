@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
 EXPOSE 9100
-RUN apt-get -y install php7.2 php7.2-dev docker.io
+RUN apt-get update && apt-get -y -q install php7.2 php7.2-dev docker.io
 WORKDIR /tmp
 ADD ./Docker/DockerStore/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
 ADD ./Docker/DockerStore/swoole-4.4.8.tgz .
