@@ -20,8 +20,6 @@ if(getenv("USERNAME") && getenv("PASSWORD") ) {
     $server->setAuthenticate(['dockerstore'=>'dockerstore']) ;   //开启简单身份认证,设置用户名密码
 }
 
-if (isset($argv[1]) && $argv[1] == "install") {
-    $server->setOnStart(__DIR__.DIRECTORY_SEPARATOR."OnStart.php");    //设置启动时先执行的一个文件
-}
+$server->setOnStart(__DIR__.DIRECTORY_SEPARATOR."OnStart.php");    //设置启动时先执行的一个文件
 
 $server->run(); //开启进程
