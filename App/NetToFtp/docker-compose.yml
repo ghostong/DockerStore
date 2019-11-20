@@ -8,8 +8,8 @@ services:
     build:
       ./
     volumes:
-      - /volume/Net2Ftp/config/sites-available/:/etc/nginx/sites-available/
-      - /volume/Net2Ftp/config/php-fpm/:/etc/php/7.2/fpm/
-      - /volume/Net2Ftp/workdir/:/workdir/
+      - /volume/NetToFtp/config/sites-available/:/etc/nginx/sites-available/
+      - /volume/NetToFtp/config/php-fpm/:/etc/php/7.2/fpm/
+      - /volume/NetToFtp/workdir/:/workdir/
     ports:
       - "9108:80"
