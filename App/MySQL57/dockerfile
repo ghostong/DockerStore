@@ -1,7 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
 EXPOSE 3306
 WORKDIR /workdir
-RUN apt-get install mysql-server=5.7* -y
+RUN apt-get update && apt-get install mysql-server=5.7* -y
 ADD dependence/phpMyAdmin-4.9.1-all-languages.tar.xz /tmp
 RUN mv /tmp/phpMyAdmin-4.9.1-all-languages/* /workdir && mv /var/lib/mysql /var/lib/mysql-files
 ADD dependence/config.inc.php ./config.inc.php
