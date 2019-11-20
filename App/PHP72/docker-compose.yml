@@ -13,4 +13,3 @@ services:
       - /volume/PHP72/workdir/:/workdir/
     ports:
       - "9107:80"
-      - "9000:9000"

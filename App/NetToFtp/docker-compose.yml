@@ -1,10 +1,10 @@
 version: '3.7'
 services:
-  net2ftp:
+  nettoftp:
     restart: always
-    container_name: Net2Ftp
+    container_name: NetToFtp
     image:
-      net2ftp:latest
+      nettoftp:latest
     build:
       ./
     volumes:
