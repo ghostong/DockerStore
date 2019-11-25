@@ -8,6 +8,6 @@ services:
     build:
       ./
     volumes:
-      - /volume/VerySync:/volume
+      - ~/DockerStore/Volumes/VerySync:/volume
     ports:
       - "9104:9104"

@@ -8,8 +8,8 @@ services:
     build:
       ./
     volumes:
-      - /volume/PHP72/config/sites-available/:/etc/nginx/sites-available/
-      - /volume/PHP72/config/php-fpm/:/etc/php/7.2/fpm/
-      - /volume/PHP72/workdir/:/workdir/
+      - ~/DockerStore/Volumes/PHP72/config/sites-available/:/etc/nginx/sites-available/
+      - ~/DockerStore/Volumes/PHP72/config/php-fpm/:/etc/php/7.2/fpm/
+      - ~/DockerStore/Volumes/PHP72/workdir/:/workdir/
     ports:
       - "9107:80"

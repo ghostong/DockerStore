@@ -8,7 +8,7 @@ services:
     build:
       ./
     volumes:
-      - /volume/Memcached/log:/volume/log
-      - /volume/Memcached/run:/volume/run
+      - ~/DockerStore/Volumes/Memcached/log:/volume/log
+      - ~/DockerStore/Volumes/Memcached/run:/volume/run
     ports:
       - "11211:11211"

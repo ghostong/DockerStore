@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  zeronet:
+    restart: always
+    container_name: ZeroNet
+    image:
+      nofish/zeronet:latest
+    build:
+      ./
+    volumes:
+      - ~/DockerStore/Volumes/ZeroNet/data:/root/data
+    ports:
+      - "127.0.0.1:43110:43110"
+      - "15441:15441"

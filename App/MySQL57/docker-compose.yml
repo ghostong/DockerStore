@@ -8,8 +8,8 @@ services:
     build:
       ./
     volumes:
-      - /volume/MySQL57/mysql:/var/lib/mysql
-      - /volume/MySQL57/log:/var/log/mysql
+      - ~/DockerStore/Volumes/MySQL57/mysql:/var/lib/mysql
+      - ~/DockerStore/Volumes/MySQL57/log:/var/log/mysql
     ports:
       - "3306:3306"
       - "9105:80"

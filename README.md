@@ -5,25 +5,39 @@
 
 ### 安装项目
 ````bash
-docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php install
+./dockerStore.sh install
 ````
 
 ### 更新项目
 ````bash
-docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php update
+./dockerStore.sh update
 ````
 
 ### 启动项目
 ````bash
-docker run -itd \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -p 9100:9100 \
-    --env USERNAME="username" \
-    --env PASSWORD="password" \
-    --name DockerStore \
-    registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest
+./dockerStore.sh start
+````
+
+### 关闭项目
+````bash
+./dockerStore.sh stop
+````
+
+### 配置
+````bash
+通过修改 dockerStore.sh 文件中的变量来实现配置
+
+#Web端口 可直接加入IP, 进行IP访问限制, 例如 127.0.0.1:9100
+PORT=9100
+
+#用户名
+USERNAME="dockerstore"
+
+#密码
+PASSWORD="dockerstore"
 ````
 
 ### 访问
-    通过访问服务IP的 9100 端口(或者启动自定义端口) 访问服务.
-    用户名密码为 启动项目 步骤中的环境变量
+    通过访问服务IP的 9100 端口(或者启动配置的端口) 访问服务.
+    用户名密码为 配置项中的 USERNAME, PASSWORD
+    默认用户名: dockerstore   密码: dockerstore
