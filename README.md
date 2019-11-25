@@ -2,6 +2,11 @@
     1. CentOS 查看 https://docs.docker.com/install/linux/docker-ce/centos/ 官方帮助文档 安装.
     2. Ubuntu 查看 https://docs.docker.com/install/linux/docker-ce/ubuntu/ 官方帮助文档 安装.
     3. 使用 docker -v 确认 Docker 是否安装成功.
+    
+### 下载启动文件
+````bash
+curl -S https://code.aliyun.com/litosrc/litraw/raw/master/DockerStore/dockerStore.sh > dockerStore.sh && chmod 755 dockerStore.sh
+````
 
 ### 安装项目
 ````bash

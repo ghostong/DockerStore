@@ -23,6 +23,11 @@ stop () {
     echo "Stop"
 }
 
+restart () {
+    stop
+    start ${1} ${2} ${3}
+}
+
 install () {
     docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php install
 }
@@ -35,6 +40,8 @@ if [[ "start" == ${1} ]]; then
     start ${USERNAME} ${PASSWORD} ${PORT}
 elif [[ "stop" == ${1} ]]; then
     stop
+elif [[ "restart" == ${1} ]]; then
+    restart ${USERNAME} ${PASSWORD} ${PORT}
 elif [[ "install" == ${1} ]]; then
     install
 elif [[ "update" == ${1} ]]; then
