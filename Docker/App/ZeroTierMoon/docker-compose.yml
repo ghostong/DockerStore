@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  zerotiemoon:
+    restart: always
+    container_name: ZeroTierMoon
+    image:
+      zerotiemoon:latest
+    build:
+      ./
+    volumes:
+      - ~/DockerStore/Volumes/ZeroTierMoon/config:/volume/config
+      - ~/DockerStore/Volumes/ZeroTierMoon/moons.d:/var/lib/zerotier-one/moons.d/
+    environment:
+      ZEROTIERMOON_SERVERIP: "" #部署 ZeroTier Moon 的服务器外网地址
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    ports:
+      - "9993:9993"

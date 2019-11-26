@@ -1,0 +1,19 @@
+## NOTE: to retain configuration; mount a Docker volume, or use a bind-mount, on /var/lib/zerotier-one
+
+FROM debian:buster-slim
+
+# ZeroTier relies on UDP port 9993
+EXPOSE 9993/udp
+
+## Supports x86_64, x86, arm, and arm64
+ADD sources.list /etc/apt/sources.list
+RUN apt-get update && apt-get install -y curl gnupg
+RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 0x1657198823e52a61  && \
+    echo "deb http://download.zerotier.com/debian/buster buster main" > /etc/apt/sources.list.d/zerotier.list
+RUN apt-get update && apt-get install -y zerotier-one=1.4.4
+COPY main.sh /main.sh
+
+RUN chmod 0755 /main.sh
+ENTRYPOINT ["/main.sh"]
+CMD ["zerotier-one"]
+#CMD ["tail","-f","/dev/null"]
