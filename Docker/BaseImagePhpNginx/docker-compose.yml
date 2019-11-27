@@ -6,5 +6,5 @@ services:
     build:
       ./
     volumes:
-      - /opt/DockerStore/Volumes/BasePHPNginx/config/sites-available/:/etc/nginx/sites-available/
-      - /opt/DockerStore/Volumes/BasePHPNginx/config/php-fpm/:/etc/php/7.2/fpm/
+      - /Volumes/DockerStore/BasePHPNginx/config/sites-available/:/etc/nginx/sites-available/
+      - /Volumes/DockerStore/BasePHPNginx/config/php-fpm/:/etc/php/7.2/fpm/

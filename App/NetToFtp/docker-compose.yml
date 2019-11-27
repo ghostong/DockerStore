@@ -8,8 +8,8 @@ services:
     build:
       ./
     volumes:
-      - /opt/DockerStore/Volumes/NetToFtp/config/sites-available/:/etc/nginx/sites-available/
-      - /opt/DockerStore/Volumes/NetToFtp/config/php-fpm/:/etc/php/7.2/fpm/
-      - /opt/DockerStore/Volumes/NetToFtp/workdir/:/workdir/
+      - /Volumes/DockerStore/NetToFtp/config/sites-available/:/etc/nginx/sites-available/
+      - /Volumes/DockerStore/NetToFtp/config/php-fpm/:/etc/php/7.2/fpm/
+      - /Volumes/DockerStore/NetToFtp/workdir/:/workdir/
     ports:
       - "9108:80"

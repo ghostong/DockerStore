@@ -1,0 +1,10 @@
+*.md
+composer*
+docker-compose.yml
+dockerStore.sh
+dockerBuild.sh
+.dockerignore
+.idea
+**/.DS_Store
+.git/
+dockerfile

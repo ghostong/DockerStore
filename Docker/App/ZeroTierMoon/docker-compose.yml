@@ -8,7 +8,7 @@ services:
     build:
       ./
     volumes:
-      - /opt/DockerStore/Volumes/ZeroTierMoon/:/volume/
+      - /Volumes/DockerStore/ZeroTierMoon/:/volume/
     environment:
       ZEROTIERMOON_SERVERIP: "0.0.0.0" #部署 ZeroTier Moon 的服务器外网地址
     devices:

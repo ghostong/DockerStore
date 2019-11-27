@@ -1,11 +1,18 @@
-### 安装docker
+    
+### 环境准备
+#### 安装docker
     1. CentOS 查看 https://docs.docker.com/install/linux/docker-ce/centos/ 官方帮助文档 安装.
     2. Ubuntu 查看 https://docs.docker.com/install/linux/docker-ce/ubuntu/ 官方帮助文档 安装.
-    3. 使用 docker -v 确认 Docker 是否安装成功.
+    4. MacOS 查看 https://www.docker.com/products/docker-desktop
+    5. 使用 docker -v 确认 Docker 是否安装成功.
+#### MacOS 
+    1. MacOS需要把 /Volumes 目录设置为 docker 挂载白名单.
+#### Windows
+    1. 暂不支持 Windows 操作系统.
     
 ### 下载启动文件
 ````bash
-curl -S https://code.aliyun.com/litosrc/litraw/raw/master/DockerStore/dockerStore.sh > dockerStore.sh && chmod 755 dockerStore.sh
+curl -S https://code.aliyun.com/litosrc/litraw/raw/master/DockerStore/dockerStore.sh > dockerStore.sh && chmod 755 dockerStore.sh && sudo mkdir /Volumes/DockerStore && sudo chown $(whoami) /Volumes/DockerStore
 ````
 
 ### 安装项目
