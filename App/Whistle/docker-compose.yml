@@ -8,6 +8,6 @@ services:
     build:
       ./
     volumes:
-      - ~/DockerStore/Volumes/Whistle:/volume
+      - /opt/DockerStore/Volumes/Whistle:/volume
     ports:
       - "9103:9103"

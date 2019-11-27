@@ -8,6 +8,6 @@ services:
     build:
       ./
     volumes:
-      - ~/DockerStore/Volumes/DokuWiki/workdir/:/workdir/
+      - /opt/DockerStore/Volumes/DokuWiki/workdir/:/workdir/
     ports:
       - "9106:80"
