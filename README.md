@@ -1,4 +1,3 @@
-    
 ### 环境准备
 #### 安装docker
     1. CentOS 查看 https://docs.docker.com/install/linux/docker-ce/centos/ 官方帮助文档 安装.
