@@ -13,15 +13,13 @@ if [ ! -e /dev/net/tun ]; then
 fi
 
 if [ ! -e /volume/config/moon.json ]; then
-    cd /volume/config
-    nohup zerotier-one >/dev/null 2>&1 &
+    cd /volume/
+    /etc/init.d/zerotier-one start
+    /etc/init.d/zerotier-one stop
     sleep 2
     zerotier-idtool initmoon /var/lib/zerotier-one/identity.public > moon.json
     sed -i 's/"stableEndpoints": \[\]/"stableEndpoints": ["${ZEROTIERMOON_SERVERIP}"]/g' moon.json
     zerotier-idtool genmoon moon.json
-    kill -9 `cat /var/lib/zerotier-one/zerotier-one.pid`
 fi
-
-mv *.moon /var/lib/zerotier-one/moons.d/
 
 exec "$@"
