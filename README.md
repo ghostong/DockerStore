@@ -34,6 +34,11 @@ curl -S https://code.aliyun.com/litosrc/litraw/raw/master/DockerStore/dockerStor
 ./dockerStore.sh stop
 ````
 
+### 重启项目
+````bash
+./dockerStore.sh restart
+````
+
 ### 配置
 ````bash
 通过修改 dockerStore.sh 文件中的变量来实现配置

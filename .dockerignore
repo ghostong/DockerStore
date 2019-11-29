@@ -1,10 +1,11 @@
-*.md
-composer*
+dockerfile
 docker-compose.yml
 dockerStore.sh
 dockerBuild.sh
+Docker/App/
+composer*
 .dockerignore
 .idea
-**/.DS_Store
 .git/
-dockerfile
+**/.DS_Store
+*.md
