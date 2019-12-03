@@ -3,5 +3,10 @@
   "appDescription" : "PHP即“超文本预处理器”，是一种通用开源脚本语言。",
   "appIcon" : "PHP.png",
   "httpPort" : 9107,
-  "appPorts": []
+  "appPorts": [],
+  "appConfig" : [
+    {"name": "Nginx配置文件","file": "/etc/nginx/sites-available/default"},
+    {"name": "php-fpm配置文件","file": "/etc/php/7.2/fpm/php-fpm.conf"},
+    {"name": "php.ini配置文件","file": "/etc/php/7.2/fpm/php.ini"}
+  ]
 }

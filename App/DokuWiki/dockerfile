@@ -1,5 +1,5 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
 WORKDIR /workdir
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence /tmp/dependence
-RUN cp -f /tmp/dependence/docker-entrypoint.sh /
 EXPOSE 80

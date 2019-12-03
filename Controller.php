@@ -22,6 +22,10 @@ class Controller extends Lit\LitMs\LitMsController {
             return View("Tool.html");
         });
 
+        $this->get('/configEdit',function(){
+            return View("Edit.html");
+        });
+
         $this->post('/api/getRuningApp',function ($request){
             return Model("Api")->getRunningApp($request);
         });
@@ -37,6 +41,9 @@ class Controller extends Lit\LitMs\LitMsController {
         $this->post('/api/removeApp',function ($request){
             return Model("Api")->removeApp($request);
         });
+        $this->post('/api/restartApp',function ($request){
+            return Model("Api")->restartApp($request);
+        });
 
         $this->post('/api/cleanImage',function ($request){
             return Model("Api")->cleanImage($request);
@@ -46,6 +53,17 @@ class Controller extends Lit\LitMs\LitMsController {
             return Model("Api")->cleanContainer($request);
         });
 
+        $this->get('/api/getConfigList',function ($request){
+            return Model("Api")->getConfigList($request);
+        });
+
+        $this->get('/api/getConfigContent',function ($request){
+            return Model("Api")->getConfigContent($request);
+        });
+
+        $this->post('/api/saveConfigContent',function ($request){
+            return Model("Api")->saveConfigContent($request);
+        });
     }
 
 }

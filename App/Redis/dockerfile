@@ -1,5 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
 EXPOSE 6379
 RUN apt-get update && apt-get install redis-server -y
-ADD dependence/redis.conf /etc/redis/redis.conf
-CMD ["redis-server", "/etc/redis/redis.conf"]
+ADD dependence/redis.conf /etc/redis.conf
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["redis-server", "/volume/config/redis.conf"]

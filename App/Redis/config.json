@@ -5,5 +5,8 @@
   "httpPort" : 0,
   "appPorts": [
     6379
+  ],
+  "appConfig" : [
+    {"name": "Redis配置文件","file": "/volume/config/redis.conf"}
   ]
 }

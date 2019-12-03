@@ -33,6 +33,15 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         return true;
     }
 
+    function restartContainer($dir){
+        $cmd = "cd $dir && docker-compose restart ";
+        echo $cmd,"\n";
+        go(function () use ($cmd) {
+            co::exec($cmd);
+        });
+        return true;
+    }
+
     function getDockerBaseImage($file){
         $cmd = 'cat '.$file.'  |grep -i from |awk \'{print $NF}\'';
         echo $cmd,"\n";
@@ -64,6 +73,28 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         $cmd = 'docker ps -a |grep -i \'exited\' |awk \'{print $1}\' |xargs -i docker rm {}';
         echo $cmd,"\n";
         exec($cmd,$execRes);
+        return $execRes;
+    }
+
+    function getConfigFileContent( $appId, $configFile ){
+        $cmd = "docker exec {$appId} cat {$configFile}";
+        echo $cmd,"\n";
+        exec($cmd,$execRes);
+        return implode("\n",$execRes);
+    }
+
+    function setConfigFileContent ( $appId,$configFile,$content ) {
+        $cmdDir = "/tmp/DockerStore";
+        !is_dir($cmdDir) && mkdir($cmdDir);
+        $fileName = $cmdDir.DIRECTORY_SEPARATOR.uniqid().".sh";
+        $shellCmd = "#!/bin/sh\ncat > $configFile <<EOF\n{$content}\nEOF";
+        file_put_contents($fileName,$shellCmd);
+        $cmd = "docker exec {$appId} sh {$fileName} && echo 1";
+        echo $cmd,"\n";
+        exec($cmd,$execRes);
+        $cmd = "docker exec {$appId} rm {$fileName}";
+        echo $cmd,"\n";
+        exec($cmd);
         return $execRes;
     }
 }

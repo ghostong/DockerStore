@@ -59,8 +59,13 @@
                             }else{
                                 str +='<p>WebUi: 未开放</p>';
                             }
-                            str +='<p>服务端口: '+config.ports+'&nbsp;&nbsp;&nbsp;<a href="/help#'+config.appId+'">帮助文档</a> </p>';
-                            str +='<button type="button" class="btn btn-danger btn-sm removeApp" appId="'+config.appId+'" >移除</button>';
+                            str +='<p>服务端口: '+config.ports+'&nbsp;&nbsp;&nbsp;<a href="/help#'+config.appId+'">帮助</a>';
+                            if(config.appConfig){
+                                str += '&nbsp;&nbsp;<a href="/configEdit?appId='+config.appId+'">编辑</a>'
+                            }
+                            str +='</p>';
+                            str +='<button type="button" class="btn btn-danger btn-sm removeApp" appId="'+config.appId+'" >移除</button> &nbsp; ';
+                            str +=' &nbsp; <button type="button" class="btn btn-warning btn-sm restartApp" appId="'+config.appId+'" >重启</button>';
                             str +='</div></div></div>';
                             $("#appContainer").append(str);
                         }
@@ -77,6 +82,17 @@
                         type: 'post', url: "/api/removeApp", cache: false, dataType: 'json', data: "appId="+appId,
                         success: function (json) {
                             console.log(json)
+                        }
+                    })
+                });
+                $(".restartApp").click(function(){
+                    restartApp = $(this)
+                    restartApp.attr("disabled","disabled");
+                    appId = restartApp.attr("appId");
+                    $.ajax({
+                        type: 'post', url: "/api/restartApp", cache: false, dataType: 'json', data: "appId="+appId,
+                        success: function (json) {
+                            restartApp.removeAttr("disabled");
                         }
                     })
                 });

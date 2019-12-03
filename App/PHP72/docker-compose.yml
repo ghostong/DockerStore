@@ -11,5 +11,6 @@ services:
       - /Volumes/DockerStore/PHP72/config/sites-available/:/etc/nginx/sites-available/
       - /Volumes/DockerStore/PHP72/config/php-fpm/:/etc/php/7.2/fpm/
       - /Volumes/DockerStore/PHP72/workdir/:/workdir/
+      - /tmp/DockerStore/:/tmp/DockerStore/
     ports:
       - "9107:80"

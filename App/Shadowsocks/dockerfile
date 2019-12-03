@@ -1,0 +1,8 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+EXPOSE 80
+WORKDIR /workdir
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN apt-get update && apt-get install -yq shadowsocks
+ADD ./dependence /tmp/dependence
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["ssserver","-c","/volume/config/config.json"]

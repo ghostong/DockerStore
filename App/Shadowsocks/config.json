@@ -1,0 +1,12 @@
+{
+  "appName" : "Shadowsocks",
+  "appDescription" : "Shadowsocks服务端，安全的socks5代理，旨在保护您的Internet流量。",
+  "appIcon" : "Shadowsocks.png",
+  "httpPort" : 0,
+  "appPorts": [
+    8388
+  ],
+  "appConfig" : [
+    {"name": "Shadowsocks配置文件","file": "/volume/config/config.json"}
+  ]
+}

@@ -12,6 +12,7 @@ $server
     ->setWorkDir(__DIR__)    //设置项目目录
     ->setDaemonize(false)    //设置是否守护进程
     ->setOpenBaseDir(__DIR__)    //设置读取安全目录
+    ->setOpenBaseDir("/tmp") //设置读取安全目录
     ->setDocumentRoot(__DIR__.DIRECTORY_SEPARATOR."Static");    //设置静态目录
 
 if(getenv("USERNAME") && getenv("PASSWORD") ) {

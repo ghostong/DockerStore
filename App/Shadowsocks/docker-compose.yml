@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  shadowsocks:
+    restart: always
+    container_name: Shadowsocks
+    image:
+      shadowsocks:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/Shadowsocks/config/:/volume/config/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    ports:
+      - "8388:8388"

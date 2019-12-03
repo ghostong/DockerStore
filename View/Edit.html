@@ -1,0 +1,153 @@
+<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+    <title>Docker Store - 配置文件编辑</title>
+    <script src="/jquery/2.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
+
+
+    <script src="/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
+
+    <script src="/codemirror/mode/javascript/javascript.js"></script>
+    <link rel="stylesheet" href="/codemirror/theme/base16-dark.css">
+
+    <style>
+        body{
+            padding:20px;
+        }
+        .margin-top{
+            margin: 80px;
+        }
+        .one-app p{
+            height: 50px;
+            font-size: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp:3;
+            word-break:break-all;
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            var myTextarea = document.getElementById('CodeArea');
+            var CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
+                mode:"text/javascript",
+                indentUnit: 4,
+                lineNumbers:true,
+                theme: "base16-dark"
+            });
+            CodeMirrorEditor.setSize("auto","500px");
+            CodeMirrorEditor.setValue("↑请在上方选择可编辑文件↑");
+            $("#CodeArea").attr("fileId","");
+
+            appId = getQueryVariable("appId");
+            $("#CodeSelect").append("<option value=\"null\">选择 "+appId+" 的编辑文件</option>");
+            $.ajax({
+                type:'get', url:"/api/getConfigList?appId="+appId, cache: false, dataType:'json',
+                success:function(json){
+                    for ( i = 0; i < json.response.length; i++) {
+                        info = json.response[i];
+                        $("#CodeSelect").append("<option value='"+i+"'>"+info['file']+" ("+info['name']+") </option>");
+                    }
+                }
+            });
+
+            $("#CodeSelect").change(function () {
+                if($(this).val() == "null"){
+                    CodeMirrorEditor.setValue("");
+                    $("#CodeArea").attr("fileId","");
+                    return ;
+                }
+                fileId = $(this).val();
+                $.ajax({
+                    type:'get', url:"/api/getConfigContent?appId="+appId+"&fileId="+fileId, cache: false, dataType:'json',
+                    success:function(json){
+                        CodeMirrorEditor.setValue(json.response.content);
+                        $("#CodeArea").attr("fileId",fileId);
+                    }
+                });
+            });
+            $("#submitContent").click(function () {
+                fileId = $("#CodeArea").attr("fileId");
+                content = CodeMirrorEditor.getValue();
+                if(fileId == "" || content == "") {
+                    alert("内容不合法")
+                    return ;
+                }
+                data = "appId="+appId+"&fileId="+fileId+"&content="+content
+                $.ajax({
+                    type:'post', url:"/api/saveConfigContent",data: data, cache: false, dataType:'json',
+                    success:function(json){
+                        if(json.success == 1) {
+                            alert("保存成功");
+                        }else{
+                            alert("保存失败");
+                        }
+                    }
+                });
+            })
+        });
+
+        function getQueryVariable( variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Docker Store</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">正在运行</a></li>
+                <li><a href="/help">帮助</a></li>
+                <li><a href="/tool">工具</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="panel panel-default margin-top">
+    <div class="row">
+        <div class="col-md-12">
+            <select class="form-control" id="CodeSelect">
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <textarea id="CodeArea"></textarea>
+        </div>
+    </div>
+
+    <div class="row" style="margin:10px auto 10px auto">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary btn-sm" id="submitContent">提交修改</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

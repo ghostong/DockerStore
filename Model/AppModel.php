@@ -73,6 +73,7 @@ class AppModel extends \Lit\LitMs\LitMsModel{
         return false;
     }
 
+    //删除App
     function removeApp ( $appId ) {
         if ($this->getAppConfig($appId)) {
             $appDir = $this->getAppDir($appId);
@@ -81,5 +82,31 @@ class AppModel extends \Lit\LitMs\LitMsModel{
             }
         }
         return false;
+    }
+
+    //重启App
+    function restartApp ( $appId ) {
+        if ($this->getAppConfig($appId)) {
+            $appDir = $this->getAppDir($appId);
+            if(Model("Docker")->restartContainer($appDir)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //获取App配置文件
+    function getAppFileContent( $appId,$configFile ){
+        return Model("Docker")->getConfigFileContent( $appId, $configFile );
+    }
+
+    //保存配置文件
+    function saveConfigContent ($appId,$configFile,$content) {
+        $ret = Model("Docker")->setConfigFileContent( $appId,$configFile,$content );
+        if ($ret) {
+            return true;
+        }else{
+            return false;
+        }
     }
 }
