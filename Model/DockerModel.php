@@ -80,7 +80,7 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         $cmd = "docker exec {$appId} cat {$configFile}";
         echo $cmd,"\n";
         exec($cmd,$execRes);
-        return implode("\n",$execRes);
+        return $execRes;
     }
 
     function setConfigFileContent ( $appId,$configFile,$content ) {
@@ -95,6 +95,13 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         $cmd = "docker exec {$appId} rm {$fileName}";
         echo $cmd,"\n";
         exec($cmd);
+        return $execRes;
+    }
+
+    function getAppLogs ($dir) {
+        $cmd = "cd $dir && docker-compose logs --no-color | tail -500 ";
+        echo $cmd,"\n";
+        exec($cmd,$execRes);
         return $execRes;
     }
 }

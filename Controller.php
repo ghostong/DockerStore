@@ -22,6 +22,10 @@ class Controller extends Lit\LitMs\LitMsController {
             return View("Tool.html");
         });
 
+        $this->get('/logs',function (){
+            return View("logs.html");
+        });
+
         $this->get('/configEdit',function(){
             return View("Edit.html");
         });
@@ -63,6 +67,10 @@ class Controller extends Lit\LitMs\LitMsController {
 
         $this->post('/api/saveConfigContent',function ($request){
             return Model("Api")->saveConfigContent($request);
+        });
+
+        $this->get("/api/getAppLogs",function ($request){
+            return Model("Api")->getAppLogs($request);
         });
     }
 

@@ -140,4 +140,15 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
             return Error();
         }
     }
+
+    //获取容器log
+    function getAppLogs ($request) {
+        $appId = $request->get['appId'];
+        $log = Model("App")->getAppLogs($appId);
+        if($log){
+            return Success(["content"=>$log]);
+        }else{
+            return Error();
+        }
+    }
 }

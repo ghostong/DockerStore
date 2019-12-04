@@ -97,7 +97,8 @@ class AppModel extends \Lit\LitMs\LitMsModel{
 
     //获取App配置文件
     function getAppFileContent( $appId,$configFile ){
-        return Model("Docker")->getConfigFileContent( $appId, $configFile );
+        $ret = Model("Docker")->getConfigFileContent( $appId, $configFile );
+        return implode("\n",$ret);
     }
 
     //保存配置文件
@@ -108,5 +109,12 @@ class AppModel extends \Lit\LitMs\LitMsModel{
         }else{
             return false;
         }
+    }
+
+    //获取容器log
+    function getAppLogs ($appId) {
+        $appDir = $this->getAppDir($appId);
+        $ret = Model("Docker")->getAppLogs( $appDir );
+        return implode("\n",$ret);
     }
 }

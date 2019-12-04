@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+    <title>Docker Store - 配置文件编辑</title>
+    <link rel="stylesheet" href="/base.css">
+    <script src="/jquery/2.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
+
+
+    <script src="/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
+
+    <script src="/codemirror/mode/shell/shell.js"></script>
+    <link rel="stylesheet" href="/codemirror/theme/base16-dark.css">
+
+    <script>
+        $(document).ready(function(){
+            let myTextarea = document.getElementById('CodeArea');
+            let CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
+                mode:"shell",
+                indentUnit: 4,
+                lineNumbers:true,
+                theme: "base16-dark"
+            });
+            CodeMirrorEditor.setSize("auto","500px");
+            let appId = getQueryVariable("appId");
+            $("#appName").text(appId);
+            $.ajax({
+                type:'get', url:"/api/getAppLogs?appId="+appId, cache: false, dataType:'json',
+                success:function(json){
+                    if(json.responseCode != 1 || ! json.response.content){
+                        CodeMirrorEditor.setValue("暂无日志");
+                    }else {
+                        CodeMirrorEditor.setValue(json.response.content);
+                    }
+                }
+            });
+            $("#reloadPage").click(function () {
+                location.reload(true)
+            });
+            $("#goBack").click(function () {
+                window.location.href="/";
+            });
+        });
+
+        function getQueryVariable( variable) {
+            let query = window.location.search.substring(1);
+            let vars = query.split("&");
+            for (let i=0;i<vars.length;i++) {
+                let pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Docker Store</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">正在运行</a></li>
+                <li><a href="/help">帮助</a></li>
+                <li><a href="/tool">工具</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="panel panel-default margin-top">
+
+    <div class="row" style="margin:10px auto 10px auto">
+        <div class="col-md-12">
+            <div style="float: left"><h4 id="appName"></h4></div>
+            <div style="float: right">
+                <button type="button" class="btn btn-primary btn-sm" id="reloadPage">刷新</button>
+                &nbsp;
+                <button type="button" class="btn btn-primary btn-sm" id="goBack">返回</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <textarea id="CodeArea"></textarea>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

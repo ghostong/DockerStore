@@ -3,41 +3,23 @@
 <head>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
     <title>Docker Store - 配置文件编辑</title>
+    <link rel="stylesheet" href="/base.css">
     <script src="/jquery/2.2.1/jquery.js"></script>
     <link rel="stylesheet" href="/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <script src="/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
 
-
     <script src="/codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
 
-    <script src="/codemirror/mode/javascript/javascript.js"></script>
+    <script src="/codemirror/mode/shell/shell.js"></script>
     <link rel="stylesheet" href="/codemirror/theme/base16-dark.css">
 
-    <style>
-        body{
-            padding:20px;
-        }
-        .margin-top{
-            margin: 80px;
-        }
-        .one-app p{
-            height: 50px;
-            font-size: 10px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            -webkit-line-clamp:3;
-            word-break:break-all;
-            display:-webkit-box;
-            -webkit-box-orient:vertical;
-        }
-    </style>
     <script>
         $(document).ready(function(){
 
             var myTextarea = document.getElementById('CodeArea');
             var CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
-                mode:"text/javascript",
+                mode:"shell",
                 indentUnit: 4,
                 lineNumbers:true,
                 theme: "base16-dark"
@@ -91,7 +73,10 @@
                         }
                     }
                 });
-            })
+            });
+            $("#goBack").click(function () {
+                window.location.href="/";
+            });
         });
 
         function getQueryVariable( variable) {
@@ -138,10 +123,12 @@
     </div>
 
     <div class="row" style="margin:10px auto 10px auto">
-        <div class="col-md-10">
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary btn-sm" id="submitContent">提交修改</button>
+        <div class="col-md-12">
+            <div style="float: right;">
+                <button type="button" class="btn btn-primary btn-sm" id="submitContent">提交修改</button>
+                &nbsp;
+                <button type="button" class="btn btn-primary btn-sm" id="goBack">返回</button>
+            </div>
         </div>
     </div>
 </div>
