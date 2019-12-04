@@ -9,3 +9,4 @@ composer*
 .git/
 **/.DS_Store
 *.md
+.gitignore
