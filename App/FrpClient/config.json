@@ -4,7 +4,6 @@
   "appIcon" : "FrpClient.png",
   "httpPort" : 9111,
   "appPorts": [
-    7000
   ],
   "appConfig" : [
     {"name": "Frp 客户端配置文件","file": "/volume/config/frpc.ini"},
