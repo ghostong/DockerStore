@@ -65,12 +65,17 @@
 
             function onList() {
                 $(".removeApp").click(function(){
-                    $(this).attr("disabled","disabled");
-                    let appId = $(this).attr("appId");
+                    let removeApp = $(this)
+                    removeApp.attr("disabled","disabled");
+                    let appId = removeApp.attr("appId");
                     $.ajax({
                         type: 'post', url: "/api/removeApp", cache: false, dataType: 'json', data: "appId="+appId,
                         success: function (json) {
-                            console.log(json)
+                            if( json.success == 1 ) {
+                                removeApp.parent().parent().parent().remove();
+                            }else{
+                                alert("移除失败,请查看日志");
+                            }
                         }
                     })
                 });
@@ -81,6 +86,11 @@
                     $.ajax({
                         type: 'post', url: "/api/restartApp", cache: false, dataType: 'json', data: "appId="+appId,
                         success: function (json) {
+                            if( json.success != 1 ) {
+                                alert("重启失败,请查看日志");
+                            }else{
+                                alert("执行成功");
+                            }
                             restartApp.removeAttr("disabled");
                         }
                     })

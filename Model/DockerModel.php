@@ -18,28 +18,34 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
     function startContainer($dir){
         $cmd = "cd $dir && docker-compose up -d";
         echo $cmd,"\n";
-        go(function () use ($cmd) {
-            co::exec($cmd);
-        });
-        return true;
+        exec($cmd,$exeRes, $return_var);
+        if ( $return_var == 0 ) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     function removeContainer($dir){
-        $cmd = "cd $dir && docker-compose stop && docker-compose rm -f";
+        $cmd = "cd $dir && docker-compose rm -sf";
         echo $cmd,"\n";
-        go(function () use ($cmd) {
-            co::exec($cmd);
-        });
-        return true;
+        exec($cmd,$exeRes, $return_var);
+        if ( $return_var == 0 ) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     function restartContainer($dir){
         $cmd = "cd $dir && docker-compose restart ";
         echo $cmd,"\n";
-        go(function () use ($cmd) {
-            co::exec($cmd);
-        });
-        return true;
+        exec($cmd,$exeRes, $return_var);
+        if ( $return_var == 0 ) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     function getDockerBaseImage($file){

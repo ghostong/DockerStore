@@ -43,12 +43,15 @@
 
             function onList() {
                 $(".installApp").click(function(){
-                    $(this).attr("disabled","disabled");
-                    appId = $(this).attr("appId");
+                    let installApp = $(this);
+                    installApp.attr("disabled","disabled");
+                    let appId = installApp.attr("appId");
                     $.ajax({
                         type: 'post', url: "/api/startApp", cache: false, dataType: 'json', data: "appId="+appId,
                         success: function (json) {
-
+                            if ( json.success == 1 ) {
+                                installApp.text("已启动");
+                            }
                         }
                     })
                 });
