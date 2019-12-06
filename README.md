@@ -26,9 +26,14 @@ sudo chmod  -R +a "$(whoami) allow write,delete,file_inherit,directory_inherit,a
 ./dockerStore.sh install
 ````
 
-### 更新项目
+### 更新基础镜像
 ````bash
 ./dockerStore.sh update
+````
+
+### 升级APP
+````bash
+./dockerStore.sh upgrade
 ````
 
 ### 启动项目
