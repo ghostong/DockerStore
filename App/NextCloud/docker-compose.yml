@@ -10,5 +10,6 @@ services:
     volumes:
       - /Volumes/DockerStore/NextCloud/workdir/:/workdir/
       - /Volumes/DockerStore/NextCloud/config/ssl/:/etc/nginx/ssl/
+      - /tmp/DockerStore/:/tmp/DockerStore/
     ports:
       - "9109:443"

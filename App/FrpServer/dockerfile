@@ -1,0 +1,7 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+EXPOSE 7000 7001 7500
+WORKDIR /workdir
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ADD ./dependence /tmp/dependence
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["./frps", "-c", "/volume/config/frps.ini"]

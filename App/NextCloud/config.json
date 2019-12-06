@@ -4,5 +4,8 @@
   "appIcon" : "NextCloud.png",
   "httpsOnly" : 1,
   "httpPort" : 9109,
-  "appPorts": []
+  "appPorts": [],
+  "appConfig": [
+    {"name": "Frp 客户端配置文件","file": "/workdir/config/config.php"}
+  ]
 }
