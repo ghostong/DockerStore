@@ -17,8 +17,8 @@
     <script>
         $(document).ready(function(){
 
-            var myTextarea = document.getElementById('CodeArea');
-            var CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
+            let myTextarea = document.getElementById('CodeArea');
+            let CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
                 mode:"shell",
                 indentUnit: 4,
                 lineNumbers:true,
@@ -28,13 +28,13 @@
             CodeMirrorEditor.setValue("↑请在上方选择可编辑文件↑");
             $("#CodeArea").attr("fileId","");
 
-            appId = getQueryVariable("appId");
+            let appId = getQueryVariable("appId");
             $("#CodeSelect").append("<option value=\"null\">选择 "+appId+" 的编辑文件</option>");
             $.ajax({
                 type:'get', url:"/api/getConfigList?appId="+appId, cache: false, dataType:'json',
                 success:function(json){
-                    for ( i = 0; i < json.response.length; i++) {
-                        info = json.response[i];
+                    for ( let i = 0; i < json.response.length; i++) {
+                        let info = json.response[i];
                         $("#CodeSelect").append("<option value='"+i+"'>"+info['file']+" ("+info['name']+") </option>");
                     }
                 }
@@ -46,7 +46,7 @@
                     $("#CodeArea").attr("fileId","");
                     return ;
                 }
-                fileId = $(this).val();
+                let fileId = $(this).val();
                 $.ajax({
                     type:'get', url:"/api/getConfigContent?appId="+appId+"&fileId="+fileId, cache: false, dataType:'json',
                     success:function(json){
@@ -56,13 +56,14 @@
                 });
             });
             $("#submitContent").click(function () {
-                fileId = $("#CodeArea").attr("fileId");
-                content = CodeMirrorEditor.getValue();
+                let fileId = $("#CodeArea").attr("fileId");
+                let content = CodeMirrorEditor.getValue();
                 if(fileId == "" || content == "") {
                     alert("内容不合法")
                     return ;
                 }
-                data = "appId="+appId+"&fileId="+fileId+"&content="+content
+                content = encodeURIComponent(content)
+                let data = "appId="+appId+"&fileId="+fileId+"&content="+content
                 $.ajax({
                     type:'post', url:"/api/saveConfigContent",data: data, cache: false, dataType:'json',
                     success:function(json){
@@ -80,10 +81,10 @@
         });
 
         function getQueryVariable( variable) {
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            for (var i=0;i<vars.length;i++) {
-                var pair = vars[i].split("=");
+            let query = window.location.search.substring(1);
+            let vars = query.split("&");
+            for (let i=0;i<vars.length;i++) {
+                let pair = vars[i].split("=");
                 if(pair[0] == variable){return pair[1];}
             }
             return(false);

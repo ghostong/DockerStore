@@ -93,7 +93,7 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         $cmdDir = "/tmp/DockerStore";
         !is_dir($cmdDir) && mkdir($cmdDir);
         $fileName = $cmdDir.DIRECTORY_SEPARATOR.uniqid().".sh";
-        $shellCmd = "#!/bin/sh\ncat > $configFile <<EOF\n{$content}\nEOF";
+        $shellCmd = "#!/bin/sh\ncat > $configFile <<'EOF'\n{$content}\nEOF";
         file_put_contents($fileName,$shellCmd);
         $cmd = "docker exec {$appId} sh {$fileName} && echo 1";
         echo $cmd,"\n";
