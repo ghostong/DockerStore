@@ -2,7 +2,7 @@
 
 $argv1 = @$_SERVER['argv'][1];
 
-function dockerStoerInstall(){
+function dockerStoreInstall(){
     $appModel = Model("App");
     $appList = $appModel->listApp();
     foreach($appList as $val) {
@@ -11,7 +11,7 @@ function dockerStoerInstall(){
     }
 }
 
-function dockerStoerUpdate(){
+function dockerStoreUpdate(){
     $dockerDir = __DIR__.DIRECTORY_SEPARATOR."Docker".DIRECTORY_SEPARATOR;
     $cmd = "cd ".$dockerDir."BaseImage && docker-compose pull";
     passthru($cmd);
@@ -22,14 +22,14 @@ function dockerStoerUpdate(){
 }
 
 if ($argv1 == "install") {
-    dockerStoerInstall();
+    dockerStoreInstall();
     exit;
 }elseif ($argv1 == "update") {
-    dockerStoerUpdate();
+    dockerStoreUpdate();
     exit;
 } elseif ($argv1 == "upgrade") {
-    dockerStoerUpdate();
-    dockerStoerInstall();
+    dockerStoreUpdate();
+    dockerStoreInstall();
     exit;
 }
 
