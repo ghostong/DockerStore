@@ -1,6 +1,6 @@
 {
   "appName" : "NextCloud",
-  "appDescription" : "DokuWiki是一个开源wiki引擎程序，小巧而功能强大、灵活，适合中小团队和个人网站知识库的管理。",
+  "appDescription" : "Nextcloud是部署最多的本地文件共享和协作平台, 支持跨设备访问和协作.",
   "appIcon" : "NextCloud.png",
   "httpsOnly" : 1,
   "httpPort" : 9109,

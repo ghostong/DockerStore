@@ -1,6 +1,6 @@
 {
   "appName" : "FrpServer",
-  "appDescription" : "frp 是一款快速的反向代理工具，帮助您将在 NAT 网关或防火墙后的内网服务器暴露到外部网络。该 frp 服务器需要与 frp 客户端配合使用，frp 服务器安装在公网服务器上，frp 客户端安装在内网服务器上。",
+  "appDescription" : "反向代理工具，该 frp 服务器需要与 frp 客户端配合使用。",
   "appIcon" : "FrpServer.png",
   "httpPort" : 9110,
   "appPorts": [

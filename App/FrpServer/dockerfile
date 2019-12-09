@@ -1,5 +1,5 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
-EXPOSE 7000 7001 7500
+EXPOSE 7000 7001 9110
 WORKDIR /workdir
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence /tmp/dependence

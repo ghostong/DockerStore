@@ -12,4 +12,4 @@ services:
       - /Volumes/DockerStore/FrpClient/log/:/volume/log/
       - /tmp/DockerStore/:/tmp/DockerStore/
     ports:
-      - "9111:7400"
+      - "9111:9111"
