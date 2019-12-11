@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  nextcloud:
+    restart: always
+    container_name: NextCloud
+    image:
+      nextcloud:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/NextCloud/workdir/:/workdir/
+      - /Volumes/DockerStore/NextCloud/config/ssl/:/etc/nginx/ssl/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    ports:
+      - "9109:443"

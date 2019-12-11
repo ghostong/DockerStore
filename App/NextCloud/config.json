@@ -1,0 +1,11 @@
+{
+  "appName" : "NextCloud",
+  "appDescription" : "Nextcloud是部署最多的本地文件共享和协作平台, 支持跨设备访问和协作.",
+  "appIcon" : "NextCloud.png",
+  "httpsOnly" : 1,
+  "httpPort" : 9109,
+  "appPorts": [],
+  "appConfig": [
+    {"name": "Frp 客户端配置文件","file": "/workdir/config/config.php"}
+  ]
+}

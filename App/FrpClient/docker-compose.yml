@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  frpclient:
+    restart: always
+    container_name: FrpClient
+    image:
+      frpclient:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/FrpClient/config/:/volume/config/
+      - /Volumes/DockerStore/FrpClient/log/:/volume/log/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    ports:
+      - "9111:9111"

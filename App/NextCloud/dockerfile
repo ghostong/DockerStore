@@ -1,0 +1,6 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+WORKDIR /workdir
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ADD ./dependence /tmp/dependence
+EXPOSE 443
+ENTRYPOINT [ "/docker-entrypoint.sh" ]

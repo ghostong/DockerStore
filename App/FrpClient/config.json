@@ -1,0 +1,12 @@
+{
+  "appName" : "FrpClient",
+  "appDescription" : "反向代理工具，该 frp 客户端需要与 frp 服务器配合使用。",
+  "appIcon" : "FrpClient.png",
+  "httpPort" : 9111,
+  "appPorts": [
+  ],
+  "appConfig" : [
+    {"name": "Frp 客户端配置文件","file": "/volume/config/frpc.ini"},
+    {"name": "Frp 客户端代理配置示例文件,请不要修改","file": "/volume/config/frpc_example.ini"}
+  ]
+}

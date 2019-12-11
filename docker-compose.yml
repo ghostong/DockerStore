@@ -1,7 +1,0 @@
-version: '3.7'
-services:
-  dockerstore:
-    image:
-      registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest
-    build:
-      ./

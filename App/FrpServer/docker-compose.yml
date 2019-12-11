@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  frpserver:
+    restart: always
+    container_name: FrpServer
+    image:
+      frpserver:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/FrpServer/config/:/volume/config/
+      - /Volumes/DockerStore/FrpServer/log/:/volume/log/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    ports:
+      - "7000:7000"
+      - "7001:7001"
+      - "9110:9110"
+      - "9500-9599:9500-9599"
