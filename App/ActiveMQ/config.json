@@ -1,0 +1,12 @@
+{
+  "appName" : "ActiveMQ",
+  "appDescription" : "主流消息中间件之一，由Java编写，支持openwire、AMQP、stomp、mqtt和ws协议，并提供可视化的管理控制台",
+  "appIcon" : "ActiveMQ.png",
+  "httpPort" : 0,
+  "appPorts": [
+    61616
+  ],
+  "appConfig" : [
+    {"name": "ActiveMQ配置文件","file": "/volume/config/activemq.xml"}
+  ]
+}

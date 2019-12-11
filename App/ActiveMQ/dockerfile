@@ -1,0 +1,13 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+EXPOSE 1883
+EXPOSE 5672
+EXPOSE 61613
+EXPOSE 61614
+EXPOSE 61616
+EXPOSE 8161
+RUN apt-get update && apt-get install redis-server -y
+ADD dependence/activemq.xml /etc/redis.conf
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+
+CMD ["redis-server", "/volume/config/redis.conf"]
