@@ -2,5 +2,6 @@ FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
 WORKDIR /workdir
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence /tmp/dependence
+RUN apt -y install php-intl
 EXPOSE 443
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
