@@ -30,6 +30,10 @@ class Controller extends Lit\LitMs\LitMsController {
             return View("Edit.html");
         });
 
+        $this->get("/sshConnect",function ($request,$response){
+            return Model("Api")->sshConnect($request,$response);
+        });
+
         $this->post('/api/getRuningApp',function ($request){
             return Model("Api")->getRunningApp($request);
         });

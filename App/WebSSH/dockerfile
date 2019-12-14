@@ -1,0 +1,11 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+EXPOSE 9112
+WORKDIR /workdir
+ADD ./dependence /tmp/dependence
+RUN apt-get update && apt-get install -y -q python-pip ssh sudo docker.io
+RUN pip install webssh
+RUN useradd dockerstore -d /home/dockerstore -m -s /bin/bash && echo dockerstore:lnce@4hu1.onh | chpasswd  && \
+    echo "dockerstore     ALL=(ALL)     NOPASSWD :ALL" >> /etc/sudoers
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["wssh", "--address=0.0.0.0", "--sslport=9112", "--certfile=/workdir/ssl/webssh.crt", "--keyfile=/workdir/ssl/webssh.key"]

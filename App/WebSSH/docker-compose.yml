@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  webssh:
+    restart: always
+    container_name: WebSSH
+    image:
+      webssh:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/WebSSH/workdir:/workdir
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "9112:9112"

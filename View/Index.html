@@ -51,6 +51,13 @@
                             }else{
                                 str +='编辑'
                             }
+                            str +=' &nbsp;&nbsp;';
+                            if(config.webSSH){
+                                str += '<a href="/sshConnect?appId='+config.appId+'" target="_blank">终端</a>'
+                            }else{
+                                str +='终端'
+                            }
+
                             str +='</p>';
                             //管理
                             str +='<div class="opDiv"><button type="button" class="btn btn-danger btn-xs removeApp" appId="'+config.appId+'" >移除</button> &nbsp; ';

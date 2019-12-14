@@ -35,6 +35,11 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
         $host = current(explode(":",$host));
         $outPut = [];
         $runingApp = Model("App")->getRunningApp();
+        if (in_array("WebSSH",$runingApp)) {
+            $webSSH = true;
+        }else{
+            $webSSH = false;
+        }
         foreach ($runingApp as $appName) {
             $config = Model("App")->getAppConfig($appName);
             if($config['httpPort']){
@@ -56,6 +61,11 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
             }
             if(!isset($config["appConfig"])){
                 $config["appConfig"] = "";
+            }
+            if ( $webSSH ) {
+                $config["webSSH"] = 1;
+            }else{
+                $config["webSSH"] = 0;
             }
             $outPut[] = $config;
         }
@@ -150,5 +160,32 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
         }else{
             return Error();
         }
+    }
+
+    //ssh链接
+    function  sshConnect ( $request, $response ) {
+        $appId = $request->get['appId'];
+        $host = $request->header['host'];
+        $host = current(explode(":",$host));
+
+        //先生成一个随机密码
+        $pwd = uniqid().rand(10000,99999);
+        $newCmd = "docker exec -it WebSSH bash -c 'echo dockerstore:{$pwd} | chpasswd'";
+        echo $newCmd,"\n";
+        exec ($newCmd);
+
+        //登录地址
+        $passwd = base64_encode($pwd);
+        $command = "sudo docker exec -it {$appId} bash";
+        $url = "https://".$host.":9112?hostname=127.0.0.1&username=dockerstore&password={$passwd}&command={$command}";
+
+        //密码设为无效
+        go(function () {
+            $pwd = uniqid().rand(10000,99999);
+            $newCmd = "sleep 2 && docker exec -it WebSSH bash -c 'echo dockerstore:{$pwd} | chpasswd'";
+            co::exec($newCmd);
+            echo $newCmd,"\n";
+        });
+        return'<meta http-equiv="refresh" content="0; url='.$url.'">';
     }
 }
