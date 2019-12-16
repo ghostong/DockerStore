@@ -232,11 +232,24 @@
     <div class="panel panel-default">
         <div class="panel-heading" id="Aria2"> Aria2 </div>
         <div class="panel-body">
+
             <p>
-                1. JSON-RPC 链接的配置示例 <mark>http://admin:123456@127.0.0.1:6800/jsonrpc</mark>
+                1. Web UI 默认用户名: <mark>admin</mark>, 密码: <mark>123@456@</mark>.
             </p>
             <p>
-                2. 默认用户名, 密码请通过"编辑"功能查看. 配置文件: <mark>/volume/config/aria2.conf</mark> 搜索 <mark>rpc-user</mark> 或 <mark>rpc-passwd</mark> .
+                2. 通过 <mark>htpasswd -bc /volume/config/htpasswd hello 123456</mark> 创建用户.
+            </p>
+            <p>
+                3. 通过 <mark>htpasswd -D /volume/config/htpasswd admin</mark> 删除用户.
+            </p>
+            <p>
+                4. 通过 <mark>htpasswd -b /volume/config/htpasswd admin 123456</mark> 修改密码.
+            </p>
+            <p>
+                5. JSON-RPC 链接的配置示例 <mark>http://token:qRc32PlTRI72wQSG7T0R8yR1QxXYRSk4@127.0.0.1:6800/jsonrpc</mark>
+            </p>
+            <p>
+                6. 默认 secret 请通过"编辑"功能查看. 配置文件: <mark>/volume/config/aria2.conf</mark> 搜索 <mark>rpc-secret</mark> .
             </p>
         </div>
     </div>
