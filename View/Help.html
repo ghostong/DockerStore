@@ -35,10 +35,10 @@
         <div class="panel-heading" id="QianYan"> 前言 </div>
         <div class="panel-body">
             <p>
-                1. 所有 APP 产生的数据都保存在宿主机 /volume/AppName 中 .
+                1. 所有 APP 产生的数据都保存在宿主机 <mark>/volume/AppName</mark> 中 .
             </p>
             <p>
-                2. 部分 APP 需要单独配置, 配置文件保存在  /volume/AppName/config 目录中 .
+                2. 部分 APP 需要单独配置, 配置文件保存在  <mark>/volume/AppName/config</mark> 目录中 .
             </p>
             <p>
                 3. APP 产生的所有数据都不会被自动删除, 以便下次使用, 如果需要删除, 请登录宿主机手动删除 .
@@ -65,7 +65,7 @@
                 1. 配置文件所在位置 <mark>App/phpMyAdmin/dependence/config.inc.php</mark> .
             </p>
             <p>
-                2. 参考文档 https://docs.phpmyadmin.net/zh_CN/latest/
+                2. 参考文档 <a href="https://docs.phpmyadmin.net/zh_CN/latest/" target="_blank">https://docs.phpmyadmin.net/zh_CN/latest/</a>
             </p>
         </div>
     </div>
@@ -101,7 +101,7 @@
                 1. 创建新的同步项时, 请把同步目录选择到 <mark>/volume</mark> 的子目录下, 以便数据持久化 .
             </p>
             <p>
-                2. 请通过 设置 -> 高级 -> 链接 -> 侦听端口 修改端口号为 55555 以便开启局域网加速 .
+                2. 请通过 设置 -> 高级 -> 链接 -> 侦听端口 修改端口号为 <mark>55555</mark> 以便开启局域网加速 .
             </p>
         </div>
     </div>
@@ -167,7 +167,7 @@
                 1. 可通过编辑按钮修改服务配置文件 .
             </p>
             <p>
-                2. 配置代理的时候请注意 "加密方式", 默认为 aes-256-cfb .
+                2. 配置代理的时候请注意 "加密方式", 默认为 <mark>aes-256-cfb</mark> .
             </p>
         </div>
     </div>
@@ -182,7 +182,7 @@
                 2. 登录后点击右上角的 用户头像->关于 下载客户端使用.
             </p>
             <p>
-                3. 强制使用 HTTPS 连接, chrome 无法信任, 请使用 /Volumes/DockerStore/WebSSH/workdir/ssl/ 目录中的根证书, 导入至系统.
+                3. 强制使用 HTTPS 连接, chrome 无法信任, 请使用 <mark>/Volumes/DockerStore/WebSSH/workdir/ssl/</mark> 目录中的根证书, 导入至系统.
             </p>
         </div>
     </div>
@@ -194,10 +194,10 @@
                 1. 通过修改 frps.ini 来修改 Frp Server 的服务配置 .
             </p>
             <p>
-                2. 由于 DockerStore 限制, 开放端口必须为 9500-9519 .
+                2. 由于 DockerStore 限制, 开放端口必须为 <mark>9500-9599</mark> .
             </p>
             <p>
-                3. 默认用户名: admin, 默认密码: 123@456@
+                3. 默认用户名: <mark>admin</mark>, 默认密码: <mark>123@456@</mark>
             </p>
         </div>
     </div>
@@ -206,13 +206,13 @@
         <div class="panel-heading" id="FrpClient"> Frp Server </div>
         <div class="panel-body">
             <p>
-                1. 通过修改 frpc.ini 来修改 Frp Client 的服务配置 .
+                1. 通过修改 <mark>frpc.ini</mark> 来修改 Frp Client 的服务配置 .
             </p>
             <p>
-                2. 示例配置文件在 frpc_example.ini , 复制过来使用即可 .
+                2. 示例配置文件在 <mark>frpc_example.ini</mark> , 复制过来使用即可 .
             </p>
             <p>
-                3. 默认用户名: admin, 默认密码: 123@456@
+                3. 默认用户名: <mark>admin</mark>, 默认密码: <mark>123@456@</mark>
             </p>
         </div>
     </div>
@@ -221,7 +221,7 @@
         <div class="panel-heading" id="WebSSH"> Web SSH </div>
         <div class="panel-body">
             <p>
-                1. 强制使用 HTTPS 连接, chrome 无法信任, 请使用 /Volumes/DockerStore/WebSSH/workdir/ssl/ 目录中的根证书, 导入至系统.
+                1. 强制使用 HTTPS 连接, chrome 无法信任, 请使用 <mark>/Volumes/DockerStore/WebSSH/workdir/ssl/</mark> 目录中的根证书, 导入至系统.
             </p>
             <p>
                 2. 系统每次登陆会修改密码, 所以链接不能重复使用.
@@ -233,10 +233,10 @@
         <div class="panel-heading" id="Aria2"> Aria2 </div>
         <div class="panel-body">
             <p>
-                1. JSON-RPC 链接的配置示例 http://admin:123456@127.0.0.1:6800/jsonrpc
+                1. JSON-RPC 链接的配置示例 <mark>http://admin:123456@127.0.0.1:6800/jsonrpc</mark>
             </p>
             <p>
-                2. 默认用户名, 密码请通过"编辑"功能查看. 配置文件: /volume/config/aria2.conf 搜索 rpc-user 或 rpc-passwd .
+                2. 默认用户名, 密码请通过"编辑"功能查看. 配置文件: <mark>/volume/config/aria2.conf</mark> 搜索 <mark>rpc-user</mark> 或 <mark>rpc-passwd</mark> .
             </p>
         </div>
     </div>
@@ -246,14 +246,14 @@
         <div class="panel-body">
             <p>
                 1. ZeroTierOne: 全球局域网工具.
-                <a href="https://github.com/zerotier/ZeroTierOne">Github</a>,
-                <a href="https://www.zerotier.com/download/">下载</a>.
+                <a href="https://github.com/zerotier/ZeroTierOne" target="_blank">Github</a>,
+                <a href="https://www.zerotier.com/download/" target="_blank">下载</a>.
             </p>
             <p>
                 2. ZeroNet: 去中心化的网络.
-                <a href="https://github.com/HelloZeroNet/ZeroNet">Github</a>,
-                <a href="https://zeronet.readthedocs.io/en/latest/using_zeronet/installing/">下载</a>,
-                <a href="https://hub.docker.com/r/nofish/zeronet">Docker Hub</a>
+                <a href="https://github.com/HelloZeroNet/ZeroNet" target="_blank">Github</a>,
+                <a href="https://zeronet.readthedocs.io/en/latest/using_zeronet/installing/" target="_blank">下载</a>,
+                <a href="https://hub.docker.com/r/nofish/zeronet" target="_blank">Docker Hub</a>
             </p>
         </div>
     </div>
