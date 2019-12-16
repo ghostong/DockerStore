@@ -8,3 +8,4 @@ ADD dependence/config.inc.php ./config.inc.php
 ADD dependence/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["nginx", "-g", "daemon off;"]

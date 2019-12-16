@@ -18,4 +18,4 @@ cp -r /tmp/dependence/default /etc/nginx/sites-available/default
 
 /etc/init.d/php7.2-fpm start
 
-nginx -g 'daemon off;'
+exec "$@"

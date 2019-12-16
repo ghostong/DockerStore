@@ -181,6 +181,9 @@
             <p>
                 2. 登录后点击右上角的 用户头像->关于 下载客户端使用.
             </p>
+            <p>
+                3. 强制使用 HTTPS 连接, chrome 无法信任, 请使用 /Volumes/DockerStore/WebSSH/workdir/ssl/ 目录中的根证书, 导入至系统.
+            </p>
         </div>
     </div>
 
@@ -214,6 +217,29 @@
         </div>
     </div>
 
+    <div class="panel panel-default">
+        <div class="panel-heading" id="WebSSH"> Web SSH </div>
+        <div class="panel-body">
+            <p>
+                1. 强制使用 HTTPS 连接, chrome 无法信任, 请使用 /Volumes/DockerStore/WebSSH/workdir/ssl/ 目录中的根证书, 导入至系统.
+            </p>
+            <p>
+                2. 系统每次登陆会修改密码, 所以链接不能重复使用.
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="Aria2"> Aria2 </div>
+        <div class="panel-body">
+            <p>
+                1. JSON-RPC 链接的配置示例 http://admin:123456@127.0.0.1:6800/jsonrpc
+            </p>
+            <p>
+                2. 默认用户名, 密码请通过"编辑"功能查看. 配置文件: /volume/config/aria2.conf 搜索 rpc-user 或 rpc-passwd .
+            </p>
+        </div>
+    </div>
 
     <div class="panel panel-default">
         <div class="panel-heading"> 其它工具 </div>

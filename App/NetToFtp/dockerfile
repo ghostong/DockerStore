@@ -3,3 +3,4 @@ EXPOSE 80
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence/ /tmp/dependence/
 WORKDIR /workdir
+CMD ["nginx", "-g", "daemon off;"]

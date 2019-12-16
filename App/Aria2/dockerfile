@@ -1,0 +1,7 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+EXPOSE 9113
+RUN apt-get update && apt-get install aria2 -y
+ADD ./dependence /tmp/dependence
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["aria2c", "--conf-path=/volume/config/aria2.conf"]

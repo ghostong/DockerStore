@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  aria2:
+    restart: always
+    container_name: Aria2
+    image:
+      aria2:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/Aria2/config:/volume/config
+      - /Volumes/DockerStore/Aria2/Download:/volume/Download
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    ports:
+      - "6800:6800"
+      - "9113:80"

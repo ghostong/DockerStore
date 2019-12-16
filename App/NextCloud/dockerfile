@@ -5,3 +5,4 @@ ADD ./dependence /tmp/dependence
 RUN apt -y install php-intl
 EXPOSE 443
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["nginx", "-g", "daemon off;"]
