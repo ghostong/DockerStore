@@ -12,5 +12,11 @@ services:
       - /Volumes/DockerStore/PHP72/config/php-fpm/:/etc/php/7.2/fpm/
       - /Volumes/DockerStore/PHP72/workdir/:/workdir/
       - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
     ports:
       - "9107:80"
+
+networks:
+  dockerstore:
+    external: true

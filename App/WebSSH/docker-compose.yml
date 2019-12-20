@@ -10,5 +10,11 @@ services:
     volumes:
       - /Volumes/DockerStore/WebSSH/workdir:/workdir
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - dockerstore
     ports:
       - "9112:9112"
+
+networks:
+  dockerstore:
+    external: true

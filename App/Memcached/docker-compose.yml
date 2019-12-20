@@ -10,5 +10,11 @@ services:
     volumes:
       - /Volumes/DockerStore/Memcached/log:/volume/log
       - /Volumes/DockerStore/Memcached/run:/volume/run
+    networks:
+      - dockerstore
     ports:
       - "11211:11211"
+
+networks:
+  dockerstore:
+    external: true

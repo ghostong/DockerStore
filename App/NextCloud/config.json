@@ -1,5 +1,5 @@
 {
-  "appName" : "NextCloud",
+  "appName" : "Next Cloud",
   "appDescription" : "Nextcloud是部署最多的本地文件共享和协作平台, 支持跨设备访问和协作.",
   "appIcon" : "NextCloud.png",
   "httpsOnly" : 1,

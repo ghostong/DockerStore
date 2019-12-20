@@ -10,6 +10,12 @@ services:
     volumes:
       - /Volumes/DockerStore/MySQL57/mysql:/var/lib/mysql
       - /Volumes/DockerStore/MySQL57/log:/var/log/mysql
+    networks:
+      - dockerstore
     ports:
       - "3306:3306"
       - "9105:80"
+
+networks:
+  dockerstore:
+    external: true

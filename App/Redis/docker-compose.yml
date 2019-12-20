@@ -12,5 +12,11 @@ services:
       - /Volumes/DockerStore/Redis/log:/volume/log
       - /Volumes/DockerStore/Redis/config:/volume/config
       - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
     ports:
       - "6379:6379"
+
+networks:
+  dockerstore:
+    external: true

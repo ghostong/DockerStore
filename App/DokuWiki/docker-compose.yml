@@ -9,5 +9,11 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/DokuWiki/workdir/:/workdir/
+    networks:
+      - dockerstore
     ports:
       - "9106:80"
+
+networks:
+  dockerstore:
+    external: true

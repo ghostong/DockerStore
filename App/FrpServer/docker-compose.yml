@@ -11,8 +11,14 @@ services:
       - /Volumes/DockerStore/FrpServer/config/:/volume/config/
       - /Volumes/DockerStore/FrpServer/log/:/volume/log/
       - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
     ports:
       - "7000:7000"
       - "7001:7001"
       - "9110:9110"
       - "9500-9599:9500-9599"
+
+networks:
+  dockerstore:
+    external: true

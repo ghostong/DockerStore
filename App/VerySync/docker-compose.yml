@@ -9,5 +9,11 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/VerySync:/volume
+    networks:
+      - dockerstore
     ports:
       - "9104:9104"
+
+networks:
+  dockerstore:
+    external: true

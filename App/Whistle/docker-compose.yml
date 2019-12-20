@@ -9,5 +9,11 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/Whistle:/volume
+    networks:
+      - dockerstore
     ports:
       - "9103:9103"
+
+networks:
+  dockerstore:
+    external: true

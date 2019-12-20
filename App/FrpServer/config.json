@@ -1,5 +1,5 @@
 {
-  "appName" : "FrpServer",
+  "appName" : "Frp Server",
   "appDescription" : "反向代理工具，该 frp 服务器需要与 frp 客户端配合使用。",
   "appIcon" : "FrpServer.png",
   "httpPort" : 9110,

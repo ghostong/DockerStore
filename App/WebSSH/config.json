@@ -1,5 +1,5 @@
 {
-  "appName" : "WebSSH",
+  "appName" : "Web SSH",
   "appDescription" : "一个简单的Web应用程序，用作ssh客户端以连接到ssh服务器。",
   "appIcon" : "WebSSH.png",
   "httpsOnly" : 1,

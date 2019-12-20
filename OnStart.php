@@ -33,3 +33,5 @@ if ($argv1 == "install") {
     exit;
 }
 
+Model("Docker")->createNetWork();
+

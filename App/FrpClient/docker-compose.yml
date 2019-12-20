@@ -11,5 +11,11 @@ services:
       - /Volumes/DockerStore/FrpClient/config/:/volume/config/
       - /Volumes/DockerStore/FrpClient/log/:/volume/log/
       - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
     ports:
       - "9111:9111"
+
+networks:
+  dockerstore:
+    external: true

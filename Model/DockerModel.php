@@ -110,4 +110,11 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         exec($cmd,$execRes);
         return $execRes;
     }
+
+    function createNetWork( $newWorkName = "dockerstore"){
+        $cmd = "docker network create {$newWorkName}";
+        echo $cmd."\n";
+        exec($cmd, $execRes);
+        return $execRes;
+    }
 }

@@ -9,6 +9,12 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/ResilioSync:/volume
+    networks:
+      - dockerstore
     ports:
       - "9101:9101"
       - "55555:55555"
+
+networks:
+  dockerstore:
+    external: true
