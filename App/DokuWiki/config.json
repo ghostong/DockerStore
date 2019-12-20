@@ -1,5 +1,5 @@
 {
-  "appName" : "Doku Wiki",
+  "appName" : "DokuWiki",
   "appDescription" : "DokuWiki是一个开源wiki引擎程序，小巧而功能强大、灵活，适合中小团队和个人网站知识库的管理。",
   "appIcon" : "DokuWiki.png",
   "httpPort" : 9106,

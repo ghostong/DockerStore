@@ -1,5 +1,5 @@
 {
-  "appName" : "MySQL 5.7",
+  "appName" : "MySQL5.7",
   "appDescription" : "关系型数据库管理系统，最流行的关系型数据库管理系统之一。",
   "appIcon" : "MySQL.png",
   "httpPort" : 9105,
