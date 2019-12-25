@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  phpredisadmin:
+    restart: always
+    container_name: phpRedisAdmin
+    image:
+      phpredisadmin:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/phpRedisAdmin/workdir/:/workdir/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
+    ports:
+      - "9114:80"
+
+networks:
+  dockerstore:
+    external: true
