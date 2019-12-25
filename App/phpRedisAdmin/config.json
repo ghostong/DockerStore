@@ -1,6 +1,6 @@
 {
   "appName" : "phpRedisAdmin",
-  "appDescription" : "phpRedisAdmin",
+  "appDescription" : "redis的图形界面管理工具",
   "appIcon" : "phpRedisAdmin.png",
   "httpPort" : 9114,
   "appPorts": [],
