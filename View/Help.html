@@ -255,19 +255,27 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading" id="phpRedisAdmin"> phpRedisAdmin </div>
+        <div class="panel-heading" id="phpRedExpert"> phpRedExpert </div>
         <div class="panel-body">
 
             <p>
-                1. 可通过修改 <mark>/workdir/includes/config.inc.php</mark> 修改配置文件 .
+                1. 可通过修改 <mark>/workdir/app/config/parameters.yml</mark> 修改配置文件增加服务器 .
             </p>
             <p>
-                2. 增加 <mark>servers</mark> 中的字段, 增加服务器.
+                2. 增加 <mark>redis_servers</mark> 中的字段, 增加服务器.
             </p>
             <p>
-                3. 修改 <mark>login</mark> 字段, 增加 HTTP 登录身份验证.
+                3. Web UI 默认用户名: <mark>admin</mark>, 密码: <mark>123@456@</mark>.
             </p>
-
+            <p>
+                4. 通过 <mark>htpasswd -bc /volume/config/htpasswd hello 123456</mark> 创建WebUi用户.
+            </p>
+            <p>
+                5. 通过 <mark>htpasswd -D /volume/config/htpasswd admin</mark> 删除WebUi用户.
+            </p>
+            <p>
+                6. 通过 <mark>htpasswd -b /volume/config/htpasswd admin 123456</mark> 修改WebUi密码.
+            </p>
         </div>
     </div>
 

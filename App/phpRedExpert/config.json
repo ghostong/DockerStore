@@ -1,6 +1,6 @@
 {
   "appName" : "phpRedExpert",
-  "appDescription" : "phpRedExpert",
+  "appDescription" : "用于Redis数据库和服务器管理的简单而强大的Web UI",
   "appIcon" : "phpRedExpert.png",
   "httpPort" : 9115,
   "appPorts": [],
