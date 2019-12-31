@@ -1,0 +1,10 @@
+{
+  "appName" : "phpRedExpert",
+  "appDescription" : "phpRedExpert",
+  "appIcon" : "phpRedExpert.png",
+  "httpPort" : 9115,
+  "appPorts": [],
+  "appConfig" : [
+    {"name": "phpRedExpert","file": "/workdir/app/config/parameters.yml"}
+  ]
+}

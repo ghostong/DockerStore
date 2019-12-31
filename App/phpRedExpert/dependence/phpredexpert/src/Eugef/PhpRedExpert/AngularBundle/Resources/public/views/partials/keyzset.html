@@ -1,0 +1,31 @@
+<div class="form-group">
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Score</th>
+                <th>Member</th>
+                <th></th>
+            </tr>    
+            <tr class="inline-edit">
+                <th class="fixed-td-lg">
+                    <div class="form-group no-margin" ng-class="{'has-error': keyForm.score.$invalid}">
+                        <input type="text" name="score" class="form-control" placeholder="Score" ng-model="keyValue.score" ng-pattern="/^-?[0-9]\d*(\.\d+)?$/" required/>
+                    </div>
+                </th>
+                <th>
+                    <textarea class="form-control" placeholder="Value" ng-model="keyValue.value" rows="3" required></textarea>
+                </th>
+                <th class="fixed-td-smb">
+                    <button type="submit" class="btn btn-primary" ng-disabled="keyForm.$invalid"><i class="fa fa-plus"></i> Add</button>
+                </th>
+            </tr>    
+        </thead>
+        <tbody>
+            <tr ng-repeat="(value, score) in key.value">
+                <td>{[score]}</td>
+                <td><pre class="no-margin scrollable">{[value]}</pre></td>
+                <td><a href ng-click="deleteKeyValue(value)" class="text-danger"><i class="fa fa-trash-o"></i> Delete</a></td>
+            </tr>
+        </tbody>    
+    </table>
+</div>            

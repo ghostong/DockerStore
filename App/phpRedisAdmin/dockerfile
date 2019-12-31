@@ -1,8 +1,0 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
-EXPOSE 80
-WORKDIR /workdir
-ADD ./dependence /tmp/dependence
-ADD ./dependence/default /etc/nginx/sites-available/default
-ADD ./docker-entrypoint.sh /docker-entrypoint.sh
-ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD ["nginx", "-g", "daemon off;"]

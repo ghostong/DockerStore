@@ -1,0 +1,159 @@
+/*adminlte fixes*/
+body > .header .logo {
+    font-size: 20px;
+    line-height: 50px;
+    font-family: Comfortaa, cursive;
+    font-weight: 700;
+}
+
+.content {
+    padding-bottom: 0;
+}
+
+/* Change the color of the striped tables */
+.table > tbody > tr.selected > td {
+    background-color: #ffc;
+}
+
+.skin-black .sidebar-menu li.active > a {
+    font-weight: bold;
+}
+
+.navbar-nav > .messages-menu > .dropdown-menu > li .menu > li.active > a {
+    background: #f6f6f6;
+    text-decoration: none;
+}
+
+.navbar-nav > .messages-menu > .dropdown-menu > li .menu > li.active > a > h4 {
+    font-weight: bold;
+}
+
+.sidebar .sidebar-menu .treeview.active .treeview-menu {
+    display: block;
+}
+
+.sidebar .sidebar-menu .treeview .fa-angle-dynamic:before {
+    content: "\f105";
+}
+
+.sidebar .sidebar-menu .treeview.active .fa-angle-dynamic:before {
+    content: "\f107";
+}
+
+.sidebar .sidebar-menu .treeview-menu li{
+    margin-left: 10px;
+} 
+
+.sidebar .sidebar-menu .treeview.active.animate .treeview-menu {
+    animation-name: fadeAnimation;
+    animation-duration: .7s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: fadeAnimation;
+    -webkit-animation-duration: .7s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: fadeAnimation;
+    -moz-animation-duration: .7s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: forwards;
+}
+
+input[type='checkbox'].greyed {
+    filter: alpha(opacity=30);
+    opacity: 0.5;
+}
+
+.table-condensed>thead>tr>th.checkbox-td,
+.table-condensed>tbody>tr>td.checkbox-td {
+    padding: 0;
+    width: 30px;
+}    
+
+.table-condensed>thead>tr>th.fixed-td-sm,
+.table-condensed>tbody>tr>td.fixed-td-sm {
+    width: 60px;
+}
+
+.table-condensed>thead>tr>th.fixed-td-smb,
+.table-condensed>tbody>tr>td.fixed-td-smb {
+    width: 80px;
+}
+
+.table-condensed>thead>tr>th.fixed-td-md,
+.table-condensed>tbody>tr>td.fixed-td-md {
+    width: 100px;
+}
+
+.table-condensed>thead>tr>th.fixed-td-mdb,
+.table-condensed>tbody>tr>td.fixed-td-mdb {
+    width: 150px;
+}
+
+.table-condensed>thead>tr>th.fixed-td-lg,
+.table-condensed>tbody>tr>td.fixed-td-lg {
+    width: 250px;
+}
+
+.table-condensed>thead>tr>th.checkbox-td>label,
+.table-condensed>tbody>tr>td.checkbox-td>label {
+    margin: 0;
+    padding: 5px 9px;
+}
+
+.modal-footer {
+    margin-top: 0;
+}
+
+.li-2-columns {
+    word-break: break-all;
+    padding: 0 26px 0 0;
+}
+
+.table-data>thead>tr>th.sorting,
+.table-data>thead>tr>th.sorting-asc,
+.table-data>thead>tr>th.sorting-desc {
+    cursor: pointer;
+}
+
+.table-data>thead>tr>th.sorting { 
+    background: url('../images/sort_both.png') no-repeat center right; 
+}
+.table-data>thead>tr>th.sorting-asc { 
+    background: url('../images/sort_asc.png') no-repeat center right; 
+    color: #5a60bd;
+}
+.table-data>thead>tr>th.sorting-desc { 
+    background: url('../images/sort_desc.png') no-repeat center right; 
+    color: #5a60bd;
+}
+
+.table-data>thead>tr>th:active {
+    outline: none;
+}
+
+.table>thead>tr.inline-edit>th {
+    vertical-align: top;
+} 
+
+pre.scrollable {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.nav-tabs>li.active.dropdown>a {
+    cursor: pointer;
+    color: #3c8dbc;
+} 
+.nav-tabs>li.active.dropdown>a:hover, 
+.nav-tabs>li.active.dropdown>a:focus {
+    cursor: pointer;
+    color: #72afd2;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
+    border: 0;
+}

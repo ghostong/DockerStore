@@ -1,0 +1,113 @@
+eugef_php_red_expert_server_list:
+    pattern: /server/list
+    defaults: { _controller: EugefPhpRedExpertApiBundle:Server:List, _format: json}
+    requirements:
+        _method: GET
+    
+eugef_php_red_expert_server_databases:
+    pattern:  /server/{serverId}/databases
+    defaults: { _controller: EugefPhpRedExpertApiBundle:Server:Databases, _format: json}
+    requirements:
+        _method: GET
+        serverId: "\d+"
+        
+eugef_php_red_expert_server_info:
+    pattern:  /server/{serverId}/info
+    defaults: { _controller: EugefPhpRedExpertApiBundle:Server:Info, _format: json}
+    requirements:
+        _method: GET
+        serverId: "\d+"
+        
+eugef_php_red_expert_server_clients_list:
+    pattern:  /server/{serverId}/clients
+    defaults: { _controller: EugefPhpRedExpertApiBundle:Server:ClientsList, _format: json}
+    requirements:
+        _method: GET
+        serverId: "\d+"
+        
+eugef_php_red_expert_server_clients_kill:
+    pattern:  /server/{serverId}/clients/kill
+    defaults: { _controller: EugefPhpRedExpertApiBundle:Server:ClientsKill, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        
+eugef_php_red_expert_server_config:
+    pattern:  /server/{serverId}/config
+    defaults: { _controller: EugefPhpRedExpertApiBundle:Server:Config, _format: json}
+    requirements:
+        _method: GET
+        serverId: "\d+"
+        
+eugef_php_red_expert_database_flush:
+    pattern:  /server/{serverId}/db/{dbId}/flush
+    defaults: { _controller: EugefPhpRedExpertApiBundle:Database:Flush, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        dbId: "\d+"
+        
+eugef_php_red_expert_keys_search:
+    pattern:  /server/{serverId}/db/{dbId}/keys/search
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:Search, _format: json}
+    requirements:
+        _method: GET
+        serverId: "\d+"
+        dbId: "\d+"
+
+eugef_php_red_expert_keys_view:
+    pattern:  /server/{serverId}/db/{dbId}/keys/view
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:View, _format: json}
+    requirements:
+        _method: GET
+        serverId: "\d+"
+        dbId: "\d+"
+        
+eugef_php_red_expert_keys_delete:
+    pattern:  /server/{serverId}/db/{dbId}/keys/delete
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:Delete, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        dbId: "\d+"
+        
+eugef_php_red_expert_keys_move:
+    pattern:  /server/{serverId}/db/{dbId}/keys/move
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:Move, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        dbId: "\d+"        
+        
+eugef_php_red_expert_keys_attrs:
+    pattern:  /server/{serverId}/db/{dbId}/keys/attrs
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:Attributes, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        dbId: "\d+"
+        
+eugef_php_red_expert_keys_edit:
+    pattern:  /server/{serverId}/db/{dbId}/keys/edit
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:Edit, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        dbId: "\d+"
+        
+eugef_php_red_expert_keys_add:
+    pattern:  /server/{serverId}/db/{dbId}/keys/add
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:Add, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        dbId: "\d+"
+
+eugef_php_red_expert_keys_delete_value:
+    pattern:  /server/{serverId}/db/{dbId}/keys/delete-values
+    defaults: {_controller: EugefPhpRedExpertApiBundle:Keys:DeleteValues, _format: json}
+    requirements:
+        _method: POST
+        serverId: "\d+"
+        dbId: "\d+"
+        

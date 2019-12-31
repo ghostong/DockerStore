@@ -1,0 +1,158 @@
+{% extends 'EugefPhpRedExpertAngularBundle:Default:base.html.twig' %} 
+{% block content %}
+<header class="header">
+    <a href="#!/" class="logo">phpRedExpert</a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <button class="navbar-btn sidebar-toggle" togglesidebar role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-left">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-th-list"></i> Servers <i class="caret"></i>
+                        <span class="label label-success">{[servers.length]}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                <li ng-repeat="server in servers">
+                                    <a href="#!/server/{[server.id]}" active-link active-link-parent active-link-nested>
+                                        <div class="pull-left">
+                                            <img src="{{ asset('bundles/eugefphpredexpertangular/images/redis.png') }}" class="img-circle" alt="Redis server"/>
+                                        </div>
+                                        <h4>
+                                            {[server.name]}
+                                            <small>
+                                            <i class="fa fa-lock text-success" ng-show="server.password"> password</i>
+                                            <i class="fa fa-unlock-alt text-warning" ng-hide="server.password"> no password</i>
+                                            </small>
+                                        </h4>
+                                        <p>{[server.host]}:{[server.port]}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--li class="footer"><a href>Configure servers</a></li-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle text-" data-toggle="dropdown">
+                        <i class="fa fa-question-circle"></i>
+                        <span>Help <i class="caret"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header bg-light-blue">
+                            <img src="{{ asset('bundles/eugefphpredexpertangular/images/logo.png') }}" alt="phpRedExpert" />
+                            <p>
+                                phpRedExpert 0.1
+                                <small>14-10-2014</small>
+                            </p>
+                        </li>
+                        <li class="user-body">
+                            <div class="col-xs-6 text-center">
+                                <a href="https://github.com/eugef/phpRedExpert/wiki" target="_blank"><i class="fa fa-info"></i> About</a>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <a href="https://github.com/eugef/phpRedExpert" target="_blank"><i class="fa fa-github"></i> Github</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="left-side sidebar-offcanvas" resizable resizable-style="min-height" resizable-wrapper=".wrapper">
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{{ asset('bundles/eugefphpredexpertangular/images/redis.png') }}" class="img-circle" alt="Redis server" />
+                </div>
+                <div class="pull-left info">
+                    <p>{[getCurrentServer().name]}</p>
+                    <a href>
+                        <i class="fa fa-lock text-success" ng-show="getCurrentServer().password"> password</i>
+                        <i class="fa fa-unlock-alt text-warning" ng-hide="getCurrentServer().password"> no password</i>
+                    </a>
+                </div>
+            </div>
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#!/server/{[current.serverId]}" active-link active-link-parent>
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    </a>
+                </li>
+                <li menutree class="treeview" active-link="#!/server/{[current.serverId]}/db" active-link-nested>
+                    <a href="#">
+                        <i class="fa fa-table"></i>
+                        <span>Databases</span>
+                        <i class="fa fa-angle-dynamic pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li ng-repeat="db in dbs | filter:{visible:true}">
+                            <a href="#!/server/{[current.serverId]}/db/{[db.id]}/search" active-link="#!/server/{[current.serverId]}/db/{[db.id]}" active-link-parent active-link-nested>
+                                <i class="fa fa-angle-double-right"></i> {[db.name]}
+                                <small class="badge pull-right" ng-class="{'bg-blue': db.keys > 0}">{[db.keys]}</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href ng-click="addDb()">
+                                <i class="fa fa-plus-circle"></i> Add database
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--li>
+                    <a href="#!/server/{[current.serverId]}/slowlog" active-link active-link-parent>
+                        <i class="fa fa-warning"></i> <span>Slow log</span>
+                    </a>
+                </li-->
+                <li>
+                    <a href="#!/server/{[current.serverId]}/clients" active-link active-link-parent>
+                        <i class="fa fa-group"></i> <span>Clients</span>
+                    </a>
+                </li>
+                <!--li>
+                    <a href="#!/server/{[current.serverId]}/terminal" active-link active-link-parent>
+                        <i class="fa fa-terminal"></i> <span>Terminal</span>
+                    </a>
+                </li-->
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {[view.title]}
+                <small>{[view.subtitle]}</small>
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row" ng-view></div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->
+{% endblock %}
