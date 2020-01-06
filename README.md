@@ -7,7 +7,7 @@
 
 ### 下载启动文件
 ````bash
-curl -S https://code.aliyun.com/litosrc/litraw/raw/master/DockerStore/dockerStore.sh > dockerStore.sh && chmod 755 dockerStore.sh && sudo mkdir -p /Volumes/DockerStore && sudo chown $(whoami) /Volumes/DockerStore
+curl -S https://code.aliyun.com/litosrc/DockerStore/raw/master/dockerStore.sh > dockerStore.sh && chmod 755 dockerStore.sh && sudo mkdir -p /Volumes/DockerStore && sudo chown $(whoami) /Volumes/DockerStore
 ````
 
 ### 特别注意
