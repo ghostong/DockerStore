@@ -76,6 +76,14 @@ class Controller extends Lit\LitMs\LitMsController {
         $this->get("/api/getAppLogs",function ($request){
             return Model("Api")->getAppLogs($request);
         });
+
+        $this->post("/api/cleanDockerStoreImages",function ($request){
+            return Model("Api")->cleanDockerStoreImages($request);
+        });
+
+        $this->post("/api/uninstallDockerStore",function ($request){
+            return Model("Api")->uninstallDockerStore($request);
+        });
     }
 
 }

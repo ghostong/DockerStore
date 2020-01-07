@@ -48,6 +48,17 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         }
     }
 
+    function removeImage($appName){
+        $cmd = "docker rmi -f ".strtolower($appName);
+        echo $cmd,"\n";
+        exec($cmd,$exeRes, $return_var);
+        if ( $return_var == 0 ) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function getDockerBaseImage($file){
         $cmd = 'cat '.$file.'  |grep -i from |awk \'{print $NF}\'';
         echo $cmd,"\n";
@@ -112,9 +123,43 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
     }
 
     function createNetWork( $newWorkName = "dockerstore"){
-        $cmd = "docker network create {$newWorkName}";
+        $cmd = "docker network create {$newWorkName} 2>&1 >/dev/null";
         echo $cmd."\n";
         exec($cmd, $execRes);
         return $execRes;
+    }
+
+    function cleanDockerStoreImages (){
+        $app = Model("App");
+        $appList =  $app->listApp() ;
+        if ($appList) {
+            foreach ($appList as $appName) {
+                $appDir = $app->getAppDir($appName);
+                $this->removeContainer($appDir);
+                $this->removeImage($appName);
+            }
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function uninstallDockerStore () {
+        $this->cleanDockerStoreImages();
+        $cmd = "docker rm -f DockerStore || docker images |grep -E \"/litosrc/ds|litosrc/docker-store \" |awk '{print $3}' |xargs -i docker rmi {}";
+        echo $cmd,"\n";
+        exec($cmd,$exeRes, $return_var);
+        if ( $return_var == 0 ) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function getAllImages(){
+        $cmd = "docker images |grep -v REPOSITORY |awk '{print $1}'";
+        echo $cmd,"\n";
+        exec($cmd,$exeRes);
+        return $exeRes;
     }
 }

@@ -1,0 +1,12 @@
+{
+  "appName" : "InfluxDB",
+  "appDescription" : "TICK中的(I) 是一个开源分布式时序、时间和指标数据库，TICK生态中用于存储Telegraf采集来的数据。",
+  "appIcon" : "InfluxDB.svg",
+  "httpPort" : 0,
+  "appPorts": [
+    8086
+  ],
+  "appConfig" : [
+    {"name": "InfluxDB配置文件","file": "/etc/influxdb/influxdb.conf"}
+  ]
+}

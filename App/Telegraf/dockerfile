@@ -1,0 +1,8 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+WORKDIR /workdir
+RUN apt-get update && apt-get install wget -y
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_1.13.0-1_amd64.deb && dpkg -i telegraf_1.13.0-1_amd64.deb
+ADD ./dependence /tmp/dependence
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["telegraf", "-config", "/etc/telegraf/telegraf.conf"]

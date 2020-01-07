@@ -19,18 +19,23 @@
                 type:'post', url:"/api/getAllApp", cache: false, dataType:'json',
                 success:function(json){
                     if(json.success == 1) {
-                        for ( i = 0; i < json.response.length; i++) {
-                            config = json.response[i];
-                            str = '<div class="col-xs-6 col-sm-4 col-md-2"><div class="one-app">';
+                        for ( let i = 0; i < json.response.length; i++) {
+                            let config = json.response[i];
+                            let str = '<div class="col-xs-6 col-sm-4 col-md-2"><div class="one-app">';
                             str +='<div class="appIcon"><img src="/icon/'+ config.appIcon +'" /></div>';
                             str +='<h4>'+config.appName+'</h4>';
                             str +='<p>'+config.appDescription+'</p><div>';
+                            let disabled;
+                            let clickName;
                             if(config.isRunning) {
                                 disabled = "disabled";
                                 clickName = "已启动";
+                            }else if(!config.isBuild){
+                                disabled = "";
+                                clickName = "构建&启动";
                             }else{
                                 disabled = "";
-                                clickName = "安装";
+                                clickName = "启动";
                             }
                             str +='<button type="button" class="btn btn-primary btn-sm installApp" appId="'+config.appId+'" '+disabled+'>'+clickName+'</button>';
                             str +='</div></div></div>';

@@ -1,0 +1,8 @@
+{
+  "appName" : "Chronograf",
+  "appDescription" : "TICK中的(C) 职能是数据可视化，用于将Influxdb数据库的性能数据时序展示。",
+  "appIcon" : "InfluxDB.svg",
+  "httpPort" : 8888,
+  "appPorts": [
+  ]
+}

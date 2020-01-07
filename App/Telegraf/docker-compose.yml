@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  telegraf:
+    restart: always
+    container_name: Telegraf
+    image:
+      telegraf:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/Telegraf/config/:/etc/telegraf/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
+
+networks:
+  dockerstore:
+    external: true

@@ -6,13 +6,19 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
     function allAppList(){
         $outPut = [];
         $appList = Model("App")->listApp();
-        $runingApp = Model("App")->getRunningApp();
+        $runningApp = Model("App")->getRunningApp();
+        $buildApp = Model("Docker")->getAllImages();
         foreach ($appList as $val) {
             $config = Model("App")->getAppConfig($val);
-            if(in_array($config["appId"],$runingApp)){
+            if(in_array($config["appId"],$runningApp)){
                 $config["isRunning"] = 1;
             }else{
                 $config["isRunning"] = 0;
+            }
+            if (in_array(strtolower($config["appId"]),$buildApp)){
+                $config["isBuild"] = 1;
+            }else{
+                $config["isBuild"] = 0;
             }
             $outPut[] = $config;
         }
@@ -34,13 +40,13 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
         $host = $request->header['host'];
         $host = current(explode(":",$host));
         $outPut = [];
-        $runingApp = Model("App")->getRunningApp();
-        if (in_array("WebSSH",$runingApp)) {
+        $runningApp = Model("App")->getRunningApp();
+        if (in_array("WebSSH",$runningApp)) {
             $webSSH = true;
         }else{
             $webSSH = false;
         }
-        foreach ($runingApp as $appName) {
+        foreach ($runningApp as $appName) {
             $config = Model("App")->getAppConfig($appName);
             if($config['httpPort']){
                 if(isset($config['httpsOnly']) && $config['httpsOnly']) {
@@ -104,6 +110,15 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
     //清理退出容器
     function cleanContainer(){
         if ( Model("Docker")->cleanContainer() ) {
+            return Success();
+        }else{
+            return Error();
+        }
+    }
+
+    //清理dockerStore产生的镜像
+    function cleanDockerStoreImages(){
+        if ( Model("Docker")->cleanDockerStoreImages() ) {
             return Success();
         }else{
             return Error();
@@ -185,5 +200,14 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
             co::exec($newCmd);
         });
         return'<meta http-equiv="refresh" content="0; url='.$url.'">';
+    }
+
+    //清理dockerStore产生的镜像
+    function uninstallDockerStore(){
+        if ( Model("Docker")->uninstallDockerStore() ) {
+            return Success();
+        }else{
+            return Error();
+        }
     }
 }

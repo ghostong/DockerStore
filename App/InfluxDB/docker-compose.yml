@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  influxdb:
+    restart: always
+    container_name: InfluxDB
+    image:
+      influxdb:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/InfluxDB/config/:/etc/influxdb/
+      - /Volumes/DockerStore/InfluxDB/root/:/root/
+      - /Volumes/DockerStore/InfluxDB/data/:/var/lib/influxdb/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
+    ports:
+      - "8086:8086"
+
+networks:
+  dockerstore:
+    external: true

@@ -1,0 +1,12 @@
+{
+  "appName" : "Kapacitor",
+  "appDescription" : "TICK中的(K) 职能是规则告警，用于配置告警规则将Influxdb数据库查询触发规则的数据进行告警。",
+  "appIcon" : "InfluxDB.svg",
+  "httpPort" : 0,
+  "appPorts": [
+    9092
+  ],
+  "appConfig" : [
+    {"name": "Kapacitor配置文件","file": "/etc/kapacitor/kapacitor.conf"}
+  ]
+}

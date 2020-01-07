@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  kapacitor:
+    restart: always
+    container_name: Kapacitor
+    image:
+      kapacitor:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/Kapacitor/config/:/etc/kapacitor/
+      - /Volumes/DockerStore/Kapacitor/root/:/root/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
+    ports:
+      - "9092:9092"
+
+networks:
+  dockerstore:
+    external: true

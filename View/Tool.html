@@ -17,7 +17,7 @@
         $(document).ready(function(){
             $("#clean-container").click(function(){
                 $(this).attr("disabled","disabled");
-                tmp = $(this);
+                let tmp = $(this);
                 $.ajax({
                     type: 'post', url: "/api/cleanContainer", cache: false, dataType: 'json',
                     success: function (json) {
@@ -29,9 +29,33 @@
 
             $("#clean-image").click(function(){
                 $(this).attr("disabled","disabled");
-                tmp = $(this);
+                let tmp = $(this);
                 $.ajax({
                     type: 'post', url: "/api/cleanImage", cache: false, dataType: 'json',
+                    success: function (json) {
+                        alert(json.responseMessage)
+                        tmp.removeAttr("disabled");
+                    }
+                })
+            });
+
+            $("#clean-docker-store-images").click(function(){
+                $(this).attr("disabled","disabled");
+                let tmp = $(this);
+                $.ajax({
+                    type: 'post', url: "/api/cleanDockerStoreImages", cache: false, dataType: 'json',
+                    success: function (json) {
+                        alert(json.responseMessage)
+                        tmp.removeAttr("disabled");
+                    }
+                })
+            });
+
+            $("#uninstall-docker-store").click(function(){
+                $(this).attr("disabled","disabled");
+                let tmp = $(this);
+                $.ajax({
+                    type: 'post', url: "/api/uninstallDockerStore", cache: false, dataType: 'json',
                     success: function (json) {
                         alert(json.responseMessage)
                         tmp.removeAttr("disabled");
@@ -64,6 +88,10 @@
             <button type="button" class="btn btn-primary" id="clean-container">清理退出容器</button>
 
             <button type="button" class="btn btn-primary" id="clean-image">清理无用镜像</button>
+
+            <button type="button" class="btn btn-primary" id="clean-docker-store-images">清理dockerStore产生的镜像</button>
+
+            <button type="button" class="btn btn-primary" id="uninstall-docker-store">卸载dockerStore</button>
         </p>
     </div>
 </div>

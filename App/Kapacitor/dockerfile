@@ -1,0 +1,9 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+EXPOSE 9092
+WORKDIR /workdir
+RUN apt-get update && apt-get install wget -y
+RUN wget https://dl.influxdata.com/kapacitor/releases/kapacitor_1.5.3_amd64.deb && dpkg -i kapacitor_1.5.3_amd64.deb
+ADD ./dependence /tmp/dependence
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["kapacitord", "-config", "/etc/kapacitor/kapacitor.conf"]

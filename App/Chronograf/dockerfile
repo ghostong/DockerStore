@@ -1,0 +1,9 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+EXPOSE 8888
+WORKDIR /workdir
+RUN apt-get update && apt-get install wget -y
+RUN wget https://dl.influxdata.com/chronograf/releases/chronograf_1.7.16_amd64.deb && dpkg -i chronograf_1.7.16_amd64.deb
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+WORKDIR /var/lib/chronograf
+CMD ["chronograf"]

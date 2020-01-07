@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  chronograf:
+    restart: always
+    container_name: Chronograf
+    image:
+      chronograf:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/Chronograf/data/:/var/lib/chronograf
+    networks:
+      - dockerstore
+    ports:
+      - "8888:8888"
+
+networks:
+  dockerstore:
+    external: true
