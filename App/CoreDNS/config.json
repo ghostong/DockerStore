@@ -1,0 +1,13 @@
+{
+  "appName" : "CoreDNS",
+  "appDescription" : "开源的DNS服务。注意: 部分系统部署可能需要关闭 systemd-resolved 并重新配置 resolv.conf。请参考帮助。",
+  "appIcon" : "CoreDNS.png",
+  "httpPort" : 0,
+  "appPorts": [
+    53
+  ],
+  "appConfig" : [
+    {"name": "CoreDNS 配置文件","file": "/workdir/config/Corefile"},
+    {"name": "自定义 hosts 文件","file": "/workdir/config/own.host"}
+  ]
+}

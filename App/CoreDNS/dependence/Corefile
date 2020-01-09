@@ -1,0 +1,9 @@
+. {
+    hosts /workdir/config/own.host {
+        fallthrough
+    }
+    forward . 114.114.114.114 223.5.5.5 223.6.6.6
+    whoami
+    cache
+    errors
+}

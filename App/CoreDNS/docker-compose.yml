@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  coredns:
+    restart: always
+    container_name: CoreDNS
+    image:
+      coredns:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/CoreDNS/workdir/config:/workdir/config
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"

@@ -337,6 +337,24 @@
     </div>
 
     <div class="panel panel-default">
+        <div class="panel-heading" id="CoreDNS"> CoreDNS </div>
+        <div class="panel-body">
+            <p>
+                1. CoreDNS是一个DNS服务器/转发器 .
+            </p>
+            <p>
+                2. 部分系统部署可能不能启动此服务,需要关闭宿主机的 <mark>systemd-resolved</mark> 服务, 并重新配置 <mark>resolv.conf</mark> 请谨慎操作 .
+            </p>
+            <p>
+                3. 如果宿主机不能上网, 服务启动后需要把 <mark>resolv.conf</mark> 中的 <mark>nameserver</mark> 地址改为 <mark>127.0.0.1</mark> .
+            </p>
+            <p>
+                4. 官方文档,请<a href="https://coredns.io/" target="_blank">点击</a> .
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
         <div class="panel-heading"> 其它工具 </div>
         <div class="panel-body">
             <p>
