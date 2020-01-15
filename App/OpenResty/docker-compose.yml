@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  openresty:
+    restart: always
+    container_name: OpenResty
+    image:
+      openresty:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/OpenResty/workdir/:/workdir/code/
+      - /Volumes/DockerStore/OpenResty/lualib/:/workdir/lualib/
+      - /Volumes/DockerStore/OpenResty/conf.d/:/workdir/conf.d/
+      - /Volumes/DockerStore/OpenResty/nginx/:/workdir/nginx/
+      - /tmp/DockerStore/:/tmp/DockerStore/
+    networks:
+      - dockerstore
+    ports:
+      - "9116:80"
+
+networks:
+  dockerstore:
+    external: true

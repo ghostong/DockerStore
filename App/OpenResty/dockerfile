@@ -1,0 +1,16 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+EXPOSE 80
+WORKDIR /tmp
+RUN apt-get update && \
+    apt-get install libpcre3-dev libssl-dev perl make build-essential wget zlib1g-dev -yq && \
+    wget https://openresty.org/download/openresty-1.15.8.2.tar.gz && tar zxvf openresty-1.15.8.2.tar.gz && \
+    cd openresty-1.15.8.2 && ./configure -j2 && make -j2 && make -j2 && make install
+ENV LUA_PATH="/usr/local/openresty/site/lualib/?.ljbc;/usr/local/openresty/site/lualib/?/init.ljbc;/usr/local/openresty/lualib/?.ljbc;/usr/local/openresty/lualib/?/init.ljbc;/usr/local/openresty/site/lualib/?.lua;/usr/local/openresty/site/lualib/?/init.lua;/usr/local/openresty/lualib/?.lua;/usr/local/openresty/lualib/?/init.lua;./?.lua;/usr/local/openresty/luajit/share/luajit-2.1.0-beta3/?.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua;/usr/local/openresty/luajit/share/lua/5.1/?.lua;/usr/local/openresty/luajit/share/lua/5.1/?/init.lua;/workdir/lualib/?.lua"
+ENV LUA_CPATH="/usr/local/openresty/site/lualib/?.so;/usr/local/openresty/lualib/?.so;./?.so;/usr/local/lib/lua/5.1/?.so;/usr/local/openresty/luajit/lib/lua/5.1/?.so;/usr/local/lib/lua/5.1/loadall.so;/usr/local/openresty/luajit/lib/lua/5.1/?.so"
+# Copy nginx configuration files
+ADD ./dependence /tmp/dependence
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+WORKDIR /workdir
+WORKDIR /tmp/dependence
+CMD ["/usr/local/openresty/bin/openresty","-p","/workdir/nginx", "-g", "daemon off;"]

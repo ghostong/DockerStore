@@ -1,0 +1,1 @@
+ngx.say("hello content_by_lua_file");
