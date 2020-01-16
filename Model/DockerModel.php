@@ -73,10 +73,14 @@ class DockerModel extends \Lit\LitMs\LitMsModel{
         passthru($cmd);
     }
 
-    function buildImage($dir){
+    function buildImage($dir,$retCmd = false){
         $cmd = "cd $dir && docker-compose build";
-        echo $cmd,"\n";
-        passthru($cmd);
+        if ($retCmd) {
+            return $cmd;
+        }else{
+            echo $cmd,"\n";
+            passthru($cmd);
+        }
     }
 
     function cleanImage(){

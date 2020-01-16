@@ -1,11 +1,21 @@
 #!/bin/bash
+## !!!!请不要修改此文件!!!! ##
 
-#Web端口 可直接加入IP, 进行IP访问限制, 例如 127.0.0.1:9100
-PORT=9100
-#用户名
-USERNAME="dockerstore"
-#密码
-PASSWORD="dockerstore"
+#导入配置文件
+if [[ -e ./.dockerStoreConf ]]; then
+    source ./.dockerStoreConf
+fi
+
+#配置默认值
+if [[ ! ${PORT} ]];then
+    PORT="9100"
+fi
+if [[ ! ${USERNAME} ]];then
+    USERNAME="dockerstore"
+fi
+if [[ ! ${PASSWORD} ]];then
+    PASSWORD="dockerstore"
+fi
 
 start () {
     docker run -itd \
@@ -34,6 +44,10 @@ install () {
     docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php install
 }
 
+fastinstall () {
+    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php fastinstall
+}
+
 update () {
     docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php update
 }
@@ -50,6 +64,8 @@ elif [[ "restart" == ${1} ]]; then
     restart ${USERNAME} ${PASSWORD} ${PORT}
 elif [[ "install" == ${1} ]]; then
     install
+elif [[ "fastinstall" == ${1} ]]; then
+    fastinstall
 elif [[ "update" == ${1} ]]; then
     update
 elif [[ "upgrade" == ${1} ]]; then
@@ -57,4 +73,3 @@ elif [[ "upgrade" == ${1} ]]; then
 else
     echo "none";
 fi
-

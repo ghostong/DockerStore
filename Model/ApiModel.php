@@ -179,6 +179,13 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
 
     //ssh链接
     function  sshConnect ( $request, $response ) {
+
+        $appModel = Model("App");
+        if ( ! in_array("WebSSH",$appModel->getRunningApp()) ){
+            return Error(0, "必须先启动 WebSSH 服务才能使用此功能");
+        }
+
+        $action = $request->get["action"];
         $appId = $request->get['appId'];
         $host = $request->header['host'];
         $host = current(explode(":",$host));
@@ -190,7 +197,17 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
 
         //登录地址
         $passwd = base64_encode($pwd);
-        $command = "sudo docker exec -it {$appId} bash";
+        if ($action == "ssh") {
+            $command = "sudo docker exec -it {$appId} bash";
+        } elseif ($action == "build") {
+            $appModel = Model("App");
+            $dir = $appModel->getAppDir($appId);
+            $buildCmd = Model("Docker")->buildImage($dir,true);
+            $buildCmd = str_replace("&&",";",$buildCmd);
+            $command = "sudo docker exec -it DockerStore bash -c '{$buildCmd}'";
+        } else{
+            $command = "ls";
+        }
         $url = "https://".$host.":9112?hostname=127.0.0.1&username=dockerstore&password={$passwd}&command={$command}";
 
         //密码设为无效

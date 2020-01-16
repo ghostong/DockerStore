@@ -14,11 +14,17 @@ function dockerStoreInstall(){
 function dockerStoreUpdate(){
     $dockerDir = __DIR__.DIRECTORY_SEPARATOR."Docker".DIRECTORY_SEPARATOR;
     $cmd = "cd ".$dockerDir."BaseImage && docker-compose pull";
+    echo $cmd ,"\n";
     passthru($cmd);
     $cmd = "cd ".$dockerDir."BaseImagePhpNginx && docker-compose pull";
+    echo $cmd ,"\n";
     passthru($cmd);
     $cmd = "cd ".$dockerDir."DockerStore && docker-compose pull";
+    echo $cmd ,"\n";
     passthru($cmd);
+    $cmd = "curl -S https://code.aliyun.com/litosrc/DockerStore/raw/master/Docker/DockerStore/dockerStore.sh > dockerStore.sh";
+    echo $cmd ,"\n";
+    passthru( $cmd );
 }
 
 if ($argv1 == "install") {
@@ -30,6 +36,11 @@ if ($argv1 == "install") {
 } elseif ($argv1 == "upgrade") {
     dockerStoreUpdate();
     dockerStoreInstall();
+    exit;
+} elseif ($argv1 == "fastinstall") {
+    $appModel = Model("App");
+    $dir = $appModel->getAppDir("WebSSH");
+    Model("Docker")->buildImage($dir);
     exit;
 }
 

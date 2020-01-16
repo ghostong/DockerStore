@@ -26,6 +26,11 @@ sudo chmod  -R +a "$(whoami) allow write,delete,file_inherit,directory_inherit,a
 ./dockerStore.sh install
 ````
 
+### 最小安装
+````bash
+./dockerStore.sh fastinstall
+````
+
 ### 更新基础镜像
 ````bash
 ./dockerStore.sh update
@@ -53,7 +58,7 @@ sudo chmod  -R +a "$(whoami) allow write,delete,file_inherit,directory_inherit,a
 
 ### 配置
 ````bash
-通过修改 dockerStore.sh 文件中的变量来实现配置
+通过增加 .dockerStoreConf 文件配置启动参数
 
 #Web端口 可直接加入IP, 进行IP访问限制, 例如 127.0.0.1:9100
 PORT=9100

@@ -11,6 +11,19 @@
         .one-app p {
             height: 50px;
         }
+        .commandBox {
+            width: 1000px; height: 600px;
+            position: absolute; left: 50%; top: 50%;
+            margin-top: -300px;
+            margin-left: -500px;
+            display: none;
+        }
+        .closeCommandBox{
+            background: #ff0000;
+            padding: 3px 8px 3px 8px;
+            border-radius:3px;
+            float: right;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -23,21 +36,25 @@
                             let config = json.response[i];
                             let str = '<div class="col-xs-6 col-sm-4 col-md-2"><div class="one-app">';
                             str +='<div class="appIcon"><img src="/icon/'+ config.appIcon +'" /></div>';
-                            str +='<h4>'+config.appName+'</h4>';
-                            str +='<p>'+config.appDescription+'</p><div>';
+                            str +='<h4>'+ config.appName +'</h4>';
+                            str +='<p>'+ config.appDescription +'</p><div>';
                             let disabled;
                             let clickName;
+                            let className;
                             if(config.isRunning) {
                                 disabled = "disabled";
                                 clickName = "已启动";
+                                className = ""
                             }else if(!config.isBuild){
                                 disabled = "";
-                                clickName = "构建&启动";
+                                clickName = "构建";
+                                className = "buildApp"
                             }else{
                                 disabled = "";
                                 clickName = "启动";
+                                className = "startApp"
                             }
-                            str +='<button type="button" class="btn btn-primary btn-sm installApp" appId="'+config.appId+'" '+disabled+'>'+clickName+'</button>';
+                            str +='<button type="button" class="btn btn-primary btn-sm '+className+'" appId="'+config.appId+'" '+disabled+'>'+clickName+'</button>';
                             str +='</div></div></div>';
                             $("#appContainer").append(str);
                         }
@@ -47,7 +64,7 @@
             });
 
             function onList() {
-                $(".installApp").click(function(){
+                $(".startApp").click(function(){
                     let installApp = $(this);
                     installApp.attr("disabled","disabled");
                     let appId = installApp.attr("appId");
@@ -60,7 +77,19 @@
                         }
                     })
                 });
+
+                $(".buildApp").click(function(){
+                    let buildApp = $(this);
+                    let appId = buildApp.attr("appId");
+                    let url="/sshConnect?action=build&appId=" + appId;
+                    $(".commandBoxIframe").attr("src",url)
+                    $(".commandBox").show();
+                });
             }
+            $(".closeCommandBox").click(function () {
+                $(".commandBox").hide();
+                window.location.reload();
+            })
         });
 
 
@@ -86,6 +115,13 @@
 <div class="panel panel-default margin-top">
     <div class="row" id="appContainer">
 
+    </div>
+</div>
+
+<div class="panel panel-default commandBox">
+    <div class="panel-heading"> CommandBox <span class="closeCommandBox"> <a href="javascript:void(0)"> X </a></span> </div>
+    <div class="panel-body">
+        <iframe class="commandBoxIframe" src="" height="90%" width="100%"></iframe>
     </div>
 </div>
 
