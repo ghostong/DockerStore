@@ -10,7 +10,7 @@ if [[ ! -f "/workdir/config/config.php" ]]; then
     chown  -R www-data /workdir/config /workdir/data /workdir/apps
 fi
 
-if [[ ! -f "/etc/nginx/ssl/nextcloud.crt" ]]; then
+if [[ ! -f "/etc/nginx/ssl/dockerstore.ssh2.cc.key" ]]; then
     cp -r /tmp/dependence/ssl/* /etc/nginx/ssl/
 fi
 

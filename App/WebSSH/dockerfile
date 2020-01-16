@@ -8,4 +8,4 @@ RUN useradd dockerstore -d /home/dockerstore -m -s /bin/bash && echo dockerstore
     echo "dockerstore     ALL=(ALL)     NOPASSWD :ALL" >> /etc/sudoers
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD ["wssh", "--address=0.0.0.0", "--sslport=9112", "--certfile=/workdir/ssl/webssh.crt", "--keyfile=/workdir/ssl/webssh.key"]
+CMD ["wssh", "--address=0.0.0.0", "--sslport=9112", "--certfile=/workdir/ssl/dockerstore.ssh2.cc.pem", "--keyfile=/workdir/ssl/dockerstore.ssh2.cc.key"]

@@ -7,7 +7,7 @@ ADD ./Docker/DockerStore/swoole-4.4.8.tgz .
 RUN chmod 755 /usr/local/bin/docker-compose && \
     cd swoole-4.4.8 && \
     phpize && \
-    ./configure && \
+    ./configure --enable-openssl && \
     make && make install && \
     echo "extension=swoole.so" > /etc/php/7.2/cli/conf.d/swoole.ini
 WORKDIR /workdir
