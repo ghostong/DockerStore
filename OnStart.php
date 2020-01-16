@@ -22,9 +22,6 @@ function dockerStoreUpdate(){
     $cmd = "cd ".$dockerDir."DockerStore && docker-compose pull";
     echo $cmd ,"\n";
     passthru($cmd);
-    $cmd = "curl -S https://code.aliyun.com/litosrc/DockerStore/raw/master/Docker/DockerStore/dockerStore.sh > dockerStore.sh";
-    echo $cmd ,"\n";
-    passthru( $cmd );
 }
 
 if ($argv1 == "install") {
