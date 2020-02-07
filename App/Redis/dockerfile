@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
 EXPOSE 6379
 RUN apt-get update && apt-get install redis-server -y
 ADD dependence/redis.conf /etc/redis.conf

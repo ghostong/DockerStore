@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
 EXPOSE 8086
 WORKDIR /workdir
 RUN apt-get update && apt-get install wget -y

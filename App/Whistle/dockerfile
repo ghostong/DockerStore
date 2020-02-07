@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
 WORKDIR /workdir
 EXPOSE 9103
 ADD ./dependence/node-v12.13.0-linux-x64.tar.xz .

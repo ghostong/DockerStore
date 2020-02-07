@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
 EXPOSE 9111
 WORKDIR /workdir
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh

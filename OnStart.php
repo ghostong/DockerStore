@@ -12,15 +12,14 @@ function dockerStoreInstall(){
 }
 
 function dockerStoreUpdate(){
-    $dockerDir = __DIR__.DIRECTORY_SEPARATOR."Docker".DIRECTORY_SEPARATOR;
-    $cmd = "cd ".$dockerDir."BaseImage && docker-compose pull";
-    echo $cmd ,"\n";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest";
+    echo $cmd,"\n";
     passthru($cmd);
-    $cmd = "cd ".$dockerDir."BaseImagePhpNginx && docker-compose pull";
-    echo $cmd ,"\n";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest";
+    echo $cmd,"\n";
     passthru($cmd);
-    $cmd = "cd ".$dockerDir."DockerStore && docker-compose pull";
-    echo $cmd ,"\n";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest";
+    echo $cmd,"\n";
     passthru($cmd);
 }
 

@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
 EXPOSE 80
 RUN apt-get update && apt-get install apache2 libapache2-mod-php7.2 php-xml php-mbstring php-intl php-mysql php-redis sudo inotify-tools -yq && \
     echo "date.timezone=UTC" >> /etc/php/7.2/apache2/php.ini && \

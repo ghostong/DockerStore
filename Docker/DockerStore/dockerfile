@@ -1,15 +1,9 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-ubuntu:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/php7-swoole:latest
 EXPOSE 9100
-RUN apt-get update && apt-get -y -q install php7.2 php7.2-dev docker.io
+RUN apt-get update && apt-get -y -q install docker.io
 WORKDIR /tmp
 ADD ./Docker/DockerStore/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
-ADD ./Docker/DockerStore/swoole-4.4.8.tgz .
-RUN chmod 755 /usr/local/bin/docker-compose && \
-    cd swoole-4.4.8 && \
-    phpize && \
-    ./configure --enable-openssl && \
-    make && make install && \
-    echo "extension=swoole.so" > /etc/php/7.2/cli/conf.d/swoole.ini
+RUN chmod 755 /usr/local/bin/docker-compose
 WORKDIR /workdir
 ADD . .
 CMD ["php","Server.php"]
