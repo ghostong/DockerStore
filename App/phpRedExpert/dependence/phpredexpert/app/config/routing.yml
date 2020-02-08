@@ -1,7 +1,0 @@
-eugef_php_red_expert_angular:
-    resource: "@EugefPhpRedExpertAngularBundle/Resources/config/routing.yml"
-    prefix:   /
-
-eugef_php_red_expert_api:
-    resource: "@EugefPhpRedExpertApiBundle/Resources/config/routing.yml"
-    prefix:   /api

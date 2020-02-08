@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: /home/ghost/Code/DockerStore/App/phpRedExpert/dependence/phpredexpert/app/config/routing_dev.yml
