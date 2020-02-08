@@ -1,6 +1,10 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest
 EXPOSE 80
 WORKDIR /workdir
 ADD dependence/phpMyAdmin-4.9.1-all-languages.tar.xz /tmp
+ADD dependence/default /etc/nginx/sites-available/default
 RUN mv /tmp/phpMyAdmin-4.9.1-all-languages/* /workdir
 COPY dependence/config.inc.php ./config.inc.php
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest
 EXPOSE 9113
 RUN apt-get update && apt-get install aria2 apache2-utils -y
 ADD ./dependence /tmp/dependence

@@ -15,10 +15,10 @@ function dockerStoreUpdate(){
     $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest";
     echo $cmd,"\n";
     passthru($cmd);
-    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest";
     echo $cmd,"\n";
     passthru($cmd);
-    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest";
     echo $cmd,"\n";
     passthru($cmd);
 }

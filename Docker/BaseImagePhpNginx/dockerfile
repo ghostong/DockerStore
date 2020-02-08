@@ -1,9 +1,0 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
-EXPOSE 80
-RUN apt-get update && apt-get install php7.2 php7.2-fpm php7.2-dev php7.2-mysql php7.2-XML php7.2-mbstring php7.2-curl php7.2-gd php7.2-zip nginx -yq
-WORKDIR /workdir
-ADD ./dependence/default /etc/nginx/sites-available/default
-ADD ./dependence /tmp/dependence
-ADD ./docker-entrypoint.sh /docker-entrypoint.sh
-ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD ["nginx", "-g", "daemon off;"]

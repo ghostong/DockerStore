@@ -1,3 +1,7 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ds-php-nginx:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest
 EXPOSE 80
 WORKDIR /workdir
+ADD ./dependence /tmp/dependence
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["nginx", "-g", "daemon off;"]
