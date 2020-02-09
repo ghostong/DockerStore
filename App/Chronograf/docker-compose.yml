@@ -13,7 +13,7 @@ services:
     networks:
       - dockerstore
     ports:
-      - "8888:8888"
+      - "9115:8888"
 
 networks:
   dockerstore:

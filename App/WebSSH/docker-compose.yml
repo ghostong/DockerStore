@@ -8,8 +8,8 @@ services:
     build:
       ./
     volumes:
-      - /Volumes/DockerStore/WebSSH/workdir:/workdir
       - /var/run/docker.sock:/var/run/docker.sock
+      - /Volumes/DockerStore/DockerStore/SSL/:/workdir/ssl/
     networks:
       - dockerstore
     ports:

@@ -9,6 +9,7 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/ResilioSync:/volume
+      - /Volumes/DockerStore/DockerStore/SSL/:/workdir/ssl/
     networks:
       - dockerstore
     ports:
