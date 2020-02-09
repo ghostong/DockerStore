@@ -2,6 +2,7 @@
   "appName" : "微力同步",
   "appDescription" : "私有云盘，企业文件同步，团队文件共享协助工具。",
   "appIcon" : "VerySync.png",
+  "httpsOnly": 1,
   "httpPort" : 9104,
   "appPorts": []
 }
