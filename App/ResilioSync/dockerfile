@@ -3,6 +3,5 @@ EXPOSE 9101
 WORKDIR /workdir
 ADD dependence/resilio-sync.deb .
 RUN mkdir -p /volume/config && apt-get install ./resilio-sync.deb
-ADD dependence/sync.conf /workdir/sync.conf
-#CMD ["rslsync","--webui.listen","0.0.0.0:9101","--storage","/volume/config","--log","/dev/null","--nodaemon"]
-CMD ["rslsync","--config","/workdir/sync.conf","--log","/dev/null","--nodaemon"]
+ADD dependence/sync.conf /sync.conf
+CMD ["rslsync","--config","/sync.conf","--log","/dev/null","--nodaemon"]

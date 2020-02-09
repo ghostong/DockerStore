@@ -9,7 +9,7 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/NextCloud/workdir/:/workdir/
-      - /Volumes/DockerStore/NextCloud/config/ssl/:/etc/nginx/ssl/
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
       - /tmp/DockerStore/:/tmp/DockerStore/
     networks:
       - dockerstore
