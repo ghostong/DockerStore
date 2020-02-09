@@ -2,6 +2,6 @@ FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
 EXPOSE 9101
 WORKDIR /workdir
 ADD dependence/resilio-sync.deb .
-RUN mkdir -p /volume/config && apt-get install ./resilio-sync.deb
+RUN apt-get install ./resilio-sync.deb
 ADD dependence/sync.conf /sync.conf
 CMD ["rslsync","--config","/sync.conf","--log","/dev/null","--nodaemon"]
