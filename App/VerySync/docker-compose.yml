@@ -8,11 +8,12 @@ services:
     build:
       ./
     volumes:
-      - /Volumes/DockerStore/VerySync:/volume
+      - /Volumes/DockerStore/VerySync/Download:/Download
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "9104:9104"
+      - "9104:443"
 
 networks:
   dockerstore:

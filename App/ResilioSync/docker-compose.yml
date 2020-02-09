@@ -8,7 +8,8 @@ services:
     build:
       ./
     volumes:
-      - /Volumes/DockerStore/ResilioSync/config:/volume/config
+      - /Volumes/DockerStore/ResilioSync/config:/config
+      - /Volumes/DockerStore/ResilioSync/Download:/Download
       - /Volumes/DockerStore/DockerStore/SSL/:/workdir/ssl/
     networks:
       - dockerstore
