@@ -22,6 +22,7 @@ start () {
     --restart always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /tmp/DockerStore/:/tmp/DockerStore/ \
+    -v /Volumes/DockerStore/DockerStore/SSL/:/Volumes/DockerStore/DockerStore/SSL/
     -p ${3}:9100 \
     --env USERNAME=${1} \
     --env PASSWORD=${2} \
