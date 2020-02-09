@@ -2,6 +2,7 @@
   "appName" : "MySQL5.7",
   "appDescription" : "关系型数据库管理系统，最流行的关系型数据库管理系统之一。",
   "appIcon" : "MySQL.png",
+  "httpsOnly" : 1,
   "httpPort" : 9105,
   "appPorts": [
     3306

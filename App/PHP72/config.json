@@ -2,6 +2,7 @@
   "appName" : "PHP7.2",
   "appDescription" : "PHP即“超文本预处理器”，是一种通用开源脚本语言。",
   "appIcon" : "PHP.png",
+  "httpsOnly" : 1,
   "httpPort" : 9107,
   "appPorts": [],
   "appConfig" : [

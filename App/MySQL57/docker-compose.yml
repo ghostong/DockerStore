@@ -10,11 +10,12 @@ services:
     volumes:
       - /Volumes/DockerStore/MySQL57/mysql:/var/lib/mysql
       - /Volumes/DockerStore/MySQL57/log:/var/log/mysql
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
       - "3306:3306"
-      - "9105:80"
+      - "9105:443"
 
 networks:
   dockerstore:

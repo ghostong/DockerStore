@@ -7,10 +7,12 @@ services:
       phpmyadmin:latest
     build:
       ./
+    volumes:
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "9102:80"
+      - "9102:443"
     environment:
       PMA_ARBITRARY: 1
 

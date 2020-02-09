@@ -13,6 +13,7 @@ services:
       - /Volumes/DockerStore/OpenResty/conf.d/:/workdir/conf.d/
       - /Volumes/DockerStore/OpenResty/nginx/:/workdir/nginx/
       - /tmp/DockerStore/:/tmp/DockerStore/
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:

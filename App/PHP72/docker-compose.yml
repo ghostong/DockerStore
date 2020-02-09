@@ -12,10 +12,11 @@ services:
       - /Volumes/DockerStore/PHP72/config/php-fpm/:/etc/php/7.2/fpm/
       - /Volumes/DockerStore/PHP72/workdir/:/workdir/
       - /tmp/DockerStore/:/tmp/DockerStore/
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "9107:80"
+      - "9107:443"
 
 networks:
   dockerstore:

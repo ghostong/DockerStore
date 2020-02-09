@@ -1,6 +1,9 @@
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+
+    ssl_certificate /etc/nginx/ssl/dockerstore.ssh2.cc.pem;
+    ssl_certificate_key /etc/nginx/ssl/dockerstore.ssh2.cc.key;
 
 	root /workdir;
 

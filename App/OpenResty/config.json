@@ -2,6 +2,7 @@
   "appName" : "OpenResty",
   "appDescription" : "让你的Web服务直接跑在 Nginx 服务内部。",
   "appIcon" : "OpenResty.png",
+  "httpsOnly" : 1,
   "httpPort" : 9116,
   "appPorts": [],
   "appConfig" : [

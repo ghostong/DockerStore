@@ -11,10 +11,11 @@ services:
       - /Volumes/DockerStore/NetToFtp/config/sites-available/:/etc/nginx/sites-available/
       - /Volumes/DockerStore/NetToFtp/config/php-fpm/:/etc/php/7.2/fpm/
       - /Volumes/DockerStore/NetToFtp/workdir/:/workdir/
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "9108:80"
+      - "9108:443"
 
 networks:
   dockerstore:

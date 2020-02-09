@@ -2,6 +2,7 @@
   "appName" : "phpMyAdmin",
   "appDescription" : "用PHP编写的免费工具，用于在Web上管理MySQL。",
   "appIcon" : "phpMyAdmin.png",
+  "httpsOnly" : 1,
   "httpPort" : 9102,
   "appPorts": []
 }
