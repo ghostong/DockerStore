@@ -1,5 +1,6 @@
 <?php
 
+//启动服务
 $argv1 = @$_SERVER['argv'][1];
 
 function dockerStoreInstall(){
@@ -40,5 +41,16 @@ if ($argv1 == "install") {
     exit;
 }
 
+//创建共享网卡
 Model("Docker")->createNetWork();
+
+//ssl证书
+function copySslCertificate(){
+    $dir = "/Volumes/DockerStore/DockerStore/SSL/";
+    !is_dir($dir) && mkdir($dir ,755,true);
+    copy("./SSL/dockerstore.ssh2.cc.key","/Volumes/DockerStore/DockerStore/SSL/dockerstore.ssh2.cc.key");
+    copy("./SSL/dockerstore.ssh2.cc.pem","/Volumes/DockerStore/DockerStore/SSL/dockerstore.ssh2.cc.pem");
+}
+
+copySslCertificate();
 

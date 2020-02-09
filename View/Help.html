@@ -246,7 +246,7 @@
                 4. 通过 <mark>htpasswd -b /volume/config/htpasswd admin 123456</mark> 修改密码.
             </p>
             <p>
-                5. JSON-RPC 链接的配置示例 <mark>http://token:qRc32PlTRI72wQSG7T0R8yR1QxXYRSk4@127.0.0.1:6800/jsonrpc</mark>
+                5. JSON-RPC 链接的配置示例 <mark>https://token:qRc32PlTRI72wQSG7T0R8yR1QxXYRSk4@127.0.0.1:6800/jsonrpc</mark>
             </p>
             <p>
                 6. 默认 secret 请通过"编辑"功能查看. 配置文件: <mark>/volume/config/aria2.conf</mark> 搜索 <mark>rpc-secret</mark> .
@@ -343,7 +343,7 @@
                 1. CoreDNS是一个DNS服务器/转发器 .
             </p>
             <p>
-                2. 部分系统部署可能不能启动此服务,需要关闭宿主机的 <mark>systemd-resolved</mark> 服务, 并重新配置 <mark>resolv.conf</mark> 请谨慎操作 .
+                2. 部分宿主机系统部署可能不能启动此服务,需要关闭宿主机的 <mark>systemd-resolved</mark> 服务 (service systemd-resolved stop), 并重新配置 <mark>resolv.conf</mark> 请谨慎操作 .
             </p>
             <p>
                 3. 如果宿主机不能上网, 服务启动后需要把 <mark>resolv.conf</mark> 中的 <mark>nameserver</mark> 地址改为 <mark>127.0.0.1</mark> .

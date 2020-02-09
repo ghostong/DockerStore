@@ -9,10 +9,11 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/DokuWiki/workdir/:/workdir/
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "9106:80"
+      - "9106:443"
 
 networks:
   dockerstore:

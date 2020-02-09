@@ -12,12 +12,13 @@ services:
       - /Volumes/DockerStore/Aria2/config/sites-available/:/etc/nginx/sites-available/
       - /Volumes/DockerStore/Aria2/config/php-fpm/:/etc/php/7.2/fpm/
       - /Volumes/DockerStore/Aria2/Download:/volume/Download
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
       - /tmp/DockerStore/:/tmp/DockerStore/
     networks:
       - dockerstore
     ports:
       - "6800:6800"
-      - "9113:80"
+      - "9113:443"
 
 networks:
   dockerstore:

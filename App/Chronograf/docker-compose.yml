@@ -9,6 +9,7 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/Chronograf/data/:/var/lib/chronograf
+      - /Volumes/DockerStore/DockerStore/SSL/:/workdir/ssl/
     networks:
       - dockerstore
     ports:
