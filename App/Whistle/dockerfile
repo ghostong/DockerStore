@@ -1,9 +1,12 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest
 WORKDIR /workdir
 EXPOSE 9103
 ADD ./dependence/node-v12.13.0-linux-x64.tar.xz .
+ADD dependence/default /etc/nginx/sites-available/default
 RUN mv ./node-v12.13.0-linux-x64 /usr/local/lib/nodejs && \
     ln -s /usr/local/lib/nodejs/bin/node /usr/bin/node && \
     ln -s /usr/local/lib/nodejs/bin/npm /usr/bin/npm && \
     npm install whistle -g --registry=https://registry.npm.taobao.org
-CMD ["/usr/local/lib/nodejs/bin/w2","--host","0.0.0.0","--port","9103","run"]
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["/usr/local/lib/nodejs/bin/w2","--host","0.0.0.0","--port","8889","run"]

@@ -1,6 +1,7 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest
 EXPOSE 9111
 WORKDIR /workdir
+ADD dependence/default /etc/nginx/sites-available/default
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence /tmp/dependence
 ENTRYPOINT [ "/docker-entrypoint.sh" ]

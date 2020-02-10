@@ -11,10 +11,11 @@ services:
       - /Volumes/DockerStore/FrpClient/config/:/volume/config/
       - /Volumes/DockerStore/FrpClient/log/:/volume/log/
       - /tmp/DockerStore/:/tmp/DockerStore/
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "9111:9111"
+      - "9111:443"
 
 networks:
   dockerstore:

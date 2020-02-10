@@ -2,6 +2,7 @@
   "appName" : "FrpServer",
   "appDescription" : "反向代理工具，该 frp 服务器需要与 frp 客户端配合使用。",
   "appIcon" : "FrpServer.png",
+  "httpsOnly" : 1,
   "httpPort" : 9110,
   "appPorts": [
     7000,

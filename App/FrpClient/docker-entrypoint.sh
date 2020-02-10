@@ -12,4 +12,6 @@ fi
 
 ./frps -c /workdir/frps.ini &
 
+/etc/init.d/nginx start
+
 exec "$@"

@@ -9,10 +9,12 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/Whistle:/volume
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "9103:9103"
+      - "9103:443"
+      - "8889:8889"
 
 networks:
   dockerstore:
