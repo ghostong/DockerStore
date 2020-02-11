@@ -198,7 +198,7 @@ class ApiModel extends \Lit\LitMs\LitMsModel{
         //登录地址
         $passwd = base64_encode($pwd);
         if ($action == "ssh") {
-            $command = "sudo docker exec -it {$appId} bash";
+            $command = "sudo docker exec -it {$appId} bash -c 'clear;bash' ";
         } elseif ($action == "build") {
             $appModel = Model("App");
             $dir = $appModel->getAppDir($appId);
