@@ -2,8 +2,6 @@
 
 cp -rf /tmp/dependence/fpm/* /etc/php/7.2/fpm
 
-ln -s /etc/php/7.2/mods-available /etc/php/7.2/fpm/conf.d
-
 if [[ ! -f "/workdir/config/config.php" ]]; then
     unzip -qo -d /workdir/ /tmp/dependence/nextcloud-17.0.1.zip && mv /workdir/nextcloud/* /workdir && rm -rf /workdir/nextcloud
     mkdir /workdir/data
