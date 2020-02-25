@@ -2,6 +2,7 @@
 
 //启动服务
 $argv1 = @$_SERVER['argv'][1];
+$argv2 = @$_SERVER['argv'][2];
 
 function dockerStoreInstall(){
     $appModel = Model("App");
@@ -14,13 +15,13 @@ function dockerStoreInstall(){
 
 function dockerStoreUpdate(){
     $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest";
-    echo $cmd,"\n";
+    echo $cmd,PHP_EOL;
     passthru($cmd);
     $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest";
-    echo $cmd,"\n";
+    echo $cmd,PHP_EOL;
     passthru($cmd);
     $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest";
-    echo $cmd,"\n";
+    echo $cmd,PHP_EOL;
     passthru($cmd);
 }
 
@@ -39,6 +40,16 @@ if ($argv1 == "install") {
     $dir = $appModel->getAppDir("WebSSH");
     Model("Docker")->buildImage($dir);
     exit;
+} elseif ($argv1 == "build"){
+    $config = $appModel->getAppConfig($argv2);
+    if (!empty($config)) {
+        echo "Start build App ",$argv2,PHP_EOL;
+        $dir = $appModel->getAppDir($argv2);
+        Model("Docker")->buildImage($dir);
+    }else{
+        echo "Can not find App ",$argv2,PHP_EOL;
+        exit;
+    }
 }
 
 //创建共享网卡

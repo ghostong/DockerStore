@@ -54,6 +54,10 @@ sudo chmod  -R +a "$(whoami) allow write,delete,file_inherit,directory_inherit,a
 ### 重启项目
 ````bash
 ./dockerStore.sh restart
+
+### 构建单个APP
+./dockerStore.sh build MySQL75
+
 ````
 
 ### 配置
