@@ -57,6 +57,10 @@ upgrade () {
     docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php upgrade
 }
 
+build () {
+    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php build {$1}
+}
+
 if [[ "start" == ${1} ]]; then
     start ${USERNAME} ${PASSWORD} ${PORT}
 elif [[ "stop" == ${1} ]]; then
@@ -71,6 +75,8 @@ elif [[ "update" == ${1} ]]; then
     update
 elif [[ "upgrade" == ${1} ]]; then
     upgrade
+elif [[ "build" == ${1} ]]; then
+    build ${2}
 else
     echo "none";
 fi

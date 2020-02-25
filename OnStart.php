@@ -25,6 +25,18 @@ function dockerStoreUpdate(){
     passthru($cmd);
 }
 
+function dockerBuildOne( $appName ){
+    $appModel = Model("App");
+    $config = $appModel->getAppConfig($appName);
+    if (!empty($config)) {
+        echo "Start build App ",$appName,PHP_EOL;
+        $dir = $appModel->getAppDir($appName);
+        Model("Docker")->buildImage($dir);
+    }else{
+        echo "Can not find App ",$appName,PHP_EOL;
+    }
+}
+
 if ($argv1 == "install") {
     dockerStoreInstall();
     exit;
@@ -41,15 +53,8 @@ if ($argv1 == "install") {
     Model("Docker")->buildImage($dir);
     exit;
 } elseif ($argv1 == "build"){
-    $config = $appModel->getAppConfig($argv2);
-    if (!empty($config)) {
-        echo "Start build App ",$argv2,PHP_EOL;
-        $dir = $appModel->getAppDir($argv2);
-        Model("Docker")->buildImage($dir);
-    }else{
-        echo "Can not find App ",$argv2,PHP_EOL;
-        exit;
-    }
+    dockerBuildOne($argv2);
+    exit;
 }
 
 //创建共享网卡
