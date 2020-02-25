@@ -58,7 +58,7 @@ upgrade () {
 }
 
 build () {
-    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php build {$1}
+    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php build $1
 }
 
 if [[ "start" == ${1} ]]; then
