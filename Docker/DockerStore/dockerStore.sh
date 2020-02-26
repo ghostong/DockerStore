@@ -41,24 +41,8 @@ restart () {
     start ${1} ${2} ${3}
 }
 
-install () {
-    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php install
-}
-
-fastinstall () {
-    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php fastinstall
-}
-
-update () {
-    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php update
-}
-
-upgrade () {
-    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php upgrade
-}
-
-build () {
-    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php build $1
+other () {
+    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php $1 $2
 }
 
 if [[ "start" == ${1} ]]; then
@@ -67,16 +51,6 @@ elif [[ "stop" == ${1} ]]; then
     stop
 elif [[ "restart" == ${1} ]]; then
     restart ${USERNAME} ${PASSWORD} ${PORT}
-elif [[ "install" == ${1} ]]; then
-    install
-elif [[ "fastinstall" == ${1} ]]; then
-    fastinstall
-elif [[ "update" == ${1} ]]; then
-    update
-elif [[ "upgrade" == ${1} ]]; then
-    upgrade
-elif [[ "build" == ${1} ]]; then
-    build ${2}
 else
-    echo "none";
+    other ${1} ${2}
 fi

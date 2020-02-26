@@ -55,10 +55,28 @@ if ($argv1 == "install") {
 } elseif ($argv1 == "build"){
     dockerBuildOne($argv2);
     exit;
+} elseif ($argv1 == "ps"){
+    $running = Model("App")->getRunningApp($argv2);
+    foreach ($running as $v) {
+        echo "- ",$v,PHP_EOL;
+    }
+    exit;
+} elseif ($argv1 == "rmi"){
+    if ( Model("App")->removeApp($argv2) ) {
+        echo "Success",PHP_EOL;
+    }else{
+        echo "Not Found ", $argv2, PHP_EOL;
+    }
+    exit;
+} elseif ($argv1) {
+    echo "none",PHP_EOL;
+    exit;
 }
 
 //创建共享网卡
 Model("Docker")->createNetWork();
+
+
 
 //ssl证书
 function copySslCertificate(){
