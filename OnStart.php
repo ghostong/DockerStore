@@ -61,8 +61,15 @@ if ($argv1 == "install") {
         echo "- ",$v,PHP_EOL;
     }
     exit;
-} elseif ($argv1 == "rmi"){
+} elseif ($argv1 == "rm"){
     if ( Model("App")->removeApp($argv2) ) {
+        echo "Success",PHP_EOL;
+    }else{
+        echo "Not Found ", $argv2, PHP_EOL;
+    }
+    exit;
+} elseif ($argv1 == "rmi"){
+    if ( Model("Docker")->removeImage($argv2) ) {
         echo "Success",PHP_EOL;
     }else{
         echo "Not Found ", $argv2, PHP_EOL;
