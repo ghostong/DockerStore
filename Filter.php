@@ -3,6 +3,6 @@
  * 自定义过滤器
  */
 
-class Filter extends Lit\LitMs\LitMsFilter {
+class Filter extends Lit\Ms\LitMsFilter {
     
 }

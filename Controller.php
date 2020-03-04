@@ -3,7 +3,7 @@
  * LitMs Controller 层
  */
 
-class Controller extends Lit\LitMs\LitMsController {
+class Controller extends Lit\Ms\LitMsController {
 
     function __construct(){
         $this->get('/',function (){

@@ -6,7 +6,7 @@
  * Time: 15:18
  */
 
-class DockerModel extends \Lit\LitMs\LitMsModel{
+class DockerModel extends \Lit\Ms\LitMsModel{
 
     function getRunningContainer(){
         $cmd = 'docker ps |grep -v "CONTAINER ID" |awk \'{print $NF}\'';

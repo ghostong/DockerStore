@@ -3,7 +3,7 @@
 //autoload
 require(__DIR__.'/vendor/autoload.php');
 
-$server = new \Lit\LitMs\LitMsServer();
+$server = new \Lit\Ms\LitMsServer();
 
 $server
     ->setHttpHost("0.0.0.0")    //设置监听host ip

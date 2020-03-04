@@ -1,7 +1,7 @@
 <?php
 
 
-class AppModel extends \Lit\LitMs\LitMsModel{
+class AppModel extends \Lit\Ms\LitMsModel{
 
 
     function getAppRoot () {

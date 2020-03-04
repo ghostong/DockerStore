@@ -1,6 +1,6 @@
 <?php
 
-class ApiModel extends \Lit\LitMs\LitMsModel{
+class ApiModel extends \Lit\Ms\LitMsModel{
 
     //所有app列表
     function allAppList(){
