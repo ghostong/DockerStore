@@ -58,7 +58,7 @@ sudo chmod  -R +a "$(whoami) allow write,delete,file_inherit,directory_inherit,a
 
 ### 构建单个APP
 ````bash
-./dockerStore.sh build MySQL75
+./dockerStore.sh build MySQL57
 
 ````
 
@@ -78,7 +78,7 @@ PASSWORD="dockerstore"
 
 ### 访问
     1. 通过 https 协议访问服务IP的 9100(默认) 端口(或者启动配置的端口) 访问服务
-    2. 本机部署可以使用: https://dockerstore.ssh2.cc 域名访问, 此域名指向 127.0.0.1 
+    2. 本机部署可以使用: https://dockerstore.ssh2.cc:9100 域名访问, 此域名指向 127.0.0.1:9100, 端口号参考配置
     3. DockerStore 默认的ssl证书域名为: https://dockerstore.ssh2.cc 可以自行更改hosts文件指向部署服务器IP来实现 https 访问
     4. IP 访问https 会报证书错误, 至文档编写日期 2020-01-16 , 所有的浏览器都可以直接强制信任后访问服务
     5. 用户名密码为 配置项中的 USERNAME, PASSWORD , 默认用户名: dockerstore   密码: dockerstore
