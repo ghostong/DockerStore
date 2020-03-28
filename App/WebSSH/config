@@ -13,3 +13,14 @@
 #IdentityFile ~/.ssh/id_rsa.pub
 #是否只接受SSH key 登录
 #IdentitiesOnly yes
+#SSH代理(跳板机)
+#ProxyJump _proxy
+
+#代理(跳板机)名称
+#Host _proxy
+#代理主机地址或IP
+#HostName 127.0.0.2
+#ssh端口
+#Port 22
+#代理要登录的用户名
+#User root
