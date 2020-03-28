@@ -1,0 +1,15 @@
+#创建ssh密钥  ssh-keygen
+#公钥添加到目的主机 ssh-copy-id hostname
+
+#主机别名
+#Host LocalHost
+#主机地址或IP
+#HostName 127.0.0.1
+#ssh端口
+#Port 22
+#要登录的用户名
+#User root
+#公钥保存文件
+#IdentityFile ~/.ssh/id_rsa.pub
+#是否只接受SSH key 登录
+#IdentitiesOnly yes

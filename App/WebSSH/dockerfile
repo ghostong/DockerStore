@@ -6,5 +6,7 @@ RUN pip3 install webssh -i https://mirrors.aliyun.com/pypi/simple
 RUN useradd dockerstore -d /home/dockerstore -m -s /bin/bash && echo dockerstore:lnce@4hu1.onh | chpasswd  && \
     echo "dockerstore     ALL=(ALL)     NOPASSWD :ALL" >> /etc/sudoers
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ADD ./config /tmp/config
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
+WORKDIR /root
 CMD ["wssh", "--address=0.0.0.0", "--sslport=9112", "--certfile=/workdir/ssl/dockerstore.ssh2.cc.pem", "--keyfile=/workdir/ssl/dockerstore.ssh2.cc.key"]

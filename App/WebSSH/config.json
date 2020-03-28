@@ -4,5 +4,8 @@
   "appIcon" : "WebSSH.png",
   "httpsOnly" : 1,
   "httpPort" : 9112,
-  "appPorts": []
+  "appPorts": [],
+  "appConfig" : [
+    {"name": "sshConfig 配置文件","file": "/root/.ssh/config"}
+  ]
 }
