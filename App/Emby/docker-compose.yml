@@ -4,7 +4,7 @@ services:
     restart: always
     container_name: Emby
     image:
-      emby/embyserver:latest
+      emby:latest
     build:
       ./
     volumes:
@@ -12,11 +12,11 @@ services:
       - /Volumes/DockerStore/Emby/data:/data/Emby
       - /Volumes/DockerStore/ResilioSync/Download/Emby:/data/ResilioSync
       - /Volumes/DockerStore/Aria2/Download/Emby:/data/Aria2
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore
     ports:
-      - "8096:8096"
-      - "8920:8920"
+      - "9117:8096"
     environment:
       TZ: "Asia/Shanghai"
 

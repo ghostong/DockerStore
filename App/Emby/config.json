@@ -1,0 +1,8 @@
+{
+  "appName" : "Emby",
+  "appDescription" : "一个很强大的多媒体中心。",
+  "appIcon" : "Emby.png",
+  "httpsOnly" : 0,
+  "httpPort" : 9117,
+  "appPorts": []
+}
