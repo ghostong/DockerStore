@@ -91,8 +91,8 @@ function copySslCertificate(){
     !is_dir($dir) && mkdir($dir ,755,true);
     copy("./SSL/dockerstore.ssh2.cc.key","/Volumes/DockerStore/DockerStore/SSL/dockerstore.ssh2.cc.key");
     copy("./SSL/dockerstore.ssh2.cc.pem","/Volumes/DockerStore/DockerStore/SSL/dockerstore.ssh2.cc.pem");
-    copy("./SSL/tomcat_dockerstore.ssh2.cc.pfx","/Volumes/DockerStore/DockerStore/SSL/tomcat_dockerstore.ssh2.cc.pfx");
-    copy("./SSL/iis_dockerstore.ssh2.cc.pfx","/Volumes/DockerStore/DockerStore/SSL/iis_dockerstore.ssh2.cc.pfx");
+    copy("./SSL/iis-dockerstore.ssh2.cc.pfx","/Volumes/DockerStore/DockerStore/SSL/iis-dockerstore.ssh2.cc.pfx");
+    copy("./SSL/iis-pfx-password.txt","/Volumes/DockerStore/DockerStore/SSL/iis-pfx-password.txt");
 }
 
 copySslCertificate();

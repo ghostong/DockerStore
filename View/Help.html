@@ -379,6 +379,24 @@
     </div>
 
     <div class="panel panel-default">
+        <div class="panel-heading" id="Emby"> Emby </div>
+        <div class="panel-body">
+            <p>
+                1. 由于项目全部修改为HTTPS, 需执行部分操作才能使用 Emby .
+            </p>
+            <p>
+                2. Emby 启动后, 点击 Emby App 的<mark>终端</mark>按钮 .
+            </p>
+            <p>
+                <mark>sed -i "5i\ \ \&lt;CertificatePath&gt;/etc/nginx/ssl/iis-dockerstore.ssh2.cc.pfx&lt;/CertificatePath&gt;" /config/config/system.xml</mark>
+            </p>
+            <p>
+                <mark>head -1 /etc/nginx/ssl/iis-pfx-password.txt | tr "\n" " " | xargs -i sed -i "6i\ \ \&lt;CertificatePassword&gt;{}&lt;/CertificatePassword&gt;" /config/config/system.xml</mark>
+            </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
         <div class="panel-heading"> 其它工具 </div>
         <div class="panel-body">
             <p>
