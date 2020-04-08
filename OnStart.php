@@ -37,6 +37,18 @@ function dockerBuildOne( $appName ){
     }
 }
 
+function dockerStartOne ( $appName ) {
+    $appModel = Model("App");
+    $config = $appModel->getAppConfig($appName);
+    if (!empty($config)) {
+        echo "Start up App ",$appName,PHP_EOL;
+        $dir = $appModel->getAppDir($appName);
+        Model("Docker")->startContainer($dir);
+    }else{
+        echo "Can not find App ",$appName,PHP_EOL;
+    }
+}
+
 if ($argv1 == "install") {
     dockerStoreInstall();
     exit;
@@ -54,6 +66,9 @@ if ($argv1 == "install") {
     exit;
 } elseif ($argv1 == "build"){
     dockerBuildOne($argv2);
+    exit;
+} elseif ($argv1 == "up"){
+    dockerStartOne($argv2);
     exit;
 } elseif ($argv1 == "ps"){
     $running = Model("App")->getRunningApp($argv2);
@@ -82,8 +97,6 @@ if ($argv1 == "install") {
 
 //创建共享网卡
 Model("Docker")->createNetWork();
-
-
 
 //ssl证书
 function copySslCertificate(){
