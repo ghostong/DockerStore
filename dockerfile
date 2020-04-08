@@ -5,7 +5,6 @@ WORKDIR /tmp
 ADD ./Dependence/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
 RUN chmod 755 /usr/local/bin/docker-compose
 WORKDIR /workdir
-ADD ./App App
 ADD ./Model Model
 ADD ./SSL SSL
 ADD ./Static Static
@@ -15,5 +14,6 @@ ADD ./Controller.php Controller.php
 ADD ./Filter.php Filter.php
 ADD ./OnStart.php OnStart.php
 ADD ./Server.php Server.php
+ADD ./App App
 
 CMD ["php","Server.php"]
