@@ -10,8 +10,8 @@ services:
     volumes:
       - /Volumes/DockerStore/Emby/config:/config
       - /Volumes/DockerStore/Emby/data:/data/Emby
-      - /Volumes/DockerStore/ResilioSync/Download/Emby:/data/ResilioSync
-      - /Volumes/DockerStore/Aria2/Download/Emby:/data/Aria2
+      - /Volumes/DockerStore/ResilioSync/emby:/data/ResilioSync
+      - /Volumes/DockerStore/Aria2/emby:/data/Aria2
       - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
     networks:
       - dockerstore

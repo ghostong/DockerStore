@@ -9,7 +9,8 @@ services:
       ./
     volumes:
       - /Volumes/DockerStore/ResilioSync/config:/config
-      - /Volumes/DockerStore/ResilioSync/Download:/Download
+      - /Volumes/DockerStore/ResilioSync/emby:/emby
+      - /Volumes/DockerStore/ResilioSync/data:/data
       - /Volumes/DockerStore/DockerStore/SSL/:/workdir/ssl/
     networks:
       - dockerstore
