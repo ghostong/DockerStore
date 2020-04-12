@@ -49,8 +49,13 @@ class Controller extends Lit\Ms\LitMsController {
         $this->post('/api/removeApp',function ($request){
             return Model("Api")->removeApp($request);
         });
+
         $this->post('/api/restartApp',function ($request){
             return Model("Api")->restartApp($request);
+        });
+
+        $this->post('/api/delApp',function ($request){
+            return Model("Api")->removeImage($request);
         });
 
         $this->post('/api/cleanImage',function ($request){

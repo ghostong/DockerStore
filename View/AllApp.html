@@ -24,8 +24,60 @@
             border-radius:3px;
             float: right;
         }
+        .alignCenter{
+            text-align: center;
+        }
     </style>
     <script>
+        function startIcon( appId, isRunning, isBuild ) {
+            if(isRunning) {
+                iconName = "已启动";
+                disabled = "disabled";
+            }else if(isBuild){
+                disabled = "";
+                iconName = "&nbsp;启&nbsp;动&nbsp;";
+            }else{
+                disabled = "disabled";
+                iconName = "未构建";
+            }
+            return "<button type=\"button\" class=\"btn btn-primary btn-sm startApp\" appId=\""+appId+"\" "+disabled+">"+iconName+"</button>";
+        }
+
+        function buildIcon( appId, isBuild ) {
+            if(isBuild){
+                disabled = "disabled";
+                iconName = "已构建";
+            }else{
+                disabled = "";
+                iconName = "&nbsp;构&nbsp;建&nbsp;";
+
+            }
+            return "<button type=\"button\" class=\"btn btn-primary btn-sm buildApp\" appId=\""+appId+"\" "+disabled+">"+iconName+"</button>";
+        }
+        function delIcon( appId, isBuild, isRunning ) {
+            if(isRunning){
+                disabled = "disabled";
+            }else if(isBuild){
+                disabled = "";
+            }else{
+                disabled = "disabled";
+            }
+            return "<button type=\"button\" class=\"btn btn-warning btn-sm delApp\" appId=\""+appId+"\" "+disabled+">删除</button>";
+        }
+        function trLine( appIcon, appName, appDescription, startIcon, buildIcon, delIcon) {
+            return "" +
+                "<tr>" +
+                    "<td class='alignCenter'>" +
+                        "<img src=\"/icon/"+appIcon+"\" style=\"height:24px;\"/>" +
+                    "</td>" +
+                    "<td class='alignCenter'>"+ appName +"</td>"+
+                    "<td>"+ appDescription +"</td>"+
+                    "<td class='alignCenter'>"+ startIcon +"</td>"+
+                    "<td class='alignCenter'>"+ buildIcon +"</td>"+
+                    "<td class='alignCenter'>"+ delIcon +"</td>" +
+                "</tr>";
+        }
+
         $(document).ready(function(){
             //app列表
             $.ajax({
@@ -34,29 +86,11 @@
                     if(json.success == 1) {
                         for ( let i = 0; i < json.response.length; i++) {
                             let config = json.response[i];
-                            let str = '<div class="col-xs-6 col-sm-4 col-md-2"><div class="one-app">';
-                            str +='<div class="appIcon"><img src="/icon/'+ config.appIcon +'" /></div>';
-                            str +='<h4>'+ config.appName +'</h4>';
-                            str +='<p>'+ config.appDescription +'</p><div>';
-                            let disabled;
-                            let clickName;
-                            let className;
-                            if(config.isRunning) {
-                                disabled = "disabled";
-                                clickName = "已启动";
-                                className = ""
-                            }else if(!config.isBuild){
-                                disabled = "";
-                                clickName = "构建";
-                                className = "buildApp"
-                            }else{
-                                disabled = "";
-                                clickName = "启动";
-                                className = "startApp"
-                            }
-                            str +='<button type="button" class="btn btn-primary btn-sm '+className+'" appId="'+config.appId+'" '+disabled+'>'+clickName+'</button>';
-                            str +='</div></div></div>';
-                            $("#appContainer").append(str);
+                            let startIconStr = startIcon( config.appId, config.isRunning, config.isBuild );
+                            let buildIconStr = buildIcon( config.appId, config.isBuild );
+                            let delIconStr = delIcon( config.appId, config.isBuild, config.isRunning );
+                            let trLineStr = trLine(config.appIcon, config.appName, config.appDescription, startIconStr, buildIconStr, delIconStr);
+                            $("#appContainer").append(trLineStr);
                         }
                     }
                     onList();
@@ -78,6 +112,20 @@
                     })
                 });
 
+                $(".delApp").click(function(){
+                    let delApp = $(this);
+                    delApp.attr("disabled","disabled");
+                    let appId = delApp.attr("appId");
+                    $.ajax({
+                        type: 'post', url: "/api/delApp", cache: false, dataType: 'json', data: "appId="+appId,
+                        success: function (json) {
+                            if ( json.success == 1 ) {
+                                window.location.reload();
+                            }
+                        }
+                    })
+                });
+
                 $(".buildApp").click(function(){
                     let buildApp = $(this);
                     let appId = buildApp.attr("appId");
@@ -89,7 +137,8 @@
             $(".closeCommandBox").click(function () {
                 $(".commandBox").hide();
                 window.location.reload();
-            })
+            });
+
         });
 
 
@@ -113,9 +162,17 @@
 </nav>
 
 <div class="panel panel-default margin-top">
-    <div class="row" id="appContainer">
 
-    </div>
+    <table class="table table-hover">
+        <thead class="alert alert-info">
+            <tr style="text-align: center;">
+                <td>#</td><td>应用名</td><td>应用简介</td><td>启动</td><td>构建</td><td>删除</td>
+            </tr>
+        </thead>
+        <tbody id="appContainer">
+        </tbody>
+    </table>
+
 </div>
 
 <div class="panel panel-default commandBox">

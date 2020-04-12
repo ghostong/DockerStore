@@ -35,6 +35,16 @@ class ApiModel extends \Lit\Ms\LitMsModel{
         }
     }
 
+    //删除镜像
+    function removeImage ($request) {
+        $appId = $request->post['appId'];
+        if ($appId && Model("App")->removeImage ($appId)) {
+            return Success();
+        }else{
+            return Error();
+        }
+    }
+
     //获取正在运行app
     function getRunningApp ($request) {
         $host = $request->header['host'];

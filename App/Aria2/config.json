@@ -1,6 +1,6 @@
 {
   "appName" : "Aria2",
-  "appDescription" : "Aria2是一个轻量级的多协议和多源命令行下载实用程序。它支持HTTP / HTTPS，FTP，SFTP，BitTorrent和Metalink。 Aria2可以通过内置的JSON-RPC和XML-RPC接口进行操作。",
+  "appDescription" : "Aria2是一个轻量级的多协议和多源命令行下载实用程序。它支持HTTP / HTTPS，FTP，SFTP，BitTorrent和Metalink。",
   "appIcon" : "Aria2.png",
   "httpsOnly" : 1,
   "httpPort" : 9113,

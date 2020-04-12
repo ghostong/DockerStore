@@ -84,6 +84,16 @@ class AppModel extends \Lit\Ms\LitMsModel{
         return false;
     }
 
+    //删除镜像
+    function removeImage( $appId ){
+        if ($this->getAppConfig($appId)) {
+            if(Model("Docker")->removeImage($appId)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     //重启App
     function restartApp ( $appId ) {
         if ($this->getAppConfig($appId)) {
