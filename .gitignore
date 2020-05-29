@@ -1,3 +1,7 @@
 .idea/
 composer.lock
 vendor/
+SSL/dockerstore.ssh2.cc.key
+SSL/dockerstore.ssh2.cc.pem
+SSL/iis-dockerstore.ssh2.cc.pfx
+SSL/iis-pfx-password.txt
