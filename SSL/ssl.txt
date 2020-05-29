@@ -1,0 +1,5 @@
+此目录应包含如下文件,为避免公开提交后代码被扫描,以下文件不提交.
+dockerstore.ssh2.cc.pem
+dockerstore.ssh2.cc.key
+iis-dockerstore.ssh2.cc.pfx
+iis-pfx-password.txt
