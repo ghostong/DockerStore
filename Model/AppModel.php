@@ -47,7 +47,7 @@ class AppModel extends \Lit\Ms\LitMsModel{
         $runningApp = [];
         $appList = $this->listApp();
         if ($appList){
-            $runningContainer = Model("Docker")->getRunningContainer();
+            $runningContainer = (new DockerModel())->getRunningContainer();
             if ($runningContainer) {
                 $appTmpList = array_map("strtolower",$appList);
                 $runningContainer = array_map("strtolower",$runningContainer);
@@ -66,7 +66,7 @@ class AppModel extends \Lit\Ms\LitMsModel{
     function startApp ( $appId ) {
         if ($this->getAppConfig($appId)) {
             $appDir = $this->getAppDir($appId);
-            if(Model("Docker")->startContainer($appDir)){
+            if((new DockerModel())->startContainer($appDir)){
                 return true;
             }
         }
@@ -77,7 +77,7 @@ class AppModel extends \Lit\Ms\LitMsModel{
     function removeApp ( $appId ) {
         if ($this->getAppConfig($appId)) {
             $appDir = $this->getAppDir($appId);
-            if(Model("Docker")->removeContainer($appDir)){
+            if((new DockerModel())->removeContainer($appDir)){
                 return true;
             }
         }
@@ -87,7 +87,7 @@ class AppModel extends \Lit\Ms\LitMsModel{
     //删除镜像
     function removeImage( $appId ){
         if ($this->getAppConfig($appId)) {
-            if(Model("Docker")->removeImage($appId)){
+            if((new DockerModel())->removeImage($appId)){
                 return true;
             }
         }
@@ -98,7 +98,7 @@ class AppModel extends \Lit\Ms\LitMsModel{
     function restartApp ( $appId ) {
         if ($this->getAppConfig($appId)) {
             $appDir = $this->getAppDir($appId);
-            if(Model("Docker")->restartContainer($appDir)){
+            if((new DockerModel())->restartContainer($appDir)){
                 return true;
             }
         }
@@ -107,13 +107,13 @@ class AppModel extends \Lit\Ms\LitMsModel{
 
     //获取App配置文件
     function getAppFileContent( $appId,$configFile ){
-        $ret = Model("Docker")->getConfigFileContent( $appId, $configFile );
+        $ret = (new DockerModel())->getConfigFileContent( $appId, $configFile );
         return implode("\n",$ret);
     }
 
     //保存配置文件
     function saveConfigContent ($appId,$configFile,$content) {
-        $ret = Model("Docker")->setConfigFileContent( $appId,$configFile,$content );
+        $ret = (new DockerModel())->setConfigFileContent( $appId,$configFile,$content );
         if ($ret) {
             return true;
         }else{
@@ -124,7 +124,7 @@ class AppModel extends \Lit\Ms\LitMsModel{
     //获取容器log
     function getAppLogs ($appId) {
         $appDir = $this->getAppDir($appId);
-        $ret = Model("Docker")->getAppLogs( $appDir );
+        $ret = (new DockerModel())->getAppLogs( $appDir );
         return implode("\n",$ret);
     }
 }

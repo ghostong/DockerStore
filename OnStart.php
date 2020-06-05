@@ -5,11 +5,11 @@ $argv1 = @$_SERVER['argv'][1];
 $argv2 = @$_SERVER['argv'][2];
 
 function dockerStoreInstall(){
-    $appModel = Model("App");
+    $appModel = new AppModel();
     $appList = $appModel->listApp();
     foreach($appList as $val) {
         $dir = $appModel->getAppDir($val);
-        Model("Docker")->buildImage($dir);
+        (new DockerModel())->buildImage($dir);
     }
 }
 
@@ -26,24 +26,24 @@ function dockerStoreUpdate(){
 }
 
 function dockerBuildOne( $appName ){
-    $appModel = Model("App");
+    $appModel = new AppModel();
     $config = $appModel->getAppConfig($appName);
     if (!empty($config)) {
         echo "Start build App ",$appName,PHP_EOL;
         $dir = $appModel->getAppDir($appName);
-        Model("Docker")->buildImage($dir);
+        (new DockerModel())->buildImage($dir);
     }else{
         echo "Can not find App ",$appName,PHP_EOL;
     }
 }
 
 function dockerStartOne ( $appName ) {
-    $appModel = Model("App");
+    $appModel = new AppModel();
     $config = $appModel->getAppConfig($appName);
     if (!empty($config)) {
         echo "Start up App ",$appName,PHP_EOL;
         $dir = $appModel->getAppDir($appName);
-        Model("Docker")->startContainer($dir);
+        (new DockerModel())->startContainer($dir);
     }else{
         echo "Can not find App ",$appName,PHP_EOL;
     }
@@ -60,9 +60,9 @@ if ($argv1 == "install") {
     dockerStoreInstall();
     exit;
 } elseif ($argv1 == "fastinstall") {
-    $appModel = Model("App");
+    $appModel = new AppModel();
     $dir = $appModel->getAppDir("WebSSH");
-    Model("Docker")->buildImage($dir);
+    (new DockerModel())->buildImage($dir);
     exit;
 } elseif ($argv1 == "build"){
     dockerBuildOne($argv2);
@@ -71,20 +71,20 @@ if ($argv1 == "install") {
     dockerStartOne($argv2);
     exit;
 } elseif ($argv1 == "ps"){
-    $running = Model("App")->getRunningApp($argv2);
+    $running = (new AppModel())->getRunningApp($argv2);
     foreach ($running as $v) {
         echo "- ",$v,PHP_EOL;
     }
     exit;
 } elseif ($argv1 == "rm"){
-    if ( Model("App")->removeApp($argv2) ) {
+    if ( (new AppModel())->removeApp($argv2) ) {
         echo "Success",PHP_EOL;
     }else{
         echo "Not Found ", $argv2, PHP_EOL;
     }
     exit;
 } elseif ($argv1 == "rmi"){
-    if ( Model("Docker")->removeImage($argv2) ) {
+    if ( (new DockerModel())->removeImage($argv2) ) {
         echo "Success",PHP_EOL;
     }else{
         echo "Not Found ", $argv2, PHP_EOL;
@@ -96,7 +96,7 @@ if ($argv1 == "install") {
 }
 
 //创建共享网卡
-Model("Docker")->createNetWork();
+(new DockerModel())->createNetWork();
 
 //ssl证书
 function copySslCertificate(){

@@ -134,7 +134,7 @@ class DockerModel extends \Lit\Ms\LitMsModel{
     }
 
     function cleanDockerStoreImages (){
-        $app = Model("App");
+        $app = new AppModel();
         $appList =  $app->listApp() ;
         if ($appList) {
             foreach ($appList as $appName) {

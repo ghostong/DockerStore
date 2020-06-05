@@ -3,91 +3,91 @@
  * LitMs Controller 层
  */
 
-class Controller extends Lit\Ms\LitMsController {
+class Route extends Lit\Ms\LitMsRoute {
 
     function __construct(){
         $this->get('/',function (){
-            return View("Index.html");
+            return (new \Lit\Ms\LitMsResponse())->html("Index.html");
         });
 
         $this->get('/allApp',function (){
-            return View("AllApp.html");
+            return (new \Lit\Ms\LitMsResponse())->html("AllApp.html");
         });
 
         $this->get('/help',function (){
-            return View("Help.html");
+            return (new \Lit\Ms\LitMsResponse())->html("Help.html");
         });
 
         $this->get('/tool',function (){
-            return View("Tool.html");
+            return (new \Lit\Ms\LitMsResponse())->html("Tool.html");
         });
 
         $this->get('/logs',function (){
-            return View("logs.html");
+            return (new \Lit\Ms\LitMsResponse())->html("logs.html");
         });
 
         $this->get('/configEdit',function(){
-            return View("Edit.html");
+            return (new \Lit\Ms\LitMsResponse())->html("Edit.html");
         });
 
         $this->get("/sshConnect",function ($request,$response){
-            return Model("Api")->sshConnect($request,$response);
+            return (new ApiController())->sshConnect($request,$response);
         });
 
         $this->post('/api/getRuningApp',function ($request){
-            return Model("Api")->getRunningApp($request);
+            return (new ApiController())->getRunningApp($request);
         });
 
         $this->post('/api/getAllApp',function (){
-            return Model("Api")->allAppList();
+            return (new ApiController())->allAppList();
         });
 
         $this->post('/api/startApp',function ($request){
-            return Model("Api")->startApp($request);
+            return (new ApiController())->startApp($request);
         });
 
         $this->post('/api/removeApp',function ($request){
-            return Model("Api")->removeApp($request);
+            return (new ApiController())->removeApp($request);
         });
 
         $this->post('/api/restartApp',function ($request){
-            return Model("Api")->restartApp($request);
+            return (new ApiController())->restartApp($request);
         });
 
         $this->post('/api/delApp',function ($request){
-            return Model("Api")->removeImage($request);
+            return (new ApiController())->removeImage($request);
         });
 
         $this->post('/api/cleanImage',function ($request){
-            return Model("Api")->cleanImage($request);
+            return (new ApiController())->cleanImage($request);
         });
 
         $this->post('/api/cleanContainer',function ($request){
-            return Model("Api")->cleanContainer($request);
+            return (new ApiController())->cleanContainer($request);
         });
 
         $this->get('/api/getConfigList',function ($request){
-            return Model("Api")->getConfigList($request);
+            return (new ApiController())->getConfigList($request);
         });
 
         $this->get('/api/getConfigContent',function ($request){
-            return Model("Api")->getConfigContent($request);
+            return (new ApiController())->getConfigContent($request);
         });
 
         $this->post('/api/saveConfigContent',function ($request){
-            return Model("Api")->saveConfigContent($request);
+            return (new ApiController())->saveConfigContent($request);
         });
 
         $this->get("/api/getAppLogs",function ($request){
-            return Model("Api")->getAppLogs($request);
+            return (new ApiController())->getAppLogs($request);
         });
 
         $this->post("/api/cleanDockerStoreImages",function ($request){
-            return Model("Api")->cleanDockerStoreImages($request);
+            return (new ApiController())->cleanDockerStoreImages($request);
         });
 
         $this->post("/api/uninstallDockerStore",function ($request){
-            return Model("Api")->uninstallDockerStore($request);
+            return (new ApiController())->uninstallDockerStore($request);
         });
     }
 
