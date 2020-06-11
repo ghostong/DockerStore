@@ -1,0 +1,7 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
+EXPOSE 9118
+RUN apt-get update && apt-get install openssl -y && apt-get clean
+ADD dependence/minio /workdir/
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["/workdir/minio", "server", "/volume/data", "--address", ":9118", "--config-dir", "/volume/config"]

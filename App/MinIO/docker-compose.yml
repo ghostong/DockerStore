@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  minio:
+    restart: always
+    container_name: MinIO
+    image:
+      minio:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
+      - /Volumes/DockerStore/MinIO/data:/volume/data
+      - /Volumes/DockerStore/MinIO/config:/volume/config
+    networks:
+      - dockerstore
+    ports:
+      - "9118:9118"
+    environment:
+      MINIO_ACCESS_KEY: admin
+      MINIO_SECRET_KEY: 123@456@
+
+networks:
+  dockerstore:
+    external: true

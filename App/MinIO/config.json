@@ -1,0 +1,10 @@
+{
+  "appName" : "MinIO",
+  "appDescription" : "基于Apache License v2.0开源协议的对象存储服务。",
+  "appIcon" : "MinIO.png",
+  "httpsOnly" : 1,
+  "httpPort" : 9118,
+  "appPorts": [
+    9118
+  ]
+}
