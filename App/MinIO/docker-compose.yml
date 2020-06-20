@@ -8,16 +8,17 @@ services:
     build:
       ./
     volumes:
+      - /tmp/DockerStore/:/tmp/DockerStore/
       - /Volumes/DockerStore/DockerStore/SSL/:/etc/nginx/ssl/
       - /Volumes/DockerStore/MinIO/data:/volume/data
       - /Volumes/DockerStore/MinIO/config:/volume/config
+      - /Volumes/DockerStore/DockerStore/Env/.minioEnv:/volume/.env
     networks:
       - dockerstore
     ports:
       - "9118:9118"
-    environment:
-      MINIO_ACCESS_KEY: admin
-      MINIO_SECRET_KEY: 123@456@
+    env_file:
+      - /Volumes/DockerStore/DockerStore/Env/.minioEnv
 
 networks:
   dockerstore:

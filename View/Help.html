@@ -404,10 +404,16 @@
         <div class="panel-heading" id="MinIO"> MinIO </div>
         <div class="panel-body">
             <p>
-                1. 默认 AccessKey: admin , SecretKey: 123@456@ .
+                1. 默认 AccessKey: minioadmin , SecretKey: minioadmin .
             </p>
             <p>
-                2. 在不修改源代码的情况下,暂不能修改密码 .
+                2. 首次修改密码, 通过编辑配置文件 /volume/.env 增加如下配置即可<br/>
+                - AccessKey: <mark>MINIO_ACCESS_KEY=admin</mark><br/>
+                - SecretKey: <mark>MINIO_SECRET_KEY=123@456@</mark><br/>
+            </p>
+            <p>
+                3. 以后修改密码, 通过编辑配置文件 /volume/.env
+                参考: <a href="https://docs.minio.io/docs/minio-server-configuration-guide.html" target="_blank">使用新凭修改加密</a> 通过增加, MINIO_ACCESS_KEY_OLD, MINIO_SECRET_KEY_OLD 进行修改.
             </p>
         </div>
     </div>

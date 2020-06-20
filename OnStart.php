@@ -110,3 +110,10 @@ function copySslCertificate(){
 
 copySslCertificate();
 
+function mkEnvFile(){
+    $dir = "/Volumes/DockerStore/DockerStore/Env/";
+    !is_dir($dir) && mkdir($dir ,755,true);
+    touch("/Volumes/DockerStore/DockerStore/Env/.minioEnv");
+}
+
+mkEnvFile();
