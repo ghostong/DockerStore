@@ -4,5 +4,7 @@
   "appIcon" : "whistle.png",
   "httpsOnly" : 1,
   "httpPort" : 9103,
-  "appPorts": [8889]
+  "appPorts": [
+    8889
+  ]
 }

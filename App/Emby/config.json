@@ -4,5 +4,7 @@
   "appIcon" : "Emby.png",
   "httpsOnly" : 1,
   "httpPort" : 9117,
-  "appPorts": []
+  "appPorts": [
+    8096, 8920
+  ]
 }
