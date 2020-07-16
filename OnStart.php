@@ -14,10 +14,10 @@ function dockerStoreInstall(){
 }
 
 function dockerStoreUpdate(){
-    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:1804";
     echo $cmd,PHP_EOL;
     passthru($cmd);
-    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2";
     echo $cmd,PHP_EOL;
     passthru($cmd);
     $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest";

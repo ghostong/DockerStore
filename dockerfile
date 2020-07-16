@@ -1,7 +1,6 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/php7-swoole:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/swoole:7.2_4.4.8
 EXPOSE 9100
 RUN apt-get update && apt-get -y -q install docker.io
-WORKDIR /tmp
 ADD ./Dependence/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
 RUN chmod 755 /usr/local/bin/docker-compose
 WORKDIR /workdir

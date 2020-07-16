@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu-1804:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:1804
 EXPOSE 9112
 WORKDIR /workdir
 RUN apt-get update && apt-get install -y -q python3-pip ssh sudo docker.io

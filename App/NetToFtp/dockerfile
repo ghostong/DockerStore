@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/nginx-php7fpm:latest
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
 EXPOSE 443
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence/ /tmp/dependence/
