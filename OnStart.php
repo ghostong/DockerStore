@@ -14,7 +14,7 @@ function dockerStoreInstall(){
 }
 
 function dockerStoreUpdate(){
-    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:1804";
+    $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:18.04";
     echo $cmd,PHP_EOL;
     passthru($cmd);
     $cmd = "docker pull registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2";

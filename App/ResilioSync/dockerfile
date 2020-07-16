@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:1804
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:18.04
 EXPOSE 9101
 WORKDIR /workdir
 ADD dependence/resilio-sync.deb .

@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:1804
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:18.04
 EXPOSE 11211
 RUN apt-get update && apt-get install memcached libmemcached-tools sasl2-bin -y
 ADD dependence/sasl2-memcached.conf /etc/sasl2/memcached.conf
