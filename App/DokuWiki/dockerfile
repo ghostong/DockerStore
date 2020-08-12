@@ -1,7 +1,8 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
 WORKDIR /workdir
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
-ADD ./dependence /tmp/dependence
+ADD ./dependence/default /etc/nginx/sites-available/default
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/dokuwiki-stable.tgz -o /tmp/dokuwiki-stable.tgz
 EXPOSE 443
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["nginx", "-g", "daemon off;"]

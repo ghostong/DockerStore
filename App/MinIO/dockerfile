@@ -1,7 +1,9 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:18.04
 EXPOSE 9118
-RUN apt-get update && apt-get install openssl -y && apt-get clean
-ADD dependence/minio /workdir/
+WORKDIR /workdir/
+RUN apt-get update && apt-get install openssl -y && apt-get clean &&\
+    curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/minio -o minio && \
+    chmod 755 minio
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD ["/workdir/minio", "server", "/volume/data", "--address", ":9118", "--config-dir", "/volume/config"]
+CMD ["./minio", "server", "/volume/data", "--address", ":9118", "--config-dir", "/volume/config"]

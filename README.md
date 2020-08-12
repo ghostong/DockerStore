@@ -1,3 +1,6 @@
+### 说明
+    此项目为 DockerStore 项目源代码, 下文为docker版本安装及使用说明.
+    
 ### 环境准备
 #### 安装docker
     1. CentOS 查看 https://docs.docker.com/install/linux/docker-ce/centos/ 官方帮助文档 安装.
@@ -7,7 +10,7 @@
 
 ### 下载启动文件
 ````bash
-curl -S https://raw.githubusercontent.com/ghostong/DockerStore/master/Dependence/dockerStore.sh > dockerStore.sh && chmod 755 dockerStore.sh && sudo mkdir -p /Volumes/DockerStore && sudo chown $(whoami) /Volumes/DockerStore
+curl -S https://raw.githubusercontent.com/ghostong/DockerStore/master/dockerStore.sh > dockerStore.sh && chmod 755 dockerStore.sh && sudo mkdir -p /Volumes/DockerStore && sudo chown $(whoami) /Volumes/DockerStore
 ````
 
 ### 特别注意

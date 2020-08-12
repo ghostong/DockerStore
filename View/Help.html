@@ -51,7 +51,7 @@
         <div class="panel-heading" id="Redis"> Redis </div>
         <div class="panel-body">
             <p>
-                1. 配置文件所在位置 <mark>App/Redis/dependence/redis.conf</mark> .
+                1. 过编辑按钮修改Redis配置 .
             </p>
             <p>
                 2. 初始密码为 <mark>123@456@</mark> 如需修改,请修改配置项目 <mark>requirepass 123@456@</mark> .
@@ -188,6 +188,16 @@
             <p>
                 3. 强制使用 HTTPS 连接, chrome 无法信任, 请使用 <mark>/Volumes/DockerStore/WebSSH/workdir/ssl/</mark> 目录中的根证书, 导入至系统.
             </p>
+            <p>
+                4. 修改配置文件开启图片与视频处理插件.
+            </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<mark>'enable_previews' => true,</mark></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<mark>'enabledPreviewProviders' =></mark></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>array (</mark></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>0 => 'OC\\Preview\\Image',</mark></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>1 => 'OC\\Preview\\Movie',</mark></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>2 => 'OC\\Preview\\TXT',</mark></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<mark>),</mark></p>
         </div>
     </div>
 
