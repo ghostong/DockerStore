@@ -1,10 +1,11 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
 EXPOSE 80
+WORKDIR /tmp
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/phpMyAdmin-4.9.1-all-languages.tar.xz -o phpMyAdmin-4.9.1-all-languages.tar.xz && \
+    tar xvf phpMyAdmin-4.9.1-all-languages.tar.xz && mv phpMyAdmin-4.9.1-all-languages/* /workdir
 WORKDIR /workdir
-ADD dependence/phpMyAdmin-4.9.1-all-languages.tar.xz /tmp
-ADD dependence/default /etc/nginx/sites-available/default
-RUN mv /tmp/phpMyAdmin-4.9.1-all-languages/* /workdir
 COPY dependence/config.inc.php ./config.inc.php
+ADD dependence/default /etc/nginx/sites-available/default
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["nginx", "-g", "daemon off;"]

@@ -1,6 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
 EXPOSE 7000 7001 9110
 WORKDIR /workdir
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/frps -o frps && chmod 755 frps
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence /tmp/dependence
 ADD dependence/default /etc/nginx/sites-available/default

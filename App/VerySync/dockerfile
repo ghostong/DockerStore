@@ -1,9 +1,9 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
 EXPOSE 9104
 WORKDIR /workdir
-ADD dependence/verysync-linux.tar.gz  /workdir
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/verysync-linux.tar.gz -o verysync-linux.tar.gz && \
+    tar zxvf verysync-linux.tar.gz && rm verysync-linux.tar.gz && mv verysync-* verysync
 ADD dependence/default /etc/nginx/sites-available/default
-RUN mv verysync-* verysync
 WORKDIR /workdir/verysync
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]

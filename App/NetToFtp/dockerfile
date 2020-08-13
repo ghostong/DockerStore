@@ -2,6 +2,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
 EXPOSE 443
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence/ /tmp/dependence/
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/net2ftp_v1.3.zip -o /tmp/dependence/net2ftp_v1.3.zip
 WORKDIR /workdir
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["nginx", "-g", "daemon off;"]

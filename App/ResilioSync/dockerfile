@@ -1,7 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:18.04
 EXPOSE 9101
 WORKDIR /workdir
-ADD dependence/resilio-sync.deb .
-RUN apt-get install ./resilio-sync.deb
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/resilio-sync.deb -o resilio-sync.deb
+RUN apt-get install -y ./resilio-sync.deb
 ADD dependence/sync.conf /sync.conf
 CMD ["rslsync","--config","/sync.conf","--log","/dev/null","--nodaemon"]
