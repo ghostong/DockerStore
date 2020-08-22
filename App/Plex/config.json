@@ -1,0 +1,11 @@
+{
+  "appName" : "Plex",
+  "appDescription" : "为你的所有设备打造一个聚合影音中心。",
+  "appIcon" : "Plex.png",
+  "httpPort" : 9119,
+  "appPorts": [
+  ],
+  "appConfig" : [
+    {"name": "Plex环境变量","file": "/volume/.env"}
+  ]
+}
