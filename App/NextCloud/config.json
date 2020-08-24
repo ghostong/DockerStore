@@ -6,6 +6,6 @@
   "httpPort" : 9109,
   "appPorts": [],
   "appConfig": [
-    {"name": "Frp 客户端配置文件","file": "/workdir/config/config.php"}
+    {"name": "配置文件","file": "/workdir/config/config.php"}
   ]
 }
