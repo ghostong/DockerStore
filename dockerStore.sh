@@ -43,7 +43,11 @@ restart () {
 }
 
 other () {
-    docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php $1 $2
+    docker run -it --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /Volumes/DockerStore/DockerStore/SSL/:/Volumes/DockerStore/DockerStore/SSL/ \
+    -v /Volumes/DockerStore/DockerStore/Env/:/Volumes/DockerStore/DockerStore/Env/ \
+    registry.cn-hangzhou.aliyuncs.com/litosrc/docker-store:latest php Server.php $1 $2
 }
 
 if [[ "start" == ${1} ]]; then

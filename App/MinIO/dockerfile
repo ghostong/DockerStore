@@ -1,7 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:18.04
 EXPOSE 9118
 WORKDIR /workdir/
-RUN apt-get update && apt-get install openssl -y && apt-get clean &&\
+RUN apt-get update && apt-get install openssl curl -y && apt-get clean &&\
     curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/minio -o minio && \
     chmod 755 minio
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
