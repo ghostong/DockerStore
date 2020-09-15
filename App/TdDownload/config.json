@@ -1,0 +1,8 @@
+{
+  "appName" : "TdDownload",
+  "appDescription" : "迅雷不解释。",
+  "appIcon" : "TdDownload.jpg",
+  "httpPort" : 0,
+  "appPorts": [
+  ]
+}

@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  tddownload:
+    restart: always
+    container_name: TdDownload
+    image:
+      tddownload:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/TdDownload/data:/app/TDDOWNLOAD
+    networks:
+      - dockerstore
+
+networks:
+  dockerstore:
+    external: true

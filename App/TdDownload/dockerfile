@@ -1,0 +1,2 @@
+FROM yinheli/docker-thunder-xware:latest
+volume /app/TDDOWNLOAD
