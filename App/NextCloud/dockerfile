@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
 WORKDIR /workdir
-RUN apt-get update && apt-get -y install php-intl php-imagick php-apcu ffmpeg
+RUN apt-get update && apt-get -y install php-intl php-imagick php-apcu php-redis ffmpeg
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence /tmp/dependence
 RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/nextcloud-17.0.1.zip -o /tmp/dependence/nextcloud-17.0.1.zip
