@@ -1,0 +1,13 @@
+{
+  "appName" : "AliyunDDNS",
+  "appDescription" : "阿里云DDNS,通过阿里云的域名服务实现DDNS",
+  "appIcon" : "AliyunDDNS.png",
+  "httpsOnly" : 0,
+  "httpPort" : 9119,
+  "appPorts": [
+  ],
+  "appConfig" : [
+    {"name": "AliyunDDNS配置示例文件", "file": "/workdir/example.json"},
+    {"name": "AliyunDDNS配置文件", "file": "/workdir/Config/config.json"}
+  ]
+}

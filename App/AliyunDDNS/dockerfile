@@ -1,0 +1,10 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/swoole:7.2_4.4.8
+EXPOSE 9119
+WORKDIR /workdir
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/php/composer.1.10.phar -o /usr/bin/composer && \
+    chmod +x /usr/bin/composer && apt-get update -y && apt-get install -yq php-curl php-mbstring
+ADD ./dependence/code /workdir
+RUN composer install
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD ["php", "Server.php", "Schedule"]

@@ -1,0 +1,6 @@
+{
+    "require": {
+        "alibabacloud/sdk": "^1.8",
+        "lit/ms": "v0.1.0"
+    }
+}

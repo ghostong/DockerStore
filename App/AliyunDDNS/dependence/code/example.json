@@ -1,0 +1,10 @@
+{
+  "interval" : 300,
+  "regionId" : "cn-hangzhou",
+  "accessKeyId" : "",
+  "accessKeySecret" : "",
+  "domain": "a",
+  "rr": [
+    {  "rr": "www", "recordId": "123456" }
+  ]
+}
