@@ -1,5 +1,5 @@
 {
-  "appName" : "AliyunDDNS",
+  "appName" : "阿里云DDNS",
   "appDescription" : "阿里云DDNS,通过阿里云的域名服务实现DDNS",
   "appIcon" : "AliyunDDNS.png",
   "httpsOnly" : 0,

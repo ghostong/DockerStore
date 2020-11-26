@@ -1,0 +1,11 @@
+{
+  "appName" : "百度网盘",
+  "appDescription" : "百度网盘, 不解释.",
+  "appIcon" : "BaiDuNetDisk.png",
+  "httpsOnly" : 0,
+  "httpPort" : 9120,
+  "appPorts": [
+  ],
+  "appConfig" : [
+  ]
+}

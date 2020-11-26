@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  baidunetdisk:
+    restart: always
+    container_name: BaiDuNetDisk
+    image:
+      baidunetdisk:latest
+    build:
+      ./
+    volumes:
+      - /Volumes/DockerStore/BaiDuNetDisk/config:/root/baidunetdisk
+      - /Volumes/DockerStore/BaiDuNetDisk/download:/root/baidunetdiskdownload
+    environment:
+      TZ: "Asia/Shanghai"
+      LC_ALL: "C.UTF-8"
+      LANG: "C.UTF-8"
+      LANGUAGE: "zh_CN:zh"
+      DEBIAN_FRONTEND: "noninteractive"
+    networks:
+      - dockerstore
+    ports:
+      - "9120:6080"
+
+networks:
+  dockerstore:
+    external: true

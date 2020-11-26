@@ -1,0 +1,28 @@
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/ubuntu:18.04
+
+RUN apt-get -qy update && \
+    apt-get -qy install supervisor wget x11vnc xvfb websockify i3status \
+    i3-wm desktop-file-utils libappindicator3-1 libasound2 libnss3 \
+    libgtk-3-0 libfontconfig libfreetype6 libgbm-dev libnotify4 \
+    libsecret-1-0 xfonts-cyrillic xfonts-scalable fonts-liberation \
+    fonts-ipafont-gothic fonts-wqy-zenhei xdg-utils && \
+    rm -rf /var/lib/apt/lists/* && apt-get -qyy clean
+
+RUN mkdir /root/.vnc && touch /root/.vnc/passwd
+
+RUN wget \
+    https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/3.5.0/baidunetdisk_3.5.0_amd64.deb -O baidunetdisk.deb && \
+    dpkg -i baidunetdisk.deb && rm baidunetdisk.deb -f
+
+RUN wget https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz -O novnc.tar.gz && \
+    mkdir -p /root/novnc && tar -xzf novnc.tar.gz -C /root/novnc && rm novnc.tar.gz websockify.tar.gz -f
+
+RUN setcap -r `which i3status`
+
+COPY dependence/supervisord.conf /root/supervisord.conf
+COPY dependence/i3_config /root/.config/i3/config
+
+EXPOSE 5900
+EXPOSE 6080
+RUN /usr/bin/x11vnc -storepasswd 123@456@ ~/.vnc/passwd
+CMD /usr/bin/supervisord -c /root/supervisord.conf && /usr/bin/tail -f /dev/null
