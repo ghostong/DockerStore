@@ -5,7 +5,5 @@
   "httpsOnly" : 0,
   "httpPort" : 9120,
   "appPorts": [
-  ],
-  "appConfig" : [
   ]
 }
