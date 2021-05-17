@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cp -rf /tmp/dependence/fpm/* /etc/php/7.2/fpm
+cp -rf /tmp/dependence/fpm/* /etc/php/7.4/fpm
 
 if [[ ! -f "/workdir/config/config.php" ]]; then
-    unzip -o -d /workdir/ /tmp/dependence/nextcloud-17.0.1.zip && mv /workdir/nextcloud/* /workdir && rm -rf /workdir/nextcloud
+    unzip -o -d /workdir/ /tmp/dependence/nextcloud-20.0.9.zip && mv /workdir/nextcloud/* /workdir && rm -rf /workdir/nextcloud
     mkdir /workdir/data
     chown  -R www-data /workdir/config /workdir/data /workdir/apps
 fi

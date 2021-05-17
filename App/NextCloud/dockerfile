@@ -1,9 +1,11 @@
-FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.2
+FROM registry.cn-hangzhou.aliyuncs.com/litosrc/phpfpm:7.4
 WORKDIR /workdir
-RUN apt-get update && apt-get -y install php-intl php-imagick php-apcu php-redis ffmpeg
-ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ADD ./dependence /tmp/dependence
-RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/nextcloud-17.0.1.zip -o /tmp/dependence/nextcloud-17.0.1.zip
+RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/nextcloud-20.0.9.zip -o /tmp/dependence/nextcloud-20.0.9.zip
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN echo "deb https://repo.delellis.com.ar focal focal" > /etc/apt/sources.list.d/20-pdlib.list && \
+ curl -S https://repo.delellis.com.ar/repo.gpg.key | apt-key add - && \
+ apt-get update && apt-get -y install php-intl php-imagick php-apcu php-redis php-bz2 php7.4-pdlib ffmpeg && apt-get clean
 EXPOSE 443
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["nginx", "-g", "daemon off;"]
