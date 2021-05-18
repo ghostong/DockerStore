@@ -14,6 +14,6 @@ fi
 
 cp -r /tmp/dependence/default /etc/nginx/sites-available/default
 
-/etc/init.d/php7.2-fpm start
+/etc/init.d/php7.4-fpm start
 
 exec "$@"
