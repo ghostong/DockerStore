@@ -5,7 +5,7 @@ RUN curl -fsSL https://code.aliyun.com/lit/resource/raw/master/dockerstore/nextc
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN echo "deb https://repo.delellis.com.ar focal focal" > /etc/apt/sources.list.d/20-pdlib.list && \
   curl -S https://repo.delellis.com.ar/repo.gpg.key | apt-key add - && \
-  apt update && apt -yq install php-intl php-imagick php-apcu php-redis php-bz2 ffmpeg && apt clean
+  apt update && apt -yq install php-intl php-imagick php-apcu php-redis php-bz2 php7.4-pdlib ffmpeg && apt clean
 EXPOSE 443
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD ["nginx", "-g", "daemon off;"]
